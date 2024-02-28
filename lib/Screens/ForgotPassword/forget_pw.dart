@@ -20,6 +20,14 @@ class ForgetScreen extends StatelessWidget {
               Expanded(
                 child: ForgetImage(),
               ),
+              // Code added here for the BackBtn !
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: BackBtnPw(),
+                ),
+              ),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

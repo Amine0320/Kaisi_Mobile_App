@@ -1,6 +1,4 @@
-import './components/care_view.dart';
 import './components/center_next_button.dart';
-import './components/mood_diary_vew.dart';
 import './components/relax_view.dart';
 import './components/splash_view.dart';
 import './components/top_back_skip_view.dart';
@@ -37,7 +35,7 @@ class _IntroductionAnimationScreenState
   Widget build(BuildContext context) {
     print(_animationController?.value);
     return Scaffold(
-      backgroundColor: Color(0xffF7EBE1),
+      backgroundColor: Color.fromARGB(255, 188, 176, 165),
       body: ClipRect(
         child: Stack(
           children: [
@@ -45,12 +43,6 @@ class _IntroductionAnimationScreenState
               animationController: _animationController!,
             ),
             RelaxView(
-              animationController: _animationController!,
-            ),
-            CareView(
-              animationController: _animationController!,
-            ),
-            MoodDiaryVew(
               animationController: _animationController!,
             ),
             WelcomeView(

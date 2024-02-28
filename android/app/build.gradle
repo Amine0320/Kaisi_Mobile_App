@@ -23,6 +23,11 @@ if (flutterVersionName == null) {
 }
 
 android {
+       defaultConfig { 
+        minSdkVersion 15 
+        targetSdkVersion 33
+        multiDexEnabled true
+    }
     namespace "fr.kaisi.kaisi_app"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -64,4 +69,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+       implementation "androidx.multidex:multidex:2.0.1"
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaisi_app/Screens/ForgotPassword/Components/back_btn.dart';
 import 'package:kaisi_app/Screens/ForgotPassword/Components/forget_password_screen.dart';
 import 'package:kaisi_app/Screens/ForgotPassword/Components/forget_pw_image.dart';
 import '../../responsive.dart';
@@ -15,6 +16,7 @@ class ForgetScreen extends StatelessWidget {
           mobile: MobileForgetScreen(),
           desktop: Row(
             children: [
+              BackBtnPw(),
               Expanded(
                 child: ForgetImage(),
               ),
@@ -47,6 +49,7 @@ class MobileForgetScreen extends StatelessWidget {
     return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        BackBtnPw(),
         ForgetImage(),
         Row(
           children: [

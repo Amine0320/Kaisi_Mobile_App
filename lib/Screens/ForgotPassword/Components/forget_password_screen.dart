@@ -50,6 +50,9 @@ class _ForgetFormState extends State<ForgetForm> {
               try {
                 await AuthService.firebase()
                     .resetPassword(_emailController.text);
+                await Future.delayed(const Duration(seconds: 4));
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    loginScreenRoute, (route) => false);
               } on FirebaseAuthException {
                 showErrorDialog(
                     context, "Email provided doesn't exist Try again");

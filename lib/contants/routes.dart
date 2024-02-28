@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const loginRoute = '/login/';
 // New Routes
-const loginScreenRoute = '/loginS/';
+const String loginScreenRoute = '/loginS/';
 const signUpScreenRoute = '/signup/';
 const verifyEmailScreen = '/verifyE/';
 // Final

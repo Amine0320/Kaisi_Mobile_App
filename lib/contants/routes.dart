@@ -4,6 +4,7 @@ const loginRoute = '/login/';
 // New Routes
 const loginScreenRoute = '/loginS/';
 const signUpScreenRoute = '/signup/';
+const verifyEmailScreen = '/verifyE/';
 // Final
 const registerRoute = '/register/';
 const mainRoute = '/main/';

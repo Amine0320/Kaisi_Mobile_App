@@ -62,13 +62,27 @@ void main() {
       final user = provider.currentUser;
       expect(user, isNotNull);
     });
+    // The forget password test
+    test('Should be able to reset password', () async {
+      final email = "afif12tn@gmail.com";
+      provider._email = email; // Provide a valid email address
+      try {
+        await provider.resetPassword(email);
+        expect(true, true);
+      } catch (e) {
+        fail('Unexpected exception: $e');
+      }
+    });
   });
 }
 
 class NotIntalizedException implements Exception {}
 
+class EmailNotFoundException implements Exception {}
+
 class MockAuthProvider implements AuthProvider {
   // Declaration
+  String? _email;
   AuthUser? _user;
   var _isInitialized = false;
   bool get isInitialized => _isInitialized;
@@ -116,5 +130,16 @@ class MockAuthProvider implements AuthProvider {
     if (user == null) throw UserNotFoundAuthException();
     const newUser = AuthUser(isEmailVerified: true);
     _user = newUser;
+  }
+
+// Test Forget password
+  @override
+  Future<void> resetPassword(String email) async {
+    if (!isInitialized) throw NotIntalizedException();
+    if (_email == null || _email != email) throw EmailNotFoundException();
+    // Your password reset logic here
+    await Future.delayed(
+        const Duration(seconds: 2)); // Simulating async operation
+    return;
   }
 }

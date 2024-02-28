@@ -26,7 +26,6 @@ class AuthService implements AuthProvider {
         email: email,
         password: password,
       );
-
   @override
   AuthUser? get currentUser => provider.currentUser;
 
@@ -45,4 +44,7 @@ class AuthService implements AuthProvider {
 
   @override
   Future<void> sendEmailVerification() => provider.sendEmailVerification();
+
+  @override
+  Future<void> resetPassword(String email) => provider.resetPassword(email);
 }

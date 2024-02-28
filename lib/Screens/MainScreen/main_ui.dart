@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/contants/routes.dart';
 import 'package:kaisi_app/utilities/show_logout_dialog.dart';
-import '../enums/menu_action.dart';
+import '../../enums/menu_action.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});

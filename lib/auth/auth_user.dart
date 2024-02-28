@@ -8,6 +8,10 @@ class AuthUser {
   const AuthUser({required this.isEmailVerified});
   factory AuthUser.fromFirebase(User user) =>
       AuthUser(isEmailVerified: user.emailVerified);
+  // Update email verification status after password reset
+  AuthUser updateEmailVerification(bool isEmailVerified) {
+    return AuthUser(isEmailVerified: isEmailVerified);
+  }
 
   reload() {}
 }

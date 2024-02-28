@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:kaisi_app/Screens/ForgotPassword/forget_pw.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/utilities/show_error_log.dart';
@@ -67,7 +69,18 @@ class _LoginViewState extends State<LoginForm> {
               ),
             ),
           ),
-          const SizedBox(height: defaultPadding),
+          Container(
+            margin: const EdgeInsets.only(
+                top: 0.0), // Adjust the top margin as needed
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const ForgetScreen();
+                }));
+              },
+              child: const Text('Forget password'),
+            ),
+          ),
           ElevatedButton(
             onPressed: () async {
               final email = _emailController.text;
@@ -86,7 +99,7 @@ class _LoginViewState extends State<LoginForm> {
                   );
                 } else {
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                    verifyEmailRoute,
+                    verifyEmailScreen,
                     (route) => false,
                   );
                 }

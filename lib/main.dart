@@ -2,12 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/Login/login_screen.dart';
 import 'package:kaisi_app/Screens/Signup/signup_screen.dart';
+import 'package:kaisi_app/Screens/VerifyEmail/components/verify_email_screen.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/contants/routes.dart';
 import 'package:kaisi_app/firebase_options.dart';
 import 'package:kaisi_app/introduction_animation/introduction_animation_screen.dart';
-import 'package:kaisi_app/views/main_ui.dart';
-import 'package:kaisi_app/views/verify_email_view.dart';
+import 'package:kaisi_app/Screens/MainScreen/main_ui.dart';
 import './app_theme.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         loginScreenRoute: (context) => const LoginScreen(),
         signUpScreenRoute: (context) => const SignUpScreen(),
         mainRoute: (context) => const MainView(),
-        verifyEmailRoute: (context) => const VerifyEmailView(),
+        verifyEmailScreen: (context) => const VerifyEmailScreen(),
       },
     );
   }
@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
                   if (user.isEmailVerified) {
                     return const MainView();
                   } else {
-                    return const VerifyEmailView();
+                    return const VerifyEmailScreen();
                   }
                 }
               },

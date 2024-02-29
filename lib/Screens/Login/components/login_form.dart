@@ -92,18 +92,18 @@ class _LoginViewState extends State<LoginForm> {
                   password: password,
                 );
                 // Logic will be back when resolve sendemailverification problem ! HERE !
-                // final user = AuthService.firebase().currentUser;
-                // if (user?.isEmailVerified ?? false) {
-                //   Navigator.of(context).pushNamedAndRemoveUntil(
-                //     mainRoute,
-                //     (route) => false,
-                //   );
-                // } else {
-                //   Navigator.of(context).pushNamedAndRemoveUntil(
-                //     verifyEmailScreen,
-                //     (route) => false,
-                //   );
-                // }
+                final user = AuthService.firebase().currentUser;
+                if (user?.isEmailVerified ?? false) {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    navigationRoute,
+                    (route) => false,
+                  );
+                } else {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    verifyEmailScreen,
+                    (route) => false,
+                  );
+                }
                 Navigator.of(context).pushNamed(navigationRoute);
               } on UserNotFoundAuthException {
                 await showErrorDialog(context, 'User not found');

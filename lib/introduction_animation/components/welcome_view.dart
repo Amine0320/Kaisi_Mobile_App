@@ -4,7 +4,6 @@ class WelcomeView extends StatelessWidget {
   final AnimationController animationController;
   const WelcomeView({Key? key, required this.animationController})
       : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final _firstHalfAnimation =
@@ -12,8 +11,8 @@ class WelcomeView extends StatelessWidget {
       CurvedAnimation(
         parent: animationController,
         curve: Interval(
-          0.6,
-          0.8,
+          0.2,
+          0.4,
           curve: Curves.fastOutSlowIn,
         ),
       ),
@@ -23,31 +22,29 @@ class WelcomeView extends StatelessWidget {
       CurvedAnimation(
         parent: animationController,
         curve: Interval(
-          0.8,
-          1.0,
+          0.4,
+          0.6,
           curve: Curves.fastOutSlowIn,
         ),
       ),
     );
-
     final _welcomeFirstHalfAnimation =
         Tween<Offset>(begin: Offset(2, 0), end: Offset(0, 0))
             .animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
-        0.6,
-        0.8,
+        0.2,
+        0.4,
         curve: Curves.fastOutSlowIn,
       ),
     ));
-
     final _welcomeImageAnimation =
         Tween<Offset>(begin: Offset(4, 0), end: Offset(0, 0))
             .animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
-        0.6,
-        0.8,
+        0.2,
+        0.4,
         curve: Curves.fastOutSlowIn,
       ),
     ));
@@ -62,11 +59,15 @@ class WelcomeView extends StatelessWidget {
             children: [
               SlideTransition(
                 position: _welcomeImageAnimation,
-                child: Container(
-                  constraints: BoxConstraints(maxWidth: 350, maxHeight: 350),
-                  child: Image.asset(
-                    'assets/introduction_animation/welcome.png',
-                    fit: BoxFit.contain,
+                child: Padding(
+                  padding: const EdgeInsets.all(
+                      10.0), // Adjust the margin values as needed
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 350, maxHeight: 350),
+                    child: Image.asset(
+                      'assets/images/Welcome.jpg',
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
@@ -81,7 +82,7 @@ class WelcomeView extends StatelessWidget {
                 padding:
                     EdgeInsets.only(left: 64, right: 64, top: 16, bottom: 16),
                 child: Text(
-                  "Stay organised and live stress-free with you-do app",
+                  "Text",
                   textAlign: TextAlign.center,
                 ),
               ),

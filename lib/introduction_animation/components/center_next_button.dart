@@ -24,8 +24,8 @@ class CenterNextButton extends StatelessWidget {
         Tween<double>(begin: 0, end: 1.0).animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
-        0.6,
-        0.8,
+        0.2,
+        0.4,
         curve: Curves.fastOutSlowIn,
       ),
     ));
@@ -34,8 +34,8 @@ class CenterNextButton extends StatelessWidget {
             .animate(CurvedAnimation(
       parent: animationController,
       curve: Interval(
-        0.6,
-        0.8,
+        0.2,
+        0.4,
         curve: Curves.fastOutSlowIn,
       ),
     ));
@@ -92,7 +92,7 @@ class CenterNextButton extends StatelessWidget {
                         transitionType: SharedAxisTransitionType.vertical,
                       );
                     },
-                    child: _signUpMoveAnimation.value > 0.7
+                    child: _signUpMoveAnimation.value > 0.4
                         ? InkWell(
                             key: ValueKey('Sign Up button'),
                             onTap: onNextClick,
@@ -191,7 +191,7 @@ class CenterNextButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (var i = 0; i < 4; i++)
+          for (var i = 0; i < 2; i++)
             Padding(
               padding: const EdgeInsets.all(4),
               child: AnimatedContainer(

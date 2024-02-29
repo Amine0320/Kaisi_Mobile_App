@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kaisi_app/Screens/Signup/components/socal_sign_up.dart';
-import '../../../contants/routes.dart';
+// import 'package:kaisi_app/Screens/Signup/components/socal_sign_up.dart';
+// import '../../../contants/routes.dart';
 import '../../responsive.dart';
 import '../../components/background.dart';
 import 'components/sign_up_top_image.dart';
@@ -28,8 +28,8 @@ class SignUpScreen extends StatelessWidget {
                       width: 450,
                       child: SignUpForm(),
                     ),
-                    SizedBox(height: defaultPadding / 2),
-                    SocalSignUp()
+                    // SizedBox(height: defaultPadding / 2),
+                    // SocalSignUp()
                   ],
                 ),
               )
@@ -62,7 +62,7 @@ class MobileSignupScreen extends StatelessWidget {
             Spacer(),
           ],
         ),
-        const SocalSignUp()
+        // const SocalSignUp()
       ],
     );
   }

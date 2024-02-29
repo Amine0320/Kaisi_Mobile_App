@@ -33,7 +33,6 @@ class TopBackSkipView extends StatelessWidget {
         curve: Curves.fastOutSlowIn,
       ),
     ));
-
     return SlideTransition(
       position: _animation,
       child: Padding(
@@ -45,9 +44,6 @@ class TopBackSkipView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // SlideTransition(
-                //   position: _backAnimation,
-                //   child:
                 IconButton(
                   onPressed: onBackClick,
                   icon: Icon(Icons.arrow_back_ios_new_rounded),

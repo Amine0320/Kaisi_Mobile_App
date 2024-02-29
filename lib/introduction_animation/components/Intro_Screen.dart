@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class SplashView extends StatefulWidget {
+class SplachView extends StatefulWidget {
   final AnimationController animationController;
 
-  const SplashView({Key? key, required this.animationController})
+  const SplachView({Key? key, required this.animationController})
       : super(key: key);
 
   @override
-  _SplashViewState createState() => _SplashViewState();
+  _SplachViewState createState() => _SplachViewState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _SplachViewState extends State<SplachView> {
   @override
   Widget build(BuildContext context) {
     final _introductionanimation =
@@ -28,29 +28,26 @@ class _SplashViewState extends State<SplashView> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Image.asset(
-                'assets/introduction_animation/introduction_image.png',
-                fit: BoxFit.cover,
-              ),
+            Padding(
+              padding: EdgeInsets.only(top: 150.0, bottom: 8.0),
+              child: Image.asset('assets/images/Introduction.jpg'),
             ),
             Padding(
               padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
               child: Text(
-                "Clearhead",
+                "Kaisi Application",
                 style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(left: 64, right: 64),
               child: Text(
-                "Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore",
+                "Text",
                 textAlign: TextAlign.center,
               ),
             ),
             SizedBox(
-              height: 48,
+              height: 98,
             ),
             Padding(
               padding: EdgeInsets.only(

@@ -1,6 +1,7 @@
+import 'package:kaisi_app/introduction_animation/components/relax_view.dart';
+
 import './components/center_next_button.dart';
-import './components/relax_view.dart';
-import './components/splash_view.dart';
+import 'components/Intro_Screen.dart';
 import './components/top_back_skip_view.dart';
 import './components/welcome_view.dart';
 import 'package:flutter/material.dart';
@@ -35,11 +36,11 @@ class _IntroductionAnimationScreenState
   Widget build(BuildContext context) {
     print(_animationController?.value);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 188, 176, 165),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: ClipRect(
         child: Stack(
           children: [
-            SplashView(
+            SplachView(
               animationController: _animationController!,
             ),
             RelaxView(
@@ -64,7 +65,7 @@ class _IntroductionAnimationScreenState
   }
 
   void _onSkipClick() {
-    _animationController?.animateTo(0.8,
+    _animationController?.animateTo(0.4,
         duration: Duration(milliseconds: 1200));
   }
 
@@ -78,12 +79,6 @@ class _IntroductionAnimationScreenState
     } else if (_animationController!.value > 0.4 &&
         _animationController!.value <= 0.6) {
       _animationController?.animateTo(0.4);
-    } else if (_animationController!.value > 0.6 &&
-        _animationController!.value <= 0.8) {
-      _animationController?.animateTo(0.6);
-    } else if (_animationController!.value > 0.8 &&
-        _animationController!.value <= 1.0) {
-      _animationController?.animateTo(0.8);
     }
   }
 
@@ -96,9 +91,6 @@ class _IntroductionAnimationScreenState
       _animationController?.animateTo(0.6);
     } else if (_animationController!.value > 0.4 &&
         _animationController!.value <= 0.6) {
-      _animationController?.animateTo(0.8);
-    } else if (_animationController!.value > 0.6 &&
-        _animationController!.value <= 0.8) {
       _signUpClick();
     }
   }

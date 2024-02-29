@@ -74,9 +74,19 @@ class RelaxView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SlideTransition(
+                position: _imageAnimation,
+                child: Container(
+                  constraints: BoxConstraints(maxWidth: 350, maxHeight: 250),
+                  child: Image.asset(
+                    'assets/images/SecondScreen.jpg',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ),
+              SlideTransition(
                 position: _relaxAnimation,
                 child: Text(
-                  "Relax",
+                  "Intro",
                   style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -86,18 +96,8 @@ class RelaxView extends StatelessWidget {
                   padding:
                       EdgeInsets.only(left: 64, right: 64, top: 16, bottom: 16),
                   child: Text(
-                    "Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore",
+                    "Text",
                     textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-              SlideTransition(
-                position: _imageAnimation,
-                child: Container(
-                  constraints: BoxConstraints(maxWidth: 350, maxHeight: 250),
-                  child: Image.asset(
-                    'assets/introduction_animation/relax_image.png',
-                    fit: BoxFit.contain,
                   ),
                 ),
               ),

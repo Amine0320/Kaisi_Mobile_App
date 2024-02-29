@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:kaisi_app/Screens/Signup/components/socal_sign_up.dart';
 // import '../../../contants/routes.dart';
-import '../../responsive.dart';
+import '../HomeScreen/Components/responsive.dart';
 import '../../components/background.dart';
 import 'components/sign_up_top_image.dart';
 import 'components/signup_form.dart';

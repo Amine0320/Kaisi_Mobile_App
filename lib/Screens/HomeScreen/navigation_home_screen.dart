@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/custom_drawer/drawer_user_controller.dart';
 import 'package:kaisi_app/custom_drawer/home_drawer.dart';
-import 'package:kaisi_app/home_screen.dart';
-import 'app_theme.dart';
+import 'package:kaisi_app/Screens/HomeScreen/home_screen.dart';
+import 'Components/app_theme.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
   const NavigationHomeScreen({super.key});

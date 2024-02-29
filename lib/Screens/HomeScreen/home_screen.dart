@@ -1,5 +1,5 @@
-import 'package:kaisi_app/Model/homelist.dart';
-import 'app_theme.dart';
+import 'package:kaisi_app/Screens/HomeScreen/Components/homelist.dart';
+import 'Components/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {

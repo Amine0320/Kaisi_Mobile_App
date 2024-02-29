@@ -63,7 +63,8 @@ class WelcomeView extends StatelessWidget {
                   padding: const EdgeInsets.all(
                       10.0), // Adjust the margin values as needed
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 350, maxHeight: 350),
+                    constraints:
+                        const BoxConstraints(maxWidth: 350, maxHeight: 350),
                     child: Image.asset(
                       'assets/images/Welcome.jpg',
                       fit: BoxFit.contain,
@@ -73,12 +74,12 @@ class WelcomeView extends StatelessWidget {
               ),
               SlideTransition(
                 position: _welcomeFirstHalfAnimation,
-                child: Text(
+                child: const Text(
                   "Welcome To Kaisi",
                   style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding:
                     EdgeInsets.only(left: 64, right: 64, top: 16, bottom: 16),
                 child: Text(

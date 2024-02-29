@@ -34,7 +34,7 @@ class RelaxView extends StatelessWidget {
         Tween<Offset>(begin: Offset(0, 0), end: Offset(-2, 0)).animate(
       CurvedAnimation(
         parent: animationController,
-        curve: Interval(
+        curve: const Interval(
           0.2,
           0.4,
           curve: Curves.fastOutSlowIn,
@@ -45,7 +45,7 @@ class RelaxView extends StatelessWidget {
         Tween<Offset>(begin: Offset(0, 0), end: Offset(-4, 0)).animate(
       CurvedAnimation(
         parent: animationController,
-        curve: Interval(
+        curve: const Interval(
           0.2,
           0.4,
           curve: Curves.fastOutSlowIn,
@@ -57,7 +57,7 @@ class RelaxView extends StatelessWidget {
         Tween<Offset>(begin: Offset(0, -2), end: Offset(0, 0)).animate(
       CurvedAnimation(
         parent: animationController,
-        curve: Interval(
+        curve: const Interval(
           0.0,
           0.2,
           curve: Curves.fastOutSlowIn,
@@ -76,7 +76,8 @@ class RelaxView extends StatelessWidget {
               SlideTransition(
                 position: _imageAnimation,
                 child: Container(
-                  constraints: BoxConstraints(maxWidth: 350, maxHeight: 250),
+                  constraints:
+                      const BoxConstraints(maxWidth: 350, maxHeight: 250),
                   child: Image.asset(
                     'assets/images/SecondScreen.jpg',
                     fit: BoxFit.contain,
@@ -85,14 +86,14 @@ class RelaxView extends StatelessWidget {
               ),
               SlideTransition(
                 position: _relaxAnimation,
-                child: Text(
+                child: const Text(
                   "Intro",
                   style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
                 ),
               ),
               SlideTransition(
                 position: _textAnimation,
-                child: Padding(
+                child: const Padding(
                   padding:
                       EdgeInsets.only(left: 64, right: 64, top: 16, bottom: 16),
                   child: Text(

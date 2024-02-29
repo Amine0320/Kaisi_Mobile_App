@@ -7,7 +7,6 @@ import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/contants/routes.dart';
 import 'package:kaisi_app/firebase_options.dart';
 import 'package:kaisi_app/introduction_animation/introduction_animation_screen.dart';
-import 'package:kaisi_app/Screens/MainScreen/main_ui.dart';
 import 'package:kaisi_app/navigation_home_screen.dart';
 import './app_theme.dart';
 import 'package:flutter/services.dart';
@@ -49,7 +48,6 @@ class MyApp extends StatelessWidget {
       routes: {
         loginScreenRoute: (context) => const LoginScreen(),
         signUpScreenRoute: (context) => const SignUpScreen(),
-        mainRoute: (context) => const MainView(),
         verifyEmailScreen: (context) => const VerifyEmailScreen(),
         navigationRoute: (context) => NavigationHomeScreen(),
       },

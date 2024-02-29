@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 const String loginScreenRoute = '/loginS/';
 const signUpScreenRoute = '/signup/';
 const verifyEmailScreen = '/verifyE/';
+const navigationRoute = '/navigation';
 // Final
 const mainRoute = '/main/';
 const kPrimaryColor = Color(0xFF6F35A5);

@@ -6,6 +6,7 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
@@ -57,52 +58,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       future: getData(),
                       builder:
                           (BuildContext context, AsyncSnapshot<bool> snapshot) {
-                        if (!snapshot.hasData) {
-                          return const SizedBox();
-                        } else {
-                          return GridView(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 12, right: 12),
-                            physics: const BouncingScrollPhysics(),
-                            scrollDirection: Axis.vertical,
-                            children: List<Widget>.generate(
-                              homeList.length,
-                              (int index) {
-                                final int count = homeList.length;
-                                final Animation<double> animation =
-                                    Tween<double>(begin: 0.0, end: 1.0).animate(
-                                  CurvedAnimation(
-                                    parent: animationController!,
-                                    curve: Interval((1 / count) * index, 1.0,
-                                        curve: Curves.fastOutSlowIn),
-                                  ),
-                                );
-                                animationController?.forward();
-                                return HomeListView(
-                                  animation: animation,
-                                  animationController: animationController,
-                                  listData: homeList[index],
-                                  callBack: () {
-                                    Navigator.push<dynamic>(
-                                      context,
-                                      MaterialPageRoute<dynamic>(
-                                        builder: (BuildContext context) =>
-                                            homeList[index].navigateScreen!,
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: multiple ? 2 : 1,
-                              mainAxisSpacing: 12.0,
-                              crossAxisSpacing: 12.0,
-                              childAspectRatio: 1.5,
-                            ),
-                          );
-                        }
+                        return const SizedBox();
                       },
                     ),
                   ),
@@ -125,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(top: 8, left: 8),
-            child: Container(
+            child: SizedBox(
               width: AppBar().preferredSize.height - 8,
               height: AppBar().preferredSize.height - 8,
             ),
@@ -133,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           Expanded(
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 4),
+                padding: const EdgeInsets.only(top: 4, right: 50),
                 child: Text(
                   'KAISI',
                   style: TextStyle(
@@ -145,30 +101,33 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8, right: 8),
-            child: Container(
-              width: AppBar().preferredSize.height - 8,
-              height: AppBar().preferredSize.height - 8,
-              color: isLightMode ? Colors.white : AppTheme.nearlyBlack,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius:
-                      BorderRadius.circular(AppBar().preferredSize.height),
-                  child: Icon(
-                    multiple ? Icons.dashboard : Icons.view_agenda,
-                    color: isLightMode ? AppTheme.dark_grey : AppTheme.white,
-                  ),
-                  onTap: () {
-                    setState(() {
-                      multiple = !multiple;
-                    });
-                  },
-                ),
-              ),
-            ),
-          ),
+          // MAYBE USE THIS BUTTON AFTER BUT NOT NOW
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 8, right: 8),
+          //   child: Container(
+          //     width: AppBar().preferredSize.height - 8,
+          //     height: AppBar().preferredSize.height - 8,
+          //     color: isLightMode ? Colors.white : AppTheme.nearlyBlack,
+          //     child: Material(
+          //       color: Colors.transparent,
+          //       child: InkWell(
+          //         borderRadius:
+          //             BorderRadius.circular(AppBar().preferredSize.height),
+          //         child: Icon(
+          //           multiple ? Icons.dashboard : Icons.view_agenda,
+          //           color: isLightMode
+          //               ? const Color.fromARGB(255, 28, 89, 160)
+          //               : AppTheme.white,
+          //         ),
+          //         onTap: () {
+          //           setState(() {
+          //             multiple = !multiple;
+          //           });
+          //         },
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
@@ -213,9 +172,10 @@ class HomeListView extends StatelessWidget {
                       ),
                     ),
                     Material(
-                      color: Colors.transparent,
+                      color: const Color.fromARGB(0, 188, 76, 76),
                       child: InkWell(
-                        splashColor: Colors.grey.withOpacity(0.2),
+                        splashColor:
+                            const Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
                         borderRadius:
                             const BorderRadius.all(Radius.circular(4.0)),
                         onTap: callBack,

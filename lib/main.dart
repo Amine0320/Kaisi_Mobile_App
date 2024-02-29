@@ -8,6 +8,7 @@ import 'package:kaisi_app/contants/routes.dart';
 import 'package:kaisi_app/firebase_options.dart';
 import 'package:kaisi_app/introduction_animation/introduction_animation_screen.dart';
 import 'package:kaisi_app/Screens/MainScreen/main_ui.dart';
+import 'package:kaisi_app/navigation_home_screen.dart';
 import './app_theme.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
@@ -44,12 +45,13 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      home: IntroductionAnimationScreen(),
+      home: const HomePage(),
       routes: {
         loginScreenRoute: (context) => const LoginScreen(),
         signUpScreenRoute: (context) => const SignUpScreen(),
         mainRoute: (context) => const MainView(),
         verifyEmailScreen: (context) => const VerifyEmailScreen(),
+        navigationRoute: (context) => NavigationHomeScreen(),
       },
     );
   }
@@ -68,7 +70,7 @@ class HexColor extends Color {
   }
 }
 
-// CLASS HOME PAGE HERE !
+// CLASS HOME PAGE HERE ! (Logically right)
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -99,11 +101,8 @@ class HomePage extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   );
                 } else {
-                  if (user.isEmailVerified) {
-                    return const MainView();
-                  } else {
-                    return const VerifyEmailScreen();
-                  }
+                  // EDITS HERE
+                  return NavigationHomeScreen();
                 }
               },
             );

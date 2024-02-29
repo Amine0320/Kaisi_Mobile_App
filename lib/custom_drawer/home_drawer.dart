@@ -109,8 +109,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                             ),
                             child: ClipRRect(
                               borderRadius:
-                                  const BorderRadius.all(Radius.circular(60.0)),
-                              child: Image.asset('assets/images/userImage.png'),
+                                  BorderRadius.all(Radius.circular(60.0)),
+                              child: Image.asset('assets/images/ImenImage.png'),
                             ),
                           ),
                         ),
@@ -156,7 +156,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
           Column(
             children: <Widget>[
               ListTile(
-                title: Text(
+                title: const Text(
                   'Sign Out',
                   style: TextStyle(
                     fontFamily: AppTheme.fontName,
@@ -166,7 +166,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   ),
                   textAlign: TextAlign.left,
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.power_settings_new,
                   color: Colors.red,
                 ),
@@ -189,9 +189,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
     );
   }
 
-  void onTapped() {
-    print('Doing Something...'); // Print to console.
-  }
+  // void onTapped() {
+  //   print('Doing Something...'); // Print to console.
+  // }
 
   Widget inkwell(DrawerList listData) {
     return Material(

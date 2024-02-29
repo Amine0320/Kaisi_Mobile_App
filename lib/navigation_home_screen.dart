@@ -5,7 +5,10 @@ import 'package:kaisi_app/home_screen.dart';
 import 'app_theme.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
+  const NavigationHomeScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _NavigationHomeScreenState createState() => _NavigationHomeScreenState();
 }
 
@@ -47,9 +50,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   void changeIndex(DrawerIndex drawerIndexdata) {
     if (drawerIndex != drawerIndexdata) {
       drawerIndex = drawerIndexdata;
-      setState(() {
-        screenView = const MyHomePage();
-      });
+      setState(() {});
     }
   }
 }

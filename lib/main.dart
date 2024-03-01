@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         loginScreenRoute: (context) => const LoginScreen(),
         signUpScreenRoute: (context) => const SignUpScreen(),
         verifyEmailScreen: (context) => const VerifyEmailScreen(),
-        navigationRoute: (context) => NavigationHomeScreen(),
+        navigationRoute: (context) => const NavigationHomeScreen(),
       },
     );
   }
@@ -100,7 +100,7 @@ class HomePage extends StatelessWidget {
                   );
                 } else {
                   // EDITS HERE
-                  return NavigationHomeScreen();
+                  return const NavigationHomeScreen();
                 }
               },
             );

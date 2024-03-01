@@ -8,7 +8,8 @@ void main() async {
   await AuthService.firebase().intialize();
   testWidgets('ForgetForm widget test', (WidgetTester tester) async {
     // Build the ForgetForm widget
-    await tester.pumpWidget(MaterialApp(home: Scaffold(body: ForgetForm())));
+    await tester
+        .pumpWidget(const MaterialApp(home: Scaffold(body: ForgetForm())));
 
     // Verify if TextFormField is rendered
     expect(find.byType(TextFormField), findsOneWidget);

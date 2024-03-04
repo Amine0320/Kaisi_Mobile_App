@@ -46,7 +46,7 @@ class _LoginViewState extends State<LoginForm> {
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             decoration: const InputDecoration(
-              hintText: "Your email",
+              hintText: "adresse e-mail",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(defaultPadding),
                 child: Icon(Icons.person),
@@ -61,7 +61,7 @@ class _LoginViewState extends State<LoginForm> {
               obscureText: true,
               cursorColor: kPrimaryColor,
               decoration: const InputDecoration(
-                hintText: "Your password",
+                hintText: "mot de passe",
                 prefixIcon: Padding(
                   padding: EdgeInsets.all(defaultPadding),
                   child: Icon(Icons.lock),

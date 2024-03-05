@@ -101,33 +101,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               ),
             ),
           ),
-          // MAYBE USE THIS BUTTON AFTER BUT NOT NOW
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 8, right: 8),
-          //   child: Container(
-          //     width: AppBar().preferredSize.height - 8,
-          //     height: AppBar().preferredSize.height - 8,
-          //     color: isLightMode ? Colors.white : AppTheme.nearlyBlack,
-          //     child: Material(
-          //       color: Colors.transparent,
-          //       child: InkWell(
-          //         borderRadius:
-          //             BorderRadius.circular(AppBar().preferredSize.height),
-          //         child: Icon(
-          //           multiple ? Icons.dashboard : Icons.view_agenda,
-          //           color: isLightMode
-          //               ? const Color.fromARGB(255, 28, 89, 160)
-          //               : AppTheme.white,
-          //         ),
-          //         onTap: () {
-          //           setState(() {
-          //             multiple = !multiple;
-          //           });
-          //         },
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );

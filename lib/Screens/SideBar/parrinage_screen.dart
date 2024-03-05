@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/HomeScreen/Components/app_theme.dart';
 
-class InviteFriend extends StatefulWidget {
+class Parrinage extends StatefulWidget {
   @override
-  _InviteFriendState createState() => _InviteFriendState();
+  _ParrinageState createState() => _ParrinageState();
 }
 
-class _InviteFriendState extends State<InviteFriend> {
+class _ParrinageState extends State<Parrinage> {
   @override
   void initState() {
     super.initState();

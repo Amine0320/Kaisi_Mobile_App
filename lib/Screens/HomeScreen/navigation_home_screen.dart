@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kaisi_app/Screens/SideBar/feedback_screen.dart';
+import 'package:kaisi_app/Screens/SideBar/help_screen.dart';
+import 'package:kaisi_app/Screens/SideBar/invite_friend_screen.dart';
 import 'package:kaisi_app/custom_drawer/drawer_user_controller.dart';
 import 'package:kaisi_app/custom_drawer/home_drawer.dart';
 import 'package:kaisi_app/Screens/HomeScreen/home_screen.dart';
@@ -50,7 +53,30 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   void changeIndex(DrawerIndex drawerIndexdata) {
     if (drawerIndex != drawerIndexdata) {
       drawerIndex = drawerIndexdata;
-      setState(() {});
+      switch (drawerIndex) {
+        case DrawerIndex.HOME:
+          setState(() {
+            screenView = const MyHomePage();
+          });
+          break;
+        case DrawerIndex.Help:
+          setState(() {
+            screenView = HelpScreen();
+          });
+          break;
+        case DrawerIndex.FeedBack:
+          setState(() {
+            screenView = FeedbackScreen();
+          });
+          break;
+        case DrawerIndex.Invite:
+          setState(() {
+            screenView = InviteFriend();
+          });
+          break;
+        default:
+          break;
+      }
     }
   }
 }

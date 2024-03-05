@@ -30,39 +30,34 @@ class _HomeDrawerState extends State<HomeDrawer> {
   void setDrawerListArray() {
     drawerList = <DrawerList>[
       DrawerList(
-        index: DrawerIndex.HOME,
+        index: DrawerIndex.home,
         labelName: 'Home',
         icon: const Icon(Icons.home),
       ),
       DrawerList(
-        index: DrawerIndex.Help,
-        labelName: 'Help',
+        index: DrawerIndex.help,
+        labelName: 'Assistance',
         isAssetsImage: true,
         imageName: 'assets/images/supportIcon.png',
       ),
       DrawerList(
-        index: DrawerIndex.FeedBack,
+        index: DrawerIndex.feedBack,
         labelName: 'FeedBack',
         icon: const Icon(Icons.help),
       ),
       DrawerList(
-        index: DrawerIndex.Invite,
-        labelName: 'Invite Friend',
+        index: DrawerIndex.invite,
+        labelName: 'Parinnage',
         icon: const Icon(Icons.group),
       ),
       DrawerList(
-        index: DrawerIndex.Share,
-        labelName: 'Rate the app',
-        icon: const Icon(Icons.share),
-      ),
-      DrawerList(
-        index: DrawerIndex.About,
-        labelName: 'About Us',
+        index: DrawerIndex.about,
+        labelName: 'A propos nous',
         icon: const Icon(Icons.info),
       ),
       DrawerList(
-        index: DrawerIndex.Settings,
-        labelName: 'Settings',
+        index: DrawerIndex.settings,
+        labelName: 'Parametres',
         icon: const Icon(Icons.settings),
       ),
     ];
@@ -195,10 +190,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
     );
   }
 
-  // void onTapped() {
-  //   print('Doing Something...'); // Print to console.
-  // }
-
   Widget inkwell(DrawerList listData) {
     return Material(
       color: Colors.transparent,
@@ -271,7 +262,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                             height: 46,
                             decoration: BoxDecoration(
                               color: Colors.blue.withOpacity(0.2),
-                              borderRadius: new BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(0),
                                 topRight: Radius.circular(28),
                                 bottomLeft: Radius.circular(0),
@@ -296,14 +287,14 @@ class _HomeDrawerState extends State<HomeDrawer> {
 }
 
 enum DrawerIndex {
-  Settings,
-  HOME,
-  FeedBack,
-  Help,
-  Share,
-  About,
-  Invite,
-  Testing,
+  settings,
+  home,
+  feedBack,
+  help,
+  share,
+  about,
+  invite,
+  testing,
 }
 
 class DrawerList {

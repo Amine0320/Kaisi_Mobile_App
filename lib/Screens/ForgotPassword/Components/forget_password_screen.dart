@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/contants/routes.dart';
-import 'package:kaisi_app/utilities/show_error_log.dart';
+import 'package:kaisi_app/utilities/error_dialog.dart';
 
 class ForgetForm extends StatefulWidget {
   const ForgetForm({Key? key}) : super(key: key);
@@ -36,7 +36,7 @@ class _ForgetFormState extends State<ForgetForm> {
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor, // Assuming kPrimaryColor is defined
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Your email",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(

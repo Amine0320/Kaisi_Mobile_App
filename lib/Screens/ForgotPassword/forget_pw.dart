@@ -22,7 +22,7 @@ class ForgetScreen extends StatelessWidget {
               ),
               // Code added here for the BackBtn !
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: BackBtnPw(),

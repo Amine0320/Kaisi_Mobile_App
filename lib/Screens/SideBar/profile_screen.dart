@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/HomeScreen/Components/app_theme.dart';
 
-class SettingsScreen extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
   @override
-  _SettingsScreenState createState() => _SettingsScreenState();
+  _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();

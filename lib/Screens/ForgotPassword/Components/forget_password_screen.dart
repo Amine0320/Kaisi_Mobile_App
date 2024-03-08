@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/contants/routes.dart';
-import 'package:kaisi_app/utilities/error_dialog.dart';
+import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
 
 class ForgetForm extends StatefulWidget {
   const ForgetForm({Key? key}) : super(key: key);

@@ -35,6 +35,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
         icon: const Icon(Icons.home),
       ),
       DrawerList(
+        index: DrawerIndex.settings,
+        labelName: 'Profil',
+        icon: const Icon(Icons.settings),
+      ),
+      DrawerList(
         index: DrawerIndex.help,
         labelName: 'Assistance',
         isAssetsImage: true,
@@ -54,11 +59,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
         index: DrawerIndex.about,
         labelName: 'A propos nous',
         icon: const Icon(Icons.info),
-      ),
-      DrawerList(
-        index: DrawerIndex.settings,
-        labelName: 'Parametres',
-        icon: const Icon(Icons.settings),
       ),
     ];
   }

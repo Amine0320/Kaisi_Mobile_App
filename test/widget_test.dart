@@ -155,4 +155,16 @@ class MockAuthProvider implements AuthProvider {
     // TODO: implement reAuthenticateWithEmailAndPassword
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> signInWithFacebook() {
+    // TODO: implement signInWithFacebook
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> signInWithGoogle() {
+    // TODO: implement signInWithGoogle
+    throw UnimplementedError();
+  }
 }

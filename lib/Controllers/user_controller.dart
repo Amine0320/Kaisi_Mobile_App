@@ -40,7 +40,7 @@ class UserController extends GetxController {
     try {
       profileLoading.value = true;
       final user = await userRepository.fetchUserDetails();
-      this.user(user);
+      this.user(user as UserModel?);
     } catch (e) {
       user(UserModel.empty());
     } finally {
@@ -76,13 +76,13 @@ class UserController extends GetxController {
             profilePicture: userCredentials.user!.photoURL ?? '',
           );
           // Save user data
-          await userRepository.saveUserRecord(newUser);
+          // await userRepository.saveUserRecord(newUser);
 
           // Assign new user to the RxUser so that we can use it through out the app.
           this.user(newUser);
         } else if (user != null) {
           // Save Model when user registers using Email and Password
-          await userRepository.saveUserRecord(user);
+          // await userRepository.saveUserRecord(user);
 
           // Assign new user to the RxUser so that we can use it through out the app.
           this.user(user);

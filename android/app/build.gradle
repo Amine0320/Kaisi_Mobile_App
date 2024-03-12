@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 android {
        defaultConfig { 
-        minSdkVersion 15 
+        minSdkVersion 21  
         targetSdkVersion 33
         multiDexEnabled true
     }

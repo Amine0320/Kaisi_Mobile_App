@@ -111,6 +111,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                             child: ClipRRect(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(60.0)),
+                              // Static a changer
                               child: Image.asset('assets/images/ImenImage.png'),
                             ),
                           ),
@@ -120,6 +121,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 4),
+                    // Static a changer
                     child: Text(
                       'Imen Jmal',
                       style: TextStyle(

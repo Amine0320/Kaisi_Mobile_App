@@ -142,4 +142,17 @@ class MockAuthProvider implements AuthProvider {
         const Duration(seconds: 2)); // Simulating async operation
     return;
   }
+
+  @override
+  Future<void> deleteAccount() {
+    // TODO: implement deleteAccount
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) {
+    // TODO: implement reAuthenticateWithEmailAndPassword
+    throw UnimplementedError();
+  }
 }

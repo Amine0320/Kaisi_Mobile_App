@@ -1,12 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart'
-    show FirebaseAuth, FirebaseAuthException;
+    show AuthCredential, EmailAuthProvider, FirebaseAuth, FirebaseAuthException;
+import 'package:flutter/services.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_provider.dart';
 import 'package:kaisi_app/auth/auth_user.dart';
+import 'package:kaisi_app/auth/firebase_auth_exceptions.dart';
+import 'package:kaisi_app/auth/firebase_exceptions.dart';
+import 'package:kaisi_app/auth/format_exceptions.dart';
+import 'package:kaisi_app/auth/platform_exceptions.dart';
 import 'package:kaisi_app/firebase_options.dart';
 
 class FirebaseAuthProvider implements AuthProvider {
+  final _auth = FirebaseAuth.instance;
   @override
   Future<void> intialize() async {
     await Firebase.initializeApp(
@@ -116,6 +122,50 @@ class FirebaseAuthProvider implements AuthProvider {
       }
     } catch (e) {
       rethrow;
+    }
+  }
+
+  /// DELETE USER - Remove user Auth and Firestore Account.
+  @override
+  Future<void> deleteAccount() async {
+    final _auth = FirebaseAuth.instance;
+    try {
+      // await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// [ReAuthenticate] - ReAuthenticate User
+  @override
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      // Create a credential
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      // ReAuthenticate
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
     }
   }
 }

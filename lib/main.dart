@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/Login/login_screen.dart';
 import 'package:kaisi_app/Screens/Signup/signup_screen.dart';
 import 'package:kaisi_app/Screens/VerifyEmail/components/verify_email_screen.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/contants/routes.dart';
+import 'package:kaisi_app/controllers/user_controller.dart';
 import 'package:kaisi_app/firebase_options.dart';
 import 'package:kaisi_app/Screens/introduction_animation/introduction_animation_screen.dart';
 import 'package:kaisi_app/Screens/HomeScreen/navigation_home_screen.dart';
@@ -18,6 +20,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  Get.put(UserController());
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown

@@ -1,4 +1,5 @@
 import 'package:kaisi_app/Screens/HomeScreen/navigation_home_screen.dart';
+import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/Screens/appbar/appbar.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/list_tiles/settings_menu_tile.dart';
@@ -10,11 +11,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class SettingScreen extends StatelessWidget {
+  const SettingScreen({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // final controller = UserController.instance;
     return PopScope(
       canPop: false,
       // Intercept the back button press and redirect to Home Screen

@@ -3,16 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart'
     show
         AuthCredential,
         EmailAuthProvider,
-        FacebookAuthProvider,
         FirebaseAuth,
         FirebaseAuthException,
         GoogleAuthProvider,
-        OAuthCredential,
         User,
         UserCredential;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -232,31 +230,37 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 
-  ///[FacebookAuthentication] - FACEBOOK
   @override
-  Future<UserCredential> signInWithFacebook() async {
-    try {
-      // Trigger the sign-in flow
-      final LoginResult loginResult =
-          await FacebookAuth.instance.login(permissions: ['email']);
-
-      // Create a credential from the access token
-      final AccessToken accessToken = loginResult.accessToken!;
-      final OAuthCredential facebookAuthCredential =
-          FacebookAuthProvider.credential(accessToken.token);
-
-      // Once signed in, return the UserCredential
-      return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-    } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const TFormatException();
-    } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
-    }
+  Future<void> signInWithFacebook() {
+    // TODO: implement signInWithFacebook
+    throw UnimplementedError();
   }
+
+  ///[FacebookAuthentication] - FACEBOOK
+  // @override
+  // Future<UserCredential> signInWithFacebook() async {
+  //   try {
+  //     // Trigger the sign-in flow
+  //     final LoginResult loginResult =
+  //         await FacebookAuth.instance.login(permissions: ['email']);
+
+  //     // Create a credential from the access token
+  //     final AccessToken accessToken = loginResult.accessToken!;
+  //     final OAuthCredential facebookAuthCredential =
+  //         FacebookAuthProvider.credential(accessToken.token);
+
+  //     // Once signed in, return the UserCredential
+  //     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  //   } on FirebaseAuthException catch (e) {
+  //     throw TFirebaseAuthException(e.code).message;
+  //   } on FirebaseException catch (e) {
+  //     throw TFirebaseException(e.code).message;
+  //   } on FormatException catch (_) {
+  //     throw const TFormatException();
+  //   } on PlatformException catch (e) {
+  //     throw TPlatformException(e.code).message;
+  //   } catch (e) {
+  //     throw 'Something went wrong. Please try again';
+  //   }
+  // }
 }

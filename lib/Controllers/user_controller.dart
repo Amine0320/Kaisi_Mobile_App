@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kaisi_app/Screens/Login/login_screen.dart';
+import 'package:kaisi_app/Screens/Login/re_authenticate_user_login_form.dart';
 import 'package:kaisi_app/Screens/helpers/network_manager.dart';
-// import 'package:kaisi_app/Screens/Login/re_authenticate_user_login_form.dart';
 import 'package:kaisi_app/Screens/loaders/circular_loader.dart';
 import 'package:kaisi_app/Screens/popups/full_screen_loader.dart';
 import 'package:kaisi_app/Screens/popups/loaders.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
+import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/data/user/user_represitory.dart';
 import 'package:kaisi_app/models/user_model.dart';
 import 'package:kaisi_app/utilities/constants/image_strings.dart';
@@ -38,8 +39,8 @@ class UserController extends GetxController {
   Future<void> fetchUserRecord() async {
     try {
       profileLoading.value = true;
-      // final user = await userRepository.fetchUserDetails();
-      this.user();
+      final user = await userRepository.fetchUserDetails();
+      this.user(user);
     } catch (e) {
       user(UserModel.empty());
     } finally {
@@ -74,15 +75,14 @@ class UserController extends GetxController {
             phoneNumber: userCredentials.user!.phoneNumber ?? '',
             profilePicture: userCredentials.user!.photoURL ?? '',
           );
-
           // Save user data
-          // await userRepository.saveUserRecord(newUser);
+          await userRepository.saveUserRecord(newUser);
 
           // Assign new user to the RxUser so that we can use it through out the app.
           this.user(newUser);
         } else if (user != null) {
           // Save Model when user registers using Email and Password
-          // await userRepository.saveUserRecord(user);
+          await userRepository.saveUserRecord(user);
 
           // Assign new user to the RxUser so that we can use it through out the app.
           this.user(user);
@@ -154,28 +154,28 @@ class UserController extends GetxController {
   void deleteUserAccount() async {
     try {
       TFullScreenLoader.openLoadingDialog('Processing', TImages.docerAnimation);
-      // Need to be verified asap
-      // /// First re-authenticate user
-      // final auth = AuthService.instance;
-      // final provider =
-      //     auth.firebaseUser!.providerData.map((e) => e.providerId).first;
-      // if (provider.isNotEmpty) {
-      //   // Re Verify Auth Email
-      //   if (provider == 'google.com') {
-      //     await auth.signInWithGoogle();
-      //     await auth.deleteAccount();
-      //     TFullScreenLoader.stopLoading();
-      //     Get.offAll(() => const LoginScreen());
-      //   } else if (provider == 'facebook.com') {
-      //     await auth.signInWithFacebook();
-      //     await auth.deleteAccount();
-      //     TFullScreenLoader.stopLoading();
-      //     Get.offAll(() => const LoginScreen());
-      //   } else if (provider == 'password') {
-      //     TFullScreenLoader.stopLoading();
-      //     Get.to(() => const ReAuthLoginForm());
-      //   }
-      // }
+
+      /// First re-authenticate user
+      final auth = FirebaseAuthProvider.instance;
+      final provider =
+          auth.firebaseUser!.providerData.map((e) => e.providerId).first;
+      if (provider.isNotEmpty) {
+        // Re Verify Auth Email
+        if (provider == 'google.com') {
+          await auth.signInWithGoogle();
+          await auth.deleteAccount();
+          TFullScreenLoader.stopLoading();
+          Get.offAll(() => const LoginScreen());
+        } else if (provider == 'facebook.com') {
+          await auth.signInWithFacebook();
+          await auth.deleteAccount();
+          TFullScreenLoader.stopLoading();
+          Get.offAll(() => const LoginScreen());
+        } else if (provider == 'password') {
+          TFullScreenLoader.stopLoading();
+          Get.to(() => const ReAuthLoginForm());
+        }
+      }
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());

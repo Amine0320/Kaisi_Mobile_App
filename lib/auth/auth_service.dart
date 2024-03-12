@@ -8,7 +8,6 @@ import 'package:kaisi_app/firebase_options.dart';
 class AuthService implements AuthProvider {
   static AuthService get instance => Get.find();
   // late final Rx<User?> _firebaseUser;
-
   // /// Getters
   // User? get firebaseUser => _firebaseUser.value;
 
@@ -67,4 +66,8 @@ class AuthService implements AuthProvider {
   Future<void> reAuthenticateWithEmailAndPassword(
           String email, String password) =>
       provider.reAuthenticateWithEmailAndPassword(email, password);
+  @override
+  Future<void> signInWithFacebook() => provider.signInWithFacebook();
+  @override
+  Future<void> signInWithGoogle() => provider.signInWithGoogle();
 }

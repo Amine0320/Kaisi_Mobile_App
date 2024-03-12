@@ -1,7 +1,21 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart'
-    show AuthCredential, EmailAuthProvider, FirebaseAuth, FirebaseAuthException;
+    show
+        AuthCredential,
+        EmailAuthProvider,
+        FacebookAuthProvider,
+        FirebaseAuth,
+        FirebaseAuthException,
+        GoogleAuthProvider,
+        OAuthCredential,
+        User,
+        UserCredential;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_provider.dart';
 import 'package:kaisi_app/auth/auth_user.dart';
@@ -13,6 +27,21 @@ import 'package:kaisi_app/firebase_options.dart';
 
 class FirebaseAuthProvider implements AuthProvider {
   final _auth = FirebaseAuth.instance;
+  static FirebaseAuthProvider get instance => Get.find();
+
+  /// Variables
+  late final Rx<User?> _firebaseUser;
+
+  /// Getters
+  User? get firebaseUser => _firebaseUser.value;
+
+  String get getUserID => _firebaseUser.value?.uid ?? "";
+
+  String get getUserEmail => _firebaseUser.value?.email ?? "";
+
+  String get getDisplayName => _firebaseUser.value?.displayName ?? "";
+
+  String get getPhoneNo => _firebaseUser.value?.phoneNumber ?? "";
   @override
   Future<void> intialize() async {
     await Firebase.initializeApp(
@@ -156,6 +185,68 @@ class FirebaseAuthProvider implements AuthProvider {
 
       // ReAuthenticate
       await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+  /* ---------------------------- Federated identity & social sign-in ---------------------------------*/
+
+  /// [GoogleAuthentication] - GOOGLE
+  @override
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      if (kDebugMode) print('Something went wrong: $e');
+      return null;
+    }
+  }
+
+  ///[FacebookAuthentication] - FACEBOOK
+  @override
+  Future<UserCredential> signInWithFacebook() async {
+    try {
+      // Trigger the sign-in flow
+      final LoginResult loginResult =
+          await FacebookAuth.instance.login(permissions: ['email']);
+
+      // Create a credential from the access token
+      final AccessToken accessToken = loginResult.accessToken!;
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(accessToken.token);
+
+      // Once signed in, return the UserCredential
+      return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

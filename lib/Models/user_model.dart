@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kaisi_app/Models/cart_model.dart';
-import 'package:kaisi_app/models/address_model.dart';
 import 'package:kaisi_app/utilities/formatters/formatter.dart';
+import 'address_model.dart';
 
 /// Model class representing user data.
 class UserModel {

@@ -78,33 +78,22 @@ class HomePage extends StatelessWidget {
       future: AuthService.firebase().intialize(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          // Loading indicator
+          // Loading indicator while initializing
           return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (snapshot.hasError) {
-          // Error handling
+          // Error handling for initialization
           return const Center(
             child: Text('Error'),
           );
         } else {
           final user = AuthService.firebase().currentUser;
           if (user != null) {
-            return FutureBuilder<void>(
-              future: user.reload(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  // Loading indicator while user data is being refreshed
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else {
-                  // EDITS HERE
-                  return const NavigationHomeScreen();
-                }
-              },
-            );
+            // If user is authenticated, navigate to home screen
+            return const NavigationHomeScreen();
           } else {
+            // If user is not authenticated, show introduction screen
             return const IntroductionAnimationScreen();
           }
         }

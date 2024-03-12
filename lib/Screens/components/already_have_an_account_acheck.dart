@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../contants/routes.dart';
+import '../../contants/routes.dart';
 
 class AlreadyHaveAnAccountCheck extends StatelessWidget {
   final bool login;

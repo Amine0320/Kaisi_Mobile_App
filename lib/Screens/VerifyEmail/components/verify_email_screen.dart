@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/VerifyEmail/components/Components/verify_from.dart';
 import 'package:kaisi_app/Screens/VerifyEmail/components/Components/verify_image.dart';
-import 'package:kaisi_app/components/background.dart';
+import 'package:kaisi_app/Screens/components/background.dart';
 import 'package:kaisi_app/Screens/HomeScreen/Components/responsive.dart';
 
 class VerifyEmailScreen extends StatelessWidget {

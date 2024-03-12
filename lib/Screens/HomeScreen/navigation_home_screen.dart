@@ -4,8 +4,8 @@ import 'package:kaisi_app/Screens/SideBar/feedback_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/help_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/parrinage_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/profile_screen.dart';
-import 'package:kaisi_app/custom_drawer/drawer_user_controller.dart';
-import 'package:kaisi_app/custom_drawer/home_drawer.dart';
+import 'package:kaisi_app/Screens/custom_drawer/drawer_user_controller.dart';
+import 'package:kaisi_app/Screens/custom_drawer/home_drawer.dart';
 import 'package:kaisi_app/Screens/HomeScreen/home_screen.dart';
 import 'Components/app_theme.dart';
 

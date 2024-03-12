@@ -1,4 +1,4 @@
-import '../../../../introduction_animation/introduction_animation_screen.dart';
+import '../../introduction_animation/introduction_animation_screen.dart';
 import 'package:flutter/widgets.dart';
 
 class HomeList {

@@ -3,7 +3,7 @@ import 'package:kaisi_app/Screens/ForgotPassword/Components/back_btn.dart';
 import 'package:kaisi_app/Screens/ForgotPassword/Components/forget_password_screen.dart';
 import 'package:kaisi_app/Screens/ForgotPassword/Components/forget_pw_image.dart';
 import '../HomeScreen/Components/responsive.dart';
-import '../../components/background.dart';
+import '../components/background.dart';
 
 class ForgetScreen extends StatelessWidget {
   const ForgetScreen({Key? key}) : super(key: key);

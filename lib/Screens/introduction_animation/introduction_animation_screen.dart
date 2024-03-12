@@ -1,9 +1,9 @@
-import 'package:kaisi_app/introduction_animation/components/relax_view.dart';
+import 'package:kaisi_app/Screens/introduction_animation/components/relax_view.dart';
 
-import './components/center_next_button.dart';
+import 'components/center_next_button.dart';
 import 'components/Intro_Screen.dart';
-import './components/top_back_skip_view.dart';
-import './components/welcome_view.dart';
+import 'components/top_back_skip_view.dart';
+import 'components/welcome_view.dart';
 import 'package:flutter/material.dart';
 
 class IntroductionAnimationScreen extends StatefulWidget {

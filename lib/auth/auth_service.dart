@@ -7,17 +7,6 @@ import 'package:kaisi_app/firebase_options.dart';
 
 class AuthService implements AuthProvider {
   static AuthService get instance => Get.find();
-  // late final Rx<User?> _firebaseUser;
-  // /// Getters
-  // User? get firebaseUser => _firebaseUser.value;
-
-  // String get getUserID => _firebaseUser.value?.uid ?? "";
-
-  // String get getUserEmail => _firebaseUser.value?.email ?? "";
-
-  // String get getDisplayName => _firebaseUser.value?.displayName ?? "";
-
-  // String get getPhoneNo => _firebaseUser.value?.phoneNumber ?? "";
   final AuthProvider provider;
 
   const AuthService(this.provider);

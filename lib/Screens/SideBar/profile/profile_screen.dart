@@ -6,10 +6,10 @@ import 'package:kaisi_app/Screens/appbar/appbar.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/shimmers/shimmer.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/texts/section_heading.dart';
+import 'package:kaisi_app/contants/routes.dart';
 import 'package:kaisi_app/utilities/constants/image_strings.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
 import '../../../controllers/user_controller.dart';
-import 'change_name.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -20,8 +20,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: TAppBar(
         showBackArrow: true,
-        title:
-            Text('Profile', style: Theme.of(context).textTheme.headlineSmall),
+        title: Text('Profil', style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -54,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
                       onPressed: controller.imageUploading.value
                           ? () {}
                           : () => controller.uploadUserProfilePicture(),
-                      child: const Text('Change Profile Picture'),
+                      child: const Text('Changer la photo de profil'),
                     ),
                   ],
                 ),
@@ -63,46 +62,51 @@ class ProfileScreen extends StatelessWidget {
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(
-                  title: 'Profile Information', showActionButton: false),
+                  title: 'Informations de profile', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
-                  onPressed: () => Get.to(() => const ChangeName()),
-                  title: 'Name',
+                  onPressed: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      changeNameRoute,
+                      (route) => false,
+                    );
+                  },
+                  title: 'Nom',
                   value: controller.user.value.fullName),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'Username',
+                  title: 'Prenom',
                   value: controller.user.value.username),
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(
-                  title: 'Personal Information', showActionButton: false),
+                  title: 'Informations Personnels', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'User ID',
+                  title: 'Identifiant',
                   value: '45689',
                   icon: Iconsax.copy),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'E-mail',
+                  title: 'Adresse E-mail',
                   value: controller.user.value.email),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'Phone Number',
+                  title: 'Numero de tel',
                   value: controller.user.value.phoneNumber),
               TProfileMenu(onPressed: () {}, title: 'Gender', value: 'Male'),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'Date of Birth',
+                  title: 'Date de naissance',
                   value: '1 Jan, 1900'),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               Center(
                 child: TextButton(
                     onPressed: () => controller.deleteAccountWarningPopup(),
-                    child: const Text('Close Account',
+                    child: const Text('Supprimer le compte ',
                         style: TextStyle(color: Colors.red))),
               )
             ],

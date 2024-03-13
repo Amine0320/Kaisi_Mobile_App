@@ -48,10 +48,8 @@ class FirebaseAuthProvider implements AuthProvider {
   }
 
   @override
-  Future<AuthUser> createUser({
-    required String email,
-    required String password,
-  }) async {
+  Future<AuthUser> createUser(
+      {required String email, required String password, required}) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,

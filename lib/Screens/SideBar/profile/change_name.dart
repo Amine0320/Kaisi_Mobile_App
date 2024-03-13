@@ -17,7 +17,7 @@ class ChangeName extends StatelessWidget {
       /// Custom Appbar
       appBar: TAppBar(
         showBackArrow: true,
-        title: Text('Change Name',
+        title: Text('Changer Nom',
             style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: Padding(
@@ -27,7 +27,7 @@ class ChangeName extends StatelessWidget {
           children: [
             /// Headings
             Text(
-              'Use real name for easy verification. This name will appear on several pages.',
+              'Utilisez votre vrai nom pour une vérification facile. Ce nom apparaîtra sur plusieurs pages.',
               style: Theme.of(context).textTheme.labelMedium,
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
@@ -40,7 +40,7 @@ class ChangeName extends StatelessWidget {
                     TextFormField(
                       controller: controller.firstName,
                       validator: (value) =>
-                          TValidator.validateEmptyText('First name', value),
+                          TValidator.validateEmptyText('Prenom', value),
                       expands: false,
                       decoration: const InputDecoration(
                           labelText: TTexts.firstName,
@@ -50,7 +50,7 @@ class ChangeName extends StatelessWidget {
                     TextFormField(
                       controller: controller.lastName,
                       validator: (value) =>
-                          TValidator.validateEmptyText('Last name', value),
+                          TValidator.validateEmptyText('Nom', value),
                       expands: false,
                       decoration: const InputDecoration(
                           labelText: TTexts.lastName,
@@ -65,7 +65,7 @@ class ChangeName extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () => controller.updateUserName(),
-                  child: const Text('Save')),
+                  child: const Text('Sauvgarder')),
             ),
           ],
         ),

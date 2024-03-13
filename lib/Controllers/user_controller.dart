@@ -83,16 +83,15 @@ class UserController extends GetxController {
         } else if (user != null) {
           // Save Model when user registers using Email and Password
           // await userRepository.saveUserRecord(user);
-
           // Assign new user to the RxUser so that we can use it through out the app.
           this.user(user);
         }
       }
     } catch (e) {
       TLoaders.warningSnackBar(
-        title: 'Data not saved',
+        title: 'La sauvegarde de vos données a échoué.',
         message:
-            'Something went wrong while saving your information. You can re-save your data in your Profile.',
+            "Une erreur s'est produite lors de la sauvegarde de vos informations. Veuillez réessayer d'enregistrer vos données dans votre profil.",
       );
     }
   }
@@ -110,20 +109,19 @@ class UserController extends GetxController {
         final uploadedImage =
             await userRepository.uploadImage('Users/Images/Profile/', image);
         profileImageUrl.value = uploadedImage;
-        Map<String, dynamic> newImage = {'ProfilePicture': uploadedImage};
+        Map<String, dynamic> newImage = {'Photo de profil': uploadedImage};
         await userRepository.updateSingleField(newImage);
         user.value.profilePicture = uploadedImage;
         user.refresh();
 
         imageUploading.value = false;
         TLoaders.successSnackBar(
-            title: 'Congratulations',
-            message: 'Your Profile Image has been updated!');
+            title: 'Felicitations !',
+            message: 'la photo de profil est mis a jour ');
       }
     } catch (e) {
       imageUploading.value = false;
-      TLoaders.errorSnackBar(
-          title: 'OhSnap', message: 'Something went wrong: $e');
+      TLoaders.errorSnackBar(title: 'Oh', message: 'un erreur se produit: $e');
     }
   }
 
@@ -131,9 +129,9 @@ class UserController extends GetxController {
   void deleteAccountWarningPopup() {
     Get.defaultDialog(
       contentPadding: const EdgeInsets.all(TSizes.md),
-      title: 'Delete Account',
+      title: 'Supprimer le compte',
       middleText:
-          'Are you sure you want to delete your account permanently? This action is not reversible and all of your data will be removed permanently.',
+          "êtes-vous certain(e) de vouloir supprimer votre compte définitivement ? Cette action est irréversible et toutes vos données seront définitivement supprimées.",
       confirm: ElevatedButton(
         onPressed: () async => deleteUserAccount(),
         style: ElevatedButton.styleFrom(
@@ -141,10 +139,10 @@ class UserController extends GetxController {
             side: const BorderSide(color: Colors.red)),
         child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: TSizes.lg),
-            child: Text('Delete')),
+            child: Text('Supprimer')),
       ),
       cancel: OutlinedButton(
-        child: const Text('Cancel'),
+        child: const Text('Annuler'),
         onPressed: () => Navigator.of(Get.overlayContext!).pop(),
       ),
     );
@@ -153,7 +151,8 @@ class UserController extends GetxController {
   /// Delete User Account
   void deleteUserAccount() async {
     try {
-      TFullScreenLoader.openLoadingDialog('Processing', TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog(
+          'En traitement', TImages.docerAnimation);
 
       /// First re-authenticate user
       final auth = FirebaseAuthProvider.instance;
@@ -185,7 +184,8 @@ class UserController extends GetxController {
   /// -- RE-AUTHENTICATE before deleting
   Future<void> reAuthenticateEmailAndPasswordUser() async {
     try {
-      TFullScreenLoader.openLoadingDialog('Processing', TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog(
+          'En traitement', TImages.docerAnimation);
 
       //Check Internet
       final isConnected = await NetworkManager.instance.isConnected();
@@ -214,12 +214,12 @@ class UserController extends GetxController {
     try {
       Get.defaultDialog(
         contentPadding: const EdgeInsets.all(TSizes.md),
-        title: 'Logout',
-        middleText: 'Are you sure you want to Logout?',
+        title: 'Deconnecter',
+        middleText: 'Vous etes sure de deconncter',
         confirm: ElevatedButton(
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: TSizes.lg),
-            child: Text('Confirm'),
+            child: Text('Confirmer'),
           ),
           onPressed: () async {
             onClose();
@@ -235,12 +235,12 @@ class UserController extends GetxController {
           },
         ),
         cancel: OutlinedButton(
-          child: const Text('Cancel'),
+          child: const Text('Annuler'),
           onPressed: () => Navigator.of(Get.overlayContext!).pop(),
         ),
       );
     } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+      TLoaders.errorSnackBar(title: 'Oh', message: e.toString());
     }
   }
 }

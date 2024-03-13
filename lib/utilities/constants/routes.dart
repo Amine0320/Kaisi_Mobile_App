@@ -8,3 +8,4 @@ const situationScreenRoute = '/situatuionScreen/';
 const mauxScreenRoute = '/mauxScreen/';
 const planActionScreenRoute = '/planActionScreen/';
 const String profileScreenRoute = '/profileScreen/';
+const settingsScreenRoute = '/settingsRoute';

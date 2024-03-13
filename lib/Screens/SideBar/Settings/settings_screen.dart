@@ -132,8 +132,8 @@ class SettingScreen extends StatelessWidget {
                     SizedBox(
                         width: double.infinity,
                         child: OutlinedButton(
-                            onPressed: () => Navigator.of(context)
-                                .pushNamed(loginScreenRoute),
+                            onPressed: () =>
+                                Navigator.pushNamed(context, loginScreenRoute),
                             child: const Text('Logout'))),
                     const SizedBox(height: TSizes.spaceBtwSections * 2.5),
                   ],

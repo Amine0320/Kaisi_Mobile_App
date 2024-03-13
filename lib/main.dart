@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/Authentification/Login/login_screen.dart';
 import 'package:kaisi_app/Screens/Authentification/Signup/signup_screen.dart';
 import 'package:kaisi_app/Screens/Authentification/VerifyEmail/components/verify_email_screen.dart';
+import 'package:kaisi_app/Screens/SideBar/Settings/settings_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/Maux/components/Questions/questionsM.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/PlanAction/components/Questions/questionsPA.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/Questions/questionsS.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
         mauxScreenRoute: (context) => const QuestionsMauxScreen(),
         planActionScreenRoute: (context) => const QuestionsPAScreen(),
         profileScreenRoute: (context) => const ProfileScreen(),
+        settingsScreenRoute: (context) => const SettingScreen(),
       },
     );
   }

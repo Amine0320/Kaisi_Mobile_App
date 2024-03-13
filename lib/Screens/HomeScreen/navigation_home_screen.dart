@@ -5,7 +5,6 @@ import 'package:kaisi_app/Screens/SideBar/feedback/feedback_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/Contact/contact_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/Main/my_coach.dart';
 import 'package:kaisi_app/Screens/SideBar/Parrinage/parrinage_screen.dart';
-import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/Screens/custom_drawer/drawer_user_controller.dart';
 import 'package:kaisi_app/Screens/custom_drawer/home_drawer.dart';
 import 'package:kaisi_app/Screens/HomeScreen/home_screen.dart';
@@ -81,11 +80,6 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         case DrawerIndex.about:
           setState(() {
             screenView = AboutScreen();
-          });
-          break;
-        case DrawerIndex.profile:
-          setState(() {
-            screenView = const ProfileScreen();
           });
           break;
         case DrawerIndex.coach:

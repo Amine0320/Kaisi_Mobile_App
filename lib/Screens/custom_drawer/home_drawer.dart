@@ -40,11 +40,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
         icon: const Icon(Icons.home),
       ),
       DrawerList(
-        index: DrawerIndex.profile,
-        labelName: 'Profil',
-        icon: const Icon(Icons.settings),
-      ),
-      DrawerList(
         index: DrawerIndex.settings,
         labelName: 'Settings',
         icon: const Icon(Icons.settings),
@@ -307,7 +302,6 @@ enum DrawerIndex {
   about,
   invite,
   testing,
-  profile,
   coach,
 }
 

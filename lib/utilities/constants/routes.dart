@@ -7,3 +7,4 @@ const changeNameRoute = '/changeName/';
 const situationScreenRoute = '/situatuionScreen/';
 const mauxScreenRoute = '/mauxScreen/';
 const planActionScreenRoute = '/planActionScreen/';
+const String profileScreenRoute = '/profileScreen/';

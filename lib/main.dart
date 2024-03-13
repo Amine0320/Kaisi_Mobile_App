@@ -8,6 +8,7 @@ import 'package:kaisi_app/Screens/SideBar/my_coach/Maux/components/Questions/que
 import 'package:kaisi_app/Screens/SideBar/my_coach/PlanAction/components/Questions/questionsPA.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/Questions/questionsS.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/change_name.dart';
+import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/controllers/user_controller.dart';
 import 'package:kaisi_app/firebase_options.dart';
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
         situationScreenRoute: (context) => const QuestionsSituationScreen(),
         mauxScreenRoute: (context) => const QuestionsMauxScreen(),
         planActionScreenRoute: (context) => const QuestionsPAScreen(),
+        profileScreenRoute: (context) => const ProfileScreen(),
       },
     );
   }

@@ -1,5 +1,3 @@
-import 'package:kaisi_app/Screens/HomeScreen/navigation_home_screen.dart';
-import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/Screens/appbar/appbar.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/list_tiles/settings_menu_tile.dart';
@@ -9,7 +7,6 @@ import 'package:kaisi_app/utilities/constants/colors.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -22,7 +19,8 @@ class SettingScreen extends StatelessWidget {
     return PopScope(
       canPop: false,
       // Intercept the back button press and redirect to Home Screen
-      onPopInvoked: (value) async => Get.offAll(const NavigationHomeScreen()),
+      onPopInvoked: (value) async =>
+          Navigator.pushNamed(context, navigationRoute),
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
@@ -40,8 +38,9 @@ class SettingScreen extends StatelessWidget {
                                 .apply(color: TColors.white))),
 
                     /// User Profile Card
-                    TUserProfileTile(
-                        onPressed: () => Get.to(() => const ProfileScreen())),
+                    TUserProfileTile(onPressed: () {
+                      Navigator.pushNamed(context, profileScreenRoute);
+                    }),
                     const SizedBox(height: TSizes.spaceBtwSections),
                   ],
                 ),

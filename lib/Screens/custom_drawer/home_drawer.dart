@@ -45,6 +45,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
         icon: const Icon(Icons.settings),
       ),
       DrawerList(
+        index: DrawerIndex.settings,
+        labelName: 'Settings',
+        icon: const Icon(Icons.settings),
+      ),
+      DrawerList(
         index: DrawerIndex.contact,
         labelName: 'Assistance',
         isAssetsImage: true,

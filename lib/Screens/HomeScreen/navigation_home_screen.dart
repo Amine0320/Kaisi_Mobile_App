@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/SideBar/aboutus_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/feedback_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/help_screen.dart';
+import 'package:kaisi_app/Screens/SideBar/my_coach.dart';
 import 'package:kaisi_app/Screens/SideBar/parrinage_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/Screens/custom_drawer/drawer_user_controller.dart';
@@ -84,6 +85,11 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         case DrawerIndex.profile:
           setState(() {
             screenView = const ProfileScreen();
+          });
+          break;
+        case DrawerIndex.coach:
+          setState(() {
+            screenView = CoachScreen();
           });
           break;
         default:

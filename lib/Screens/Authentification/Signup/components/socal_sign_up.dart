@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../screens/Signup/components/or_divider.dart';
-import '../../../screens/Signup/components/social_icon.dart';
+import 'package:kaisi_app/Screens/Authentification/Signup/components/or_divider.dart';
+import 'package:kaisi_app/Screens/Authentification/Signup/components/social_icon.dart';
 
 class SocalSignUp extends StatelessWidget {
   const SocalSignUp({

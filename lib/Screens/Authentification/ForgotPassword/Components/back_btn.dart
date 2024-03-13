@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kaisi_app/contants/routes.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 
 class BackBtnPw extends StatelessWidget {
   const BackBtnPw({Key? key}) : super(key: key);

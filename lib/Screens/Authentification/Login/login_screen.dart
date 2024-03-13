@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:kaisi_app/Screens/VerifyEmail/components/Components/verify_from.dart';
-import 'package:kaisi_app/Screens/VerifyEmail/components/Components/verify_image.dart';
-import 'package:kaisi_app/Screens/components/background.dart';
-import 'package:kaisi_app/Screens/HomeScreen/Components/responsive.dart';
+import '../../HomeScreen/Components/responsive.dart';
+import '../../components/background.dart';
+import 'components/login_form.dart';
+import 'components/login_screen_top_image.dart';
 
-class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class VerifyEmailScreen extends StatelessWidget {
           desktop: Row(
             children: [
               Expanded(
-                child: VerifyScreenImage(),
+                child: LoginScreenTopImage(),
               ),
               Expanded(
                 child: Row(
@@ -24,7 +24,7 @@ class VerifyEmailScreen extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 450,
-                      child: VerifyForm(),
+                      child: LoginForm(),
                     ),
                   ],
                 ),
@@ -47,13 +47,13 @@ class MobileLoginScreen extends StatelessWidget {
     return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        VerifyScreenImage(),
+        LoginScreenTopImage(),
         Row(
           children: [
             Spacer(),
             Expanded(
               flex: 8,
-              child: VerifyForm(),
+              child: LoginForm(),
             ),
             Spacer(),
           ],

@@ -6,8 +6,8 @@ import 'package:kaisi_app/Screens/appbar/appbar.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/shimmers/shimmer.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/texts/section_heading.dart';
-import 'package:kaisi_app/contants/routes.dart';
 import 'package:kaisi_app/utilities/constants/image_strings.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
 import '../../../controllers/user_controller.dart';
 

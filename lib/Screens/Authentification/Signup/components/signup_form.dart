@@ -1,10 +1,10 @@
 // ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
+import 'package:kaisi_app/Screens/components/already_have_an_account_acheck.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
-import '../../components/already_have_an_account_acheck.dart';
-import '../../../contants/routes.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 import '../../Login/login_screen.dart';
 
 const double defaultPadding = 16.0;

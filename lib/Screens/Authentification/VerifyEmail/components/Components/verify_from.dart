@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
-import '../../../../contants/routes.dart';
+import 'package:kaisi_app/utilities/constants/colors.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 
 class VerifyForm extends StatefulWidget {
   const VerifyForm({

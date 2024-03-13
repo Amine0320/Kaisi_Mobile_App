@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../contants/routes.dart';
+import 'package:kaisi_app/utilities/constants/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SocalIcon extends StatelessWidget {

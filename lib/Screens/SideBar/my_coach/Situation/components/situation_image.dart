@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:kaisi_app/contants/routes.dart';
+import 'package:kaisi_app/utilities/constants/colors.dart';
 
 class SituationScreenImage extends StatelessWidget {
   const SituationScreenImage({

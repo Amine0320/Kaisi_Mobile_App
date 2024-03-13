@@ -5,8 +5,8 @@ import 'package:kaisi_app/Widgets/custom_shapes/containers/primary_header_contai
 import 'package:kaisi_app/Widgets/custom_shapes/list_tiles/settings_menu_tile.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/list_tiles/user_profile_tile.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/texts/section_heading.dart';
-import 'package:kaisi_app/contants/routes.dart';
 import 'package:kaisi_app/utilities/constants/colors.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../contants/routes.dart';
+import 'package:kaisi_app/utilities/constants/colors.dart';
 
 class OrDivider extends StatelessWidget {
   const OrDivider({Key? key}) : super(key: key);

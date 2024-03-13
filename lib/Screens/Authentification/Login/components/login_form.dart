@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:kaisi_app/Screens/ForgotPassword/forget_pw.dart';
+import 'package:kaisi_app/Screens/Authentification/ForgotPassword/forget_pw.dart';
+import 'package:kaisi_app/Screens/Authentification/Signup/signup_screen.dart';
+import 'package:kaisi_app/Screens/components/already_have_an_account_acheck.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
-import '../../components/already_have_an_account_acheck.dart';
-import '../../../contants/routes.dart';
-import '../../Signup/signup_screen.dart';
+import 'package:kaisi_app/utilities/constants/colors.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({

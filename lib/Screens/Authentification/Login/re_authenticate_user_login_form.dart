@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:kaisi_app/Validators/validation.dart';
-import 'package:kaisi_app/contants/text_strings.dart';
+import 'package:kaisi_app/controllers/user_controller.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
-import '../../controllers/user_controller.dart';
+import 'package:kaisi_app/utilities/constants/text_strings.dart';
 
 class ReAuthLoginForm extends StatelessWidget {
   const ReAuthLoginForm({Key? key}) : super(key: key);

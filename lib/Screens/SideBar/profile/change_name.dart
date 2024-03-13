@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:kaisi_app/Screens/appbar/appbar.dart';
 import 'package:kaisi_app/Validators/validation.dart';
-import 'package:kaisi_app/contants/text_strings.dart';
 import 'package:kaisi_app/controllers/update_name_controller.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
+import 'package:kaisi_app/utilities/constants/text_strings.dart';
 
 class ChangeName extends StatelessWidget {
   const ChangeName({super.key});

@@ -2,6 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/Login/login_screen.dart';
+import 'package:kaisi_app/Screens/SideBar/my_coach/Maux/components/Questions/questionsM.dart';
+import 'package:kaisi_app/Screens/SideBar/my_coach/PlanAction/components/Questions/questionsPA.dart';
+import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/Questions/questionsS.dart';
+// import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/situation_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/change_name.dart';
 import 'package:kaisi_app/Screens/Signup/signup_screen.dart';
 import 'package:kaisi_app/Screens/VerifyEmail/components/verify_email_screen.dart';
@@ -56,6 +60,9 @@ class MyApp extends StatelessWidget {
         verifyEmailScreen: (context) => const VerifyEmailScreen(),
         navigationRoute: (context) => const NavigationHomeScreen(),
         changeNameRoute: (context) => const ChangeName(),
+        situationScreenRoute: (context) => const QuestionsSituationScreen(),
+        mauxScreenRoute: (context) => const QuestionsMauxScreen(),
+        planActionScreenRoute: (context) => const QuestionsPAScreen(),
       },
     );
   }

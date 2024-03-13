@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaisi_app/contants/routes.dart';
 
 class CoachScreen extends StatefulWidget {
   final String? title;
@@ -31,21 +32,21 @@ class _CoachScreenState extends State<CoachScreen> {
               title: 'Plan d\'action',
               image: 'assets/images/plan_action.png',
               onPressed: () {
-                // Action du bouton "Plan d'action"
+                Navigator.of(context).pushNamed(planActionScreenRoute);
               },
             ),
             _buildSection(
               title: 'Maux',
               image: 'assets/images/maux.png',
               onPressed: () {
-                // Action du bouton "Maux"
+                Navigator.of(context).pushNamed(mauxScreenRoute);
               },
             ),
             _buildSection(
               title: 'Situation',
               image: 'assets/images/situation.png',
               onPressed: () {
-                // Action du bouton "Situation"
+                Navigator.of(context).pushNamed(situationScreenRoute);
               },
             ),
           ],

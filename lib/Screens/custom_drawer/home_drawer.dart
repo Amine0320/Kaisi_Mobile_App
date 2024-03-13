@@ -45,7 +45,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
         icon: const Icon(Icons.settings),
       ),
       DrawerList(
-        index: DrawerIndex.help,
+        index: DrawerIndex.contact,
         labelName: 'Assistance',
         isAssetsImage: true,
         imageName: 'assets/images/supportIcon.png',
@@ -297,7 +297,7 @@ enum DrawerIndex {
   settings,
   home,
   feedBack,
-  help,
+  contact,
   share,
   about,
   invite,

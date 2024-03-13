@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/HomeScreen/Components/app_theme.dart';
 
-class HelpScreen extends StatefulWidget {
+class ContactScreen extends StatefulWidget {
   @override
-  _HelpScreenState createState() => _HelpScreenState();
+  _ContactScreenState createState() => _ContactScreenState();
 }
 
-class _HelpScreenState extends State<HelpScreen> {
+class _ContactScreenState extends State<ContactScreen> {
   @override
   void initState() {
     super.initState();

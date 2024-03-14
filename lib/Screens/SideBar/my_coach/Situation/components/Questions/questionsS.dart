@@ -30,14 +30,14 @@ class _QuestionsSituationScreenState extends State<QuestionsSituationScreen> {
             splashColor: Colors.orangeAccent,
             onPressed: () async {
               if (_key.currentState != null && _key.currentState!.validate()) {
-                // Check if _key.currentState is not null before calling validate()
-                print("validated!");
+                // Check if _key.currentState is Nont null before calling validate()
+                print("Validee!");
               }
             },
-            child: const Text("Submit"),
+            child: const Text("envoyer"),
           )
         ],
-        leading: const [Text("TITLE")],
+        leading: const [Text("Questionnaire")],
       ),
     );
   }
@@ -45,60 +45,99 @@ class _QuestionsSituationScreenState extends State<QuestionsSituationScreen> {
 
 List<Question> questions() {
   return [
+    //Question 1
     Question(
-      question: "What is your name?",
+      question: "Je décris la situation que je souhaite travailler ",
       //isMandatory: true,
       validate: (field) {
-        if (field.isEmpty) return "Field cannot be empty";
+        if (field.isEmpty) return "Le champ ne peut pas être vide";
         return null;
       },
     ),
+    //question 2
     PolarQuestion(
-        question: "Have you made any donations in the past?",
-        answers: ["Yes", "No"],
+        question: "Comment j’évalue cette situation ?",
+        answers: [
+          "L’injustice",
+          "La trahison",
+          "Le rejet",
+          "L’humuliation ",
+          "L’abandon",
+        ],
         isMandatory: true),
-    PolarQuestion(
-        question: "In the last 3 months have you had a vaccination?",
-        answers: ["Yes", "No"]),
-    PolarQuestion(
-        question: "Have you ever taken medication for HIV?",
-        answers: ["Yes", "No"]),
-    NestedQuestion(
-      question: "The series will depend on your answer",
-      answers: ["Yes", "No"],
-      children: {
-        'Yes': [
-          PolarQuestion(
-              question: "Have you ever taken medication for H1n1?",
-              answers: ["Yes", "No"]),
-          PolarQuestion(
-              question: "Have you ever taken medication for Rabies?",
-              answers: ["Yes", "No"]),
-          Question(
-            question: "Comments",
-          ),
-        ],
-        'No': [
-          NestedQuestion(
-              question: "Have you sustained any injuries?",
-              answers: [
-                "Yes",
-                "No"
-              ],
-              children: {
-                'Yes': [
-                  PolarQuestion(
-                      question: "Did it result in a disability?",
-                      answers: ["Yes", "No", "I prefer not to say"]),
-                ],
-                'No': [
-                  PolarQuestion(
-                      question: "Have you ever been infected with chicken pox?",
-                      answers: ["Yes", "No"]),
-                ]
-              }),
-        ],
+    //Question 3
+    Question(
+      question: "Qu’est ce que cela m’évoque ? ",
+      //isMandatory: true,
+      validate: (field) {
+        if (field.isEmpty) return "Le champ ne peut pas être vide";
+        return null;
       },
-    )
+    ),
+    //question 4
+    PolarQuestion(
+        question:
+            "Si je Nonmme l'émotion que je traverse dans cette situation, ça serait ?",
+        answers: [
+          "Colère",
+          "Dégout",
+          "Tristresse",
+          "Peur",
+          "Honte",
+          "Joie",
+        ]),
+    //Question 5
+    NestedQuestion(
+        question: "Dans cette situation, quel est mon besoin ? ",
+        answers: [
+          "Reconnaissance",
+          "Lien",
+          "Sécurité",
+          "Compassion",
+          "Attention",
+          "Autre",
+        ],
+        children: {
+          'Autre': [
+            Question(
+              question: "Vous pouvez decrire le besoin",
+              //isMandatory: true,
+              validate: (field) {
+                if (field.isEmpty) return "Le champ ne peut pas être vide";
+                return null;
+              },
+            ),
+          ],
+        }),
+    //Question 6
+    NestedQuestion(
+        question:
+            "Est ce que dans le passé, j’ai été affronté à une situation similaire ",
+        answers: [
+          "Oui",
+          "Non"
+        ],
+        children: {
+          'Oui': [
+            Question(
+              question: "Vous pouvez decrire la situation ? ",
+              //isMandatory: true,
+              validate: (field) {
+                if (field.isEmpty) return "Le champ ne peut pas être vide";
+                return null;
+              },
+            ),
+          ],
+          'Non': [
+            Question(
+              question: "Vous pouvez decrire la situation ?",
+              //isMandatory: true,
+              validate: (field) {
+                if (field.isEmpty) return "Le champ ne peut pas être vide";
+                return null;
+              },
+            ),
+          ],
+        }),
   ];
 }

@@ -29,14 +29,14 @@ class _QuestionsMauxScreenState extends State<QuestionsMauxScreen> {
             splashColor: Colors.orangeAccent,
             onPressed: () async {
               if (_key.currentState != null && _key.currentState!.validate()) {
-                // Check if _key.currentState is not null before calling validate()
+                // Check if _key.currentState is Nont null before calling validate()
                 print("validated!");
               }
             },
-            child: const Text("Submit"),
+            child: const Text("Envoyer"),
           )
         ],
-        leading: const [Text("TITLE")],
+        leading: const [Text("Questionnaire")],
       ),
     );
   }
@@ -44,60 +44,33 @@ class _QuestionsMauxScreenState extends State<QuestionsMauxScreen> {
 
 List<Question> questions() {
   return [
+    // Question 1
     Question(
-      question: "What is your name?",
+      question:
+          "Quelles sont les maladies que tu as subis ces derniers temps ? ",
       //isMandatory: true,
       validate: (field) {
-        if (field.isEmpty) return "Field cannot be empty";
+        if (field.isEmpty) return "Field canNont be empty";
         return null;
       },
     ),
-    PolarQuestion(
-        question: "Have you made any donations in the past?",
-        answers: ["Yes", "No"],
-        isMandatory: true),
-    PolarQuestion(
-        question: "In the last 3 months have you had a vaccination?",
-        answers: ["Yes", "No"]),
-    PolarQuestion(
-        question: "Have you ever taken medication for HIV?",
-        answers: ["Yes", "No"]),
-    NestedQuestion(
-      question: "The series will depend on your answer",
-      answers: ["Yes", "No"],
-      children: {
-        'Yes': [
-          PolarQuestion(
-              question: "Have you ever taken medication for H1n1?",
-              answers: ["Yes", "No"]),
-          PolarQuestion(
-              question: "Have you ever taken medication for Rabies?",
-              answers: ["Yes", "No"]),
-          Question(
-            question: "Comments",
-          ),
-        ],
-        'No': [
-          NestedQuestion(
-              question: "Have you sustained any injuries?",
-              answers: [
-                "Yes",
-                "No"
-              ],
-              children: {
-                'Yes': [
-                  PolarQuestion(
-                      question: "Did it result in a disability?",
-                      answers: ["Yes", "No", "I prefer not to say"]),
-                ],
-                'No': [
-                  PolarQuestion(
-                      question: "Have you ever been infected with chicken pox?",
-                      answers: ["Yes", "No"]),
-                ]
-              }),
-        ],
+    // question 2
+    Question(
+      question: "Qu'est-ce que tu as mis en place pour te soulager ?",
+      //isMandatory: true,
+      validate: (field) {
+        if (field.isEmpty) return "Field canNont be empty";
+        return null;
       },
-    )
+    ),
+    // Question 3
+    PolarQuestion(
+        question:
+            "Est-ce que j'ai vécu une situation émotionnellement éprouvante juste avant l'apparition des symptômes ?",
+        answers: ["Oui", "Non"],
+        isMandatory: true),
+    // question 4
+    PolarQuestion(
+        question: "Quelle était cette situation ?", answers: ["Oui", "Non"]),
   ];
 }

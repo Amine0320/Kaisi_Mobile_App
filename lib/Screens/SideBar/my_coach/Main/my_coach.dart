@@ -22,7 +22,7 @@ class _CoachScreenState extends State<CoachScreen> {
     // bool isLightMode = brightness == Brightness.light;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Coach'),
+        title: const Text('Mon Coach'),
       ),
       body: Center(
         child: Column(

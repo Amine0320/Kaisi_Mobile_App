@@ -21,10 +21,14 @@ class TSectionHeading extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(title,
-            style: Theme.of(context).textTheme.headlineSmall!.apply(color: textColor),
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall!
+                .apply(color: textColor),
             maxLines: 1,
             overflow: TextOverflow.ellipsis),
-        if (showActionButton) TextButton(onPressed: onPressed, child: Text(buttonTitle))
+        if (showActionButton)
+          TextButton(onPressed: onPressed, child: Text(buttonTitle))
       ],
     );
   }

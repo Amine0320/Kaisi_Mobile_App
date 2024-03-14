@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
 import '../HomeScreen/Components/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -40,11 +39,6 @@ class _HomeDrawerState extends State<HomeDrawer> {
         icon: const Icon(Icons.home),
       ),
       DrawerList(
-        index: DrawerIndex.settings,
-        labelName: 'Settings',
-        icon: const Icon(Icons.settings),
-      ),
-      DrawerList(
         index: DrawerIndex.contact,
         labelName: 'Assistance',
         isAssetsImage: true,
@@ -59,6 +53,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
         index: DrawerIndex.invite,
         labelName: 'Parinnage',
         icon: const Icon(Icons.group),
+      ),
+      DrawerList(
+        index: DrawerIndex.settings,
+        labelName: 'Settings',
+        icon: const Icon(Icons.settings),
       ),
       DrawerList(
         index: DrawerIndex.about,

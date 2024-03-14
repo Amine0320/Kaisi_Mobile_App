@@ -12,7 +12,6 @@ import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/data/user/user_represitory.dart';
 import 'package:kaisi_app/models/user_model.dart';
-import 'package:kaisi_app/utilities/constants/image_strings.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
 
 /// Controller to manage user-related functionality.
@@ -152,7 +151,7 @@ class UserController extends GetxController {
   void deleteUserAccount() async {
     try {
       TFullScreenLoader.openLoadingDialog(
-          'En traitement', TImages.docerAnimation);
+          'En traitement', "assets/animation/141594-animation-of-docer.json");
 
       /// First re-authenticate user
       final auth = FirebaseAuthProvider.instance;
@@ -185,7 +184,7 @@ class UserController extends GetxController {
   Future<void> reAuthenticateEmailAndPasswordUser() async {
     try {
       TFullScreenLoader.openLoadingDialog(
-          'En traitement', TImages.docerAnimation);
+          'En traitement', "assets/animation/141594-animation-of-docer.json");
 
       //Check Internet
       final isConnected = await NetworkManager.instance.isConnected();

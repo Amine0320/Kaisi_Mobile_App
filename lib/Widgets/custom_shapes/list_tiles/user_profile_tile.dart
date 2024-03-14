@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:kaisi_app/controllers/user_controller.dart';
 import 'package:kaisi_app/utilities/constants/colors.dart';
-import 'package:kaisi_app/utilities/constants/image_strings.dart';
 import '../images/t_circular_image.dart';
 
 class TUserProfileTile extends StatelessWidget {
@@ -19,8 +18,9 @@ class TUserProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       final isNetworkImage = controller.user.value.profilePicture.isNotEmpty;
-      final image =
-          isNetworkImage ? controller.user.value.profilePicture : TImages.user;
+      final image = isNetworkImage
+          ? controller.user.value.profilePicture
+          : "assets/images/user.png";
       return ListTile(
         leading: TCircularImage(
             padding: 0,

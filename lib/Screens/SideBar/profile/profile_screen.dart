@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:kaisi_app/Controllers/user_controller.dart';
+import 'package:kaisi_app/Screens/SideBar/profile/change_name.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_menu.dart';
 import 'package:kaisi_app/Screens/appbar/appbar.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/shimmers/shimmer.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/texts/section_heading.dart';
-import 'package:kaisi_app/utilities/constants/image_strings.dart';
-import 'package:kaisi_app/utilities/constants/routes.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
-import '../../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -20,7 +19,8 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: TAppBar(
         showBackArrow: true,
-        title: Text('Profil', style: Theme.of(context).textTheme.headlineSmall),
+        title:
+            Text('Profile', style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -38,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
                             controller.user.value.profilePicture;
                         final image = networkImage.isNotEmpty
                             ? networkImage
-                            : TImages.user;
+                            : "assets/images/user.png";
                         return controller.imageUploading.value
                             ? const TShimmerEffect(
                                 width: 80, height: 80, radius: 80)
@@ -53,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
                       onPressed: controller.imageUploading.value
                           ? () {}
                           : () => controller.uploadUserProfilePicture(),
-                      child: const Text('Changer la photo de profil'),
+                      child: const Text('Change Profile Picture'),
                     ),
                   ],
                 ),
@@ -62,50 +62,46 @@ class ProfileScreen extends StatelessWidget {
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(
-                  title: 'Informations de profile', showActionButton: false),
+                  title: 'Profile Information', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
-                  onPressed: () {
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                      changeNameRoute,
-                      (route) => false,
-                    );
-                  },
-                  title: 'Nom',
+                  onPressed: () => Get.to(() => const ChangeName()),
+                  title: 'Name',
                   value: controller.user.value.fullName),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'Prenom',
+                  title: 'Username',
                   value: controller.user.value.username),
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(
-                  title: 'Informations Personnels', showActionButton: false),
+                  title: 'Personal Information', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'Identifiant',
+                  title: 'User ID',
                   value: '45689',
                   icon: Iconsax.copy),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'Adresse E-mail',
+                  title: 'E-mail',
                   value: controller.user.value.email),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'Numero de tel',
+                  title: 'Phone Number',
                   value: controller.user.value.phoneNumber),
+              TProfileMenu(onPressed: () {}, title: 'Gender', value: 'Male'),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'Coordonees bancaires',
-                  value: controller.user.value.phoneNumber),
+                  title: 'Date of Birth',
+                  value: '1 Jan, 1900'),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               Center(
                 child: TextButton(
                     onPressed: () => controller.deleteAccountWarningPopup(),
-                    child: const Text('Supprimer le compte ',
+                    child: const Text('Close Account',
                         style: TextStyle(color: Colors.red))),
               )
             ],

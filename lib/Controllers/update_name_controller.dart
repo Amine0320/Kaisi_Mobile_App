@@ -5,7 +5,6 @@ import 'package:kaisi_app/Screens/helpers/network_manager.dart';
 import 'package:kaisi_app/Screens/popups/full_screen_loader.dart';
 import 'package:kaisi_app/Screens/popups/loaders.dart';
 import 'package:kaisi_app/data/user/user_represitory.dart';
-import 'package:kaisi_app/utilities/constants/image_strings.dart';
 import 'user_controller.dart';
 
 /// Controller to manage user-related functionality.
@@ -34,8 +33,8 @@ class UpdateNameController extends GetxController {
   Future<void> updateUserName() async {
     try {
       // Start Loading
-      TFullScreenLoader.openLoadingDialog(
-          'We are updating your information...', TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog('We are updating your information...',
+          "assets/animation/141594-animation-of-docer.json");
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();

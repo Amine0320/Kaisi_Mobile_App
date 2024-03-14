@@ -19,8 +19,6 @@ class SettingScreen extends StatelessWidget {
     return PopScope(
       canPop: false,
       // Intercept the back button press and redirect to Home Screen
-      onPopInvoked: (value) async =>
-          Navigator.pushNamed(context, navigationRoute),
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
@@ -31,7 +29,7 @@ class SettingScreen extends StatelessWidget {
                   children: [
                     /// AppBar
                     TAppBar(
-                        title: Text('Account',
+                        title: Text('Compte',
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineMedium!
@@ -54,78 +52,32 @@ class SettingScreen extends StatelessWidget {
                   children: [
                     /// -- Account  Settings
                     const TSectionHeading(
-                        title: 'Account Settings', showActionButton: false),
+                        title: 'Parametres', showActionButton: false),
                     const SizedBox(height: TSizes.spaceBtwItems),
                     TSettingsMenuTile(
                         icon: Iconsax.safe_home,
-                        title: 'My Addresses',
-                        subTitle: 'Set shopping delivery address',
-                        onTap: () {}
-                        // => Get.to(() => const UserAddressScreen()),
-                        ),
-                    TSettingsMenuTile(
-                        icon: Iconsax.shopping_cart,
-                        title: 'My Cart',
-                        subTitle: 'Add, remove products and move to checkout',
-                        onTap: () {}
-                        // => Get.to(() => const CartScreen()),
-                        ),
+                        title: 'Mon Profil',
+                        subTitle: 'Modifier votre profil',
+                        onTap: () {}),
                     TSettingsMenuTile(
                         icon: Iconsax.bag_tick,
-                        title: 'My Orders',
-                        subTitle: 'In-progress and Completed Orders',
-                        onTap: () {}
-                        // => Get.to(() => const OrderScreen()),
-                        ),
+                        title: 'Mes Factures',
+                        subTitle: 'Voir vos factures',
+                        onTap: () {}),
                     const TSettingsMenuTile(
                         icon: Iconsax.bank,
-                        title: 'Bank Account',
-                        subTitle:
-                            'Withdraw balance to registered bank account'),
-                    const TSettingsMenuTile(
-                        icon: Iconsax.discount_shape,
-                        title: 'My Coupons',
-                        subTitle: 'List of all the discounted coupons'),
+                        title: 'Coordonnees Bancaires',
+                        subTitle: 'Voir vos corrdonnees bancaires'),
                     TSettingsMenuTile(
                         icon: Iconsax.notification,
                         title: 'Notifications',
-                        subTitle: 'Set any kind of notification message',
+                        subTitle: 'Activer/Desactiver les notifications',
                         onTap: () {}),
                     const TSettingsMenuTile(
                         icon: Iconsax.security_card,
-                        title: 'Account Privacy',
-                        subTitle: 'Manage data usage and connected accounts'),
-
-                    /// -- App Settings
-                    const SizedBox(height: TSizes.spaceBtwSections),
-                    const TSectionHeading(
-                        title: 'App Settings', showActionButton: false),
-                    const SizedBox(height: TSizes.spaceBtwItems),
-                    TSettingsMenuTile(
-                      icon: Iconsax.document_upload,
-                      title: 'Load Data',
-                      subTitle: 'Upload Data to your Cloud Firebase',
-                      onTap: () {},
-                    ),
-                    const SizedBox(height: TSizes.spaceBtwItems),
-                    TSettingsMenuTile(
-                      icon: Iconsax.location,
-                      title: 'Geolocation',
-                      subTitle: 'Set recommendation based on location',
-                      trailing: Switch(value: true, onChanged: (value) {}),
-                    ),
-                    TSettingsMenuTile(
-                      icon: Iconsax.security_user,
-                      title: 'Safe Mode',
-                      subTitle: 'Search result is safe for all ages',
-                      trailing: Switch(value: false, onChanged: (value) {}),
-                    ),
-                    TSettingsMenuTile(
-                      icon: Iconsax.image,
-                      title: 'HD Image Quality',
-                      subTitle: 'Set image quality to be seen',
-                      trailing: Switch(value: false, onChanged: (value) {}),
-                    ),
+                        title: 'Confidentialité du compte',
+                        subTitle:
+                            "Gérer l'utilisation des données et les comptes connectés"),
 
                     /// -- Logout Button
                     const SizedBox(height: TSizes.spaceBtwSections),

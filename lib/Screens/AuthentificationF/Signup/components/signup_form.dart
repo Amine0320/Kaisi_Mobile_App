@@ -1,6 +1,6 @@
 // ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
-import 'package:kaisi_app/Screens/Authentification/components/already_have_an_account_acheck.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';

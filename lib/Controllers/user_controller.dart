@@ -2,8 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kaisi_app/Screens/Authentification/Login/login_screen.dart';
-import 'package:kaisi_app/Screens/Authentification/Login/re_authenticate_user_login_form.dart';
+import 'package:kaisi_app/Models/user_model.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Login/login_screen.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Login/re_authenticate_user_login_form.dart';
 import 'package:kaisi_app/Screens/helpers/network_manager.dart';
 import 'package:kaisi_app/Screens/loaders/circular_loader.dart';
 import 'package:kaisi_app/Screens/popups/full_screen_loader.dart';
@@ -11,7 +12,6 @@ import 'package:kaisi_app/Screens/popups/loaders.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/data/user/user_represitory.dart';
-import 'package:kaisi_app/models/user_model.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
 
 /// Controller to manage user-related functionality.

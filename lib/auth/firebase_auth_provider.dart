@@ -12,7 +12,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 // import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_provider.dart';

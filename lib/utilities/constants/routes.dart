@@ -12,3 +12,4 @@ const settingsScreenRoute = '/settingsRoute';
 const situationMainScreenRoute = '/SituationScreenMain/';
 const mauxMainScreenRoute = '/MauxScreenMain/';
 const planActionMainScreenRoute = '/PlanActionScreenMain';
+const reAuthScreenRoute = '/reauthscreen/';

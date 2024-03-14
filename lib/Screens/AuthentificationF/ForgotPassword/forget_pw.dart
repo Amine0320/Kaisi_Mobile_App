@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kaisi_app/Screens/Authentification/ForgotPassword/Components/back_btn.dart';
-import 'package:kaisi_app/Screens/Authentification/ForgotPassword/Components/forget_password_screen.dart';
-import 'package:kaisi_app/Screens/Authentification/ForgotPassword/Components/forget_pw_image.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/Components/back_btn.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/Components/forget_password_screen.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/Components/forget_pw_image.dart';
 import '../../HomeScreen/Components/responsive.dart';
 import '../components/background.dart';
 

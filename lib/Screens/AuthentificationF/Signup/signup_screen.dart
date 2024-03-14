@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/HomeScreen/Components/responsive.dart';
-import 'package:kaisi_app/Screens/Authentification/components/background.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/components/background.dart';
 import 'components/sign_up_top_image.dart';
 import 'components/signup_form.dart';
 

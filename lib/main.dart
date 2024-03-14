@@ -1,9 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kaisi_app/Screens/Authentification/Login/login_screen.dart';
-import 'package:kaisi_app/Screens/Authentification/Signup/signup_screen.dart';
-import 'package:kaisi_app/Screens/Authentification/VerifyEmail/components/verify_email_screen.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Login/login_screen.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Login/re_authenticate_user_login_form.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Signup/signup_screen.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/VerifyEmail/components/verify_email_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/Settings/settings_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/Maux/components/Questions/questionsM.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/Maux/maux_screen.dart';
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
         situationMainScreenRoute: (context) => SituationMainScreen(),
         mauxMainScreenRoute: (context) => MauxMainScreen(),
         planActionMainScreenRoute: (context) => PlanActionMainScreen(),
+        reAuthScreenRoute: (context) => const ReAuthLoginForm(),
       },
     );
   }

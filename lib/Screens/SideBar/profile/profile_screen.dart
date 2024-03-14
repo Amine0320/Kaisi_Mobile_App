@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:kaisi_app/Controllers/user_controller.dart';
-import 'package:kaisi_app/Screens/SideBar/profile/change_name.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_menu.dart';
 import 'package:kaisi_app/Screens/appbar/appbar.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/shimmers/shimmer.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/texts/section_heading.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
+import '../../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -65,7 +65,8 @@ class ProfileScreen extends StatelessWidget {
                   title: 'Profile Information', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
-                  onPressed: () => Get.to(() => const ChangeName()),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, changeNameRoute),
                   title: 'Name',
                   value: controller.user.value.fullName),
               TProfileMenu(

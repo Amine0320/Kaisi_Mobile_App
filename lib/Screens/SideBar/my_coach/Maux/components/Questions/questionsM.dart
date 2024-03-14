@@ -30,7 +30,7 @@ class _QuestionsMauxScreenState extends State<QuestionsMauxScreen> {
             onPressed: () async {
               if (_key.currentState != null && _key.currentState!.validate()) {
                 // Check if _key.currentState is Nont null before calling validate()
-                print("validated!");
+                print("validee!");
               }
             },
             child: const Text("Envoyer"),

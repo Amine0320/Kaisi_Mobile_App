@@ -18,8 +18,6 @@ class _CoachScreenState extends State<CoachScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // var brightness = MediaQuery.of(context).platformBrightness;
-    // bool isLightMode = brightness == Brightness.light;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mon Coach'),
@@ -28,40 +26,56 @@ class _CoachScreenState extends State<CoachScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(height: 20), // Add spacing at the top
             _buildSection(
               title: 'Plan d\'action',
-              image: 'assets/images/plan_action.png',
+              image: 'assets/CoachImages/PaImage.png',
               onPressed: () {
-                Navigator.of(context).pushNamed(planActionScreenRoute);
+                Navigator.of(context).pushNamed(planActionMainScreenRoute);
               },
             ),
+            const SizedBox(height: 20), // Add spacing between sections
             _buildSection(
               title: 'Maux',
-              image: 'assets/images/maux.png',
+              image: 'assets/CoachImages/MImage.png',
               onPressed: () {
-                Navigator.of(context).pushNamed(mauxScreenRoute);
+                Navigator.of(context).pushNamed(mauxMainScreenRoute);
               },
             ),
+            const SizedBox(height: 20), // Add spacing between sections
             _buildSection(
               title: 'Situation',
-              image: 'assets/images/situation.png',
+              image: 'assets/CoachImages/SImage.png',
               onPressed: () {
-                Navigator.of(context).pushNamed(situationScreenRoute);
+                Navigator.of(context).pushNamed(situationMainScreenRoute);
               },
             ),
+            const SizedBox(height: 20), // Add spacing at the bottom
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSection({title, image, onPressed}) {
+  Widget _buildSection({String? title, String? image, Function? onPressed}) {
     return GestureDetector(
-      onTap: onPressed,
-      child: Column(
+      onTap: onPressed as void Function()?,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(image),
-          Text(title),
+          Container(
+            width: 100, // Adjust width as needed
+            height: 100, // Adjust height as needed
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage(image ?? ''),
+              ),
+            ),
+          ),
+          const SizedBox(width: 12), // Add spacing between image and text
+          Text(title ?? ''),
         ],
       ),
     );

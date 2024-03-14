@@ -6,8 +6,11 @@ import 'package:kaisi_app/Screens/Authentification/Signup/signup_screen.dart';
 import 'package:kaisi_app/Screens/Authentification/VerifyEmail/components/verify_email_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/Settings/settings_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/Maux/components/Questions/questionsM.dart';
+import 'package:kaisi_app/Screens/SideBar/my_coach/Maux/maux_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/PlanAction/components/Questions/questionsPA.dart';
+import 'package:kaisi_app/Screens/SideBar/my_coach/PlanAction/plan_action_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/Questions/questionsS.dart';
+import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/situation_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/change_name.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
@@ -66,6 +69,9 @@ class MyApp extends StatelessWidget {
         planActionScreenRoute: (context) => const QuestionsPAScreen(),
         profileScreenRoute: (context) => const ProfileScreen(),
         settingsScreenRoute: (context) => const SettingScreen(),
+        situationMainScreenRoute: (context) => SituationMainScreen(),
+        mauxMainScreenRoute: (context) => MauxMainScreen(),
+        planActionMainScreenRoute: (context) => PlanActionMainScreen(),
       },
     );
   }

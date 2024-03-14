@@ -1,66 +1,50 @@
-// import 'package:flutter/material.dart';
-// import 'package:kaisi_app/Screens/HomeScreen/Components/responsive.dart';
-// import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/Questions/questions.dart';
-// import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/situation_image.dart';
-// // import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/situation_form.dart';
-// import 'package:kaisi_app/Screens/components/background.dart';
-// // import 'components/situation_image.dart';
+import 'package:flutter/material.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 
-// class SituationScreen extends StatelessWidget {
-//   const SituationScreen({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Background(
-//       child: SingleChildScrollView(
-//         child: Responsive(
-//           mobile: MobileSituationScreen(),
-//           desktop: Row(
-//             children: [
-//               Expanded(
-//                 child: SituationScreenImage(),
-//               ),
-//               Expanded(
-//                 child: Row(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   children: [
-//                     SizedBox(
-//                       width: 450,
-//                       child: QuestionsScreen(),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class MobileSituationScreen extends StatelessWidget {
-//   const MobileSituationScreen({
-//     Key? key,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Column(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: <Widget>[
-//         SituationScreenImage(),
-//         Row(
-//           children: [
-//             Spacer(),
-//             Expanded(
-//               flex: 8,
-//               child: QuestionsScreen(),
-//             ),
-//             Spacer(),
-//           ],
-//         ),
-//       ],
-//     );
-//   }
-// }
+class SituationMainScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text(
+                'Une situation',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Aujourd'hui, je prends les choses en main",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, situationScreenRoute);
+                },
+                child: const Text('Demarrer'),
+              ),
+              const SizedBox(height: 20),
+              const CircleAvatar(
+                radius: 100,
+                backgroundColor: Colors.transparent,
+                backgroundImage: AssetImage(
+                  'assets/CoachImages/SMScreenImage.png',
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

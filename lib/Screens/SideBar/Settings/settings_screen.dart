@@ -134,7 +134,7 @@ class SettingScreen extends StatelessWidget {
                         child: OutlinedButton(
                             onPressed: () =>
                                 Navigator.pushNamed(context, loginScreenRoute),
-                            child: const Text('Logout'))),
+                            child: const Text('Se deconnecter'))),
                     const SizedBox(height: TSizes.spaceBtwSections * 2.5),
                   ],
                 ),

@@ -39,7 +39,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   Container(
                     padding: const EdgeInsets.only(top: 8),
                     child: Text(
-                      'Your FeedBack',
+                      "Votre retour d'information",
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   Container(
                     padding: const EdgeInsets.only(top: 16),
                     child: Text(
-                      'Give your best time for this moment.',
+                      'Donnez votre meilleur temps pour ce moment.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 16,
@@ -83,14 +83,18 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                             child: Center(
                               child: Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Text(
-                                  'Send',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: isLightMode
-                                        ? Colors.white
-                                        : Colors.black,
+                                child: TextButton(
+                                  // Do the logic for the button to send the feedback to the contact@kaisi.fr
+                                  onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                    textStyle: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: isLightMode
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
                                   ),
+                                  child: const Text('Envoyer'),
                                 ),
                               ),
                             ),
@@ -142,7 +146,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                 cursorColor: Colors.blue,
                 decoration: const InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Enter your feedback...'),
+                    hintText: 'Veuillez saisir votre commentaire...'),
               ),
             ),
           ),

@@ -24,17 +24,15 @@ class _QuestionsPAScreenState extends State<QuestionsPAScreen> {
         key: _key,
         children: questions(),
         trailing: [
-          MaterialButton(
-            color: Colors.deepOrange,
-            splashColor: Colors.orangeAccent,
+          ElevatedButton(
             onPressed: () async {
               if (_key.currentState != null && _key.currentState!.validate()) {
-                // Check if _key.currentState is not null before calling validate()
-                print("validated!");
+                // Check if _key.currentState is Nont null before calling validate()
+                print("validee!");
               }
             },
-            child: const Text("Submit"),
-          )
+            child: const Text('Envoyer'),
+          ),
         ],
         leading: const [Text("TITLE")],
       ),

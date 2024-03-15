@@ -24,17 +24,15 @@ class _QuestionsMauxScreenState extends State<QuestionsMauxScreen> {
         key: _key,
         children: questions(),
         trailing: [
-          MaterialButton(
-            color: Colors.deepOrange,
-            splashColor: Colors.orangeAccent,
+          ElevatedButton(
             onPressed: () async {
               if (_key.currentState != null && _key.currentState!.validate()) {
                 // Check if _key.currentState is Nont null before calling validate()
                 print("validee!");
               }
             },
-            child: const Text("Envoyer"),
-          )
+            child: const Text('Envoyer'),
+          ),
         ],
         leading: const [Text("Questionnaire")],
       ),

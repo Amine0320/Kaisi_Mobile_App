@@ -25,17 +25,15 @@ class _QuestionsSituationScreenState extends State<QuestionsSituationScreen> {
         key: _key,
         children: questions(),
         trailing: [
-          MaterialButton(
-            color: Colors.deepOrange,
-            splashColor: Colors.orangeAccent,
+          ElevatedButton(
             onPressed: () async {
               if (_key.currentState != null && _key.currentState!.validate()) {
                 // Check if _key.currentState is Nont null before calling validate()
-                print("Validee!");
+                print("validee!");
               }
             },
-            child: const Text("envoyer"),
-          )
+            child: const Text('Envoyer'),
+          ),
         ],
         leading: const [Text("Questionnaire")],
       ),

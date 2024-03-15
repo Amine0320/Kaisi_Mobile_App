@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 import '../HomeScreen/Components/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
     drawerList = <DrawerList>[
       DrawerList(
         index: DrawerIndex.home,
-        labelName: 'Home',
+        labelName: 'Accueil',
         icon: const Icon(Icons.home),
       ),
       DrawerList(
@@ -46,7 +47,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.feedBack,
-        labelName: 'FeedBack',
+        labelName: 'Retour',
         icon: const Icon(Icons.help),
       ),
       DrawerList(
@@ -56,7 +57,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       ),
       DrawerList(
         index: DrawerIndex.settings,
-        labelName: 'Settings',
+        labelName: 'Parametres',
         icon: const Icon(Icons.settings),
       ),
       DrawerList(
@@ -164,7 +165,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
             children: <Widget>[
               ListTile(
                 title: const Text(
-                  'Sign Out',
+                  'Se Deconnecter',
                   style: TextStyle(
                     fontFamily: AppTheme.fontName,
                     fontWeight: FontWeight.w600,
@@ -180,10 +181,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                 // Logic to sign you out when you press the button !
                 onTap: () async {
                   await FirebaseAuth.instance.signOut();
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/loginS/',
-                    (route) => false,
-                  );
+                  Navigator.pushNamed(context, loginScreenRoute);
                 },
               ),
               SizedBox(

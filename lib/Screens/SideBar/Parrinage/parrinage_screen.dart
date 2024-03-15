@@ -34,7 +34,7 @@ class _ParrinageState extends State<Parrinage> {
               Container(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
-                  'Invite Your Friends',
+                  'Parriner vos amis',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -45,7 +45,7 @@ class _ParrinageState extends State<Parrinage> {
               Container(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  'Are you one of those who makes everything\n at the last moment?',
+                  "Le parrainage est une méthode lucrative pour les utilisateurs existants de recommander un service à d'autres, tout en bénéficiant d'avantages mutuels.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -83,22 +83,26 @@ class _ParrinageState extends State<Parrinage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                Icon(
-                                  Icons.share,
-                                  color:
-                                      isLightMode ? Colors.white : Colors.black,
-                                  size: 22,
-                                ),
+                                // Icon(
+                                //   Icons.share,
+                                //   color:
+                                //       isLightMode ? Colors.white : Colors.black,
+                                //   size: 22,
+                                // ),
+                                // Handle the logic here for parrinage part
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
-                                  child: Text(
-                                    'Share',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: isLightMode
-                                          ? Colors.white
-                                          : Colors.black,
+                                  child: TextButton(
+                                    onPressed: () {},
+                                    style: TextButton.styleFrom(
+                                      textStyle: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: isLightMode
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
                                     ),
+                                    child: const Text('Demarrer'),
                                   ),
                                 ),
                               ],

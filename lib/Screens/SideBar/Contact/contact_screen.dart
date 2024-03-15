@@ -35,7 +35,7 @@ class _ContactScreenState extends State<ContactScreen> {
               Container(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
-                  'How can we help you?',
+                  'Comment pouvons-nous vous aider ?',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -45,7 +45,7 @@ class _ContactScreenState extends State<ContactScreen> {
               Container(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  'It looks like you are experiencing problems\nwith our sign up process. We are here to\nhelp so please get in touch with us',
+                  "Il semble que vous rencontriez des problèmes\navec notre processus d'inscription. Nous sommes là pour\nvous aider, alors n'hésitez pas à nous contacter.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 16,
@@ -77,13 +77,20 @@ class _ContactScreenState extends State<ContactScreen> {
                           child: Center(
                             child: Padding(
                               padding: const EdgeInsets.all(4.0),
-                              child: Text(
-                                'Chat with Us',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color:
-                                      isLightMode ? Colors.white : Colors.black,
+                              child: TextButton(
+                                onPressed: () {
+                                  // Add your onPressed functionality here
+                                },
+                                style: TextButton.styleFrom(
+                                  textStyle: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: isLightMode
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                  // You can customize the button's appearance further if needed
                                 ),
+                                child: const Text('Discutez'),
                               ),
                             ),
                           ),

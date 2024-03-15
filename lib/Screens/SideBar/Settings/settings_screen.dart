@@ -58,7 +58,9 @@ class SettingScreen extends StatelessWidget {
                         icon: Iconsax.safe_home,
                         title: 'Mon Profil',
                         subTitle: 'Modifier votre profil',
-                        onTap: () {}),
+                        onTap: () {
+                          Navigator.pushNamed(context, profileScreenRoute);
+                        }),
                     TSettingsMenuTile(
                         icon: Iconsax.bag_tick,
                         title: 'Mes Factures',

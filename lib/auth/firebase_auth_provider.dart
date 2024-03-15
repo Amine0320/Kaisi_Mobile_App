@@ -10,7 +10,6 @@ import 'package:firebase_auth/firebase_auth.dart'
         UserCredential;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';

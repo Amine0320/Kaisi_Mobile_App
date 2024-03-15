@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kaisi_app/Screens/Authentification/ForgotPassword/forget_pw.dart';
-import 'package:kaisi_app/Screens/Authentification/Signup/components/signup_form.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/forget_pw.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Signup/components/signup_form.dart';
 
 class PlanActionForm extends StatefulWidget {
   const PlanActionForm({

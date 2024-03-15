@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kaisi_app/Screens/Authentification/ForgotPassword/Components/forget_password_screen.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/Components/forget_password_screen.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 
 void main() async {

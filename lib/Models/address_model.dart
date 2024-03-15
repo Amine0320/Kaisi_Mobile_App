@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kaisi_app/utilities/formatters/formatter.dart';
+
+import '../utilities/formatters/formatter.dart';
 
 class AddressModel {
   String id;

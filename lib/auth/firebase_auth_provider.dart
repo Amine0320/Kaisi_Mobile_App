@@ -11,7 +11,12 @@ import 'package:firebase_auth/firebase_auth.dart'
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Login/login_screen.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/VerifyEmail/components/verify_email_screen.dart';
+import 'package:kaisi_app/Screens/HomeScreen/navigation_home_screen.dart';
+import 'package:kaisi_app/Screens/onboarding/onboarding.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_provider.dart';
 import 'package:kaisi_app/auth/auth_user.dart';
@@ -20,6 +25,7 @@ import 'package:kaisi_app/auth/firebase_exceptions.dart';
 import 'package:kaisi_app/auth/format_exceptions.dart';
 import 'package:kaisi_app/auth/platform_exceptions.dart';
 import 'package:kaisi_app/firebase_options.dart';
+import 'package:kaisi_app/utilities/local_storage/storage_utility.dart';
 
 class FirebaseAuthProvider implements AuthProvider {
   final _auth = FirebaseAuth.instance;
@@ -27,6 +33,7 @@ class FirebaseAuthProvider implements AuthProvider {
 
   /// Variables
   late final Rx<User?> _firebaseUser;
+  final deviceStorage = GetStorage();
 
   /// Getters
   User? get firebaseUser => _firebaseUser.value;
@@ -259,4 +266,23 @@ class FirebaseAuthProvider implements AuthProvider {
   //     throw 'Something went wrong. Please try again';
   //   }
   // }
+  /// Function to Show Relevant Screen
+  screenRedirect(User? user) async {
+    if (user != null) {
+      // User Logged-In: If email verified let the user go to Home Screen else to the Email Verification Screen
+      if (user.emailVerified) {
+        // Initialize User Specific Storage
+        await TLocalStorage.init(user.uid);
+        Get.offAll(() => const NavigationHomeScreen());
+      } else {
+        Get.offAll(() => const VerifyEmailScreen());
+      }
+    } else {
+      // Local Storage: User is new or Logged out! If new then write isFirstTime Local storage variable = true.
+      deviceStorage.writeIfNull('isFirstTime', true);
+      deviceStorage.read('isFirstTime') != true
+          ? Get.offAll(() => const LoginScreen())
+          : Get.offAll(() => const OnBoardingScreen());
+    }
+  }
 }

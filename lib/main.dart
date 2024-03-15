@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/forget_pw.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Login/login_screen.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Login/re_authenticate_user_login_form.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Signup/signup_screen.dart';
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
         mauxMainScreenRoute: (context) => MauxMainScreen(),
         planActionMainScreenRoute: (context) => PlanActionMainScreen(),
         reAuthScreenRoute: (context) => const ReAuthLoginForm(),
+        resetPasswordScreenRoute: (context) => const ForgetScreen(),
       },
     );
   }

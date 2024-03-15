@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
       ),
       home: const HomePage(),
+      //Routes
       routes: {
         loginScreenRoute: (context) => const LoginScreen(),
         signUpScreenRoute: (context) => const SignUpScreen(),

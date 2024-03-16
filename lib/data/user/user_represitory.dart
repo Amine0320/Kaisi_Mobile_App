@@ -22,11 +22,11 @@ class UserRepository extends GetxController {
     try {
       await _db.collection("Users").doc(user.id).set(user.toJson());
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw KFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw const TFormatException();
+      throw const KFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw KPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -45,11 +45,11 @@ class UserRepository extends GetxController {
         return UserModel.empty();
       }
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw KFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw const TFormatException();
+      throw const KFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw KPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -63,11 +63,11 @@ class UserRepository extends GetxController {
           .doc(updatedUser.id)
           .update(updatedUser.toJson());
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw KFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw const TFormatException();
+      throw const KFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw KPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -78,11 +78,11 @@ class UserRepository extends GetxController {
     try {
       // await _db.collection("Users").doc(AuthProvider.getuserId).update(json);
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw KFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw const TFormatException();
+      throw const KFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw KPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -96,11 +96,11 @@ class UserRepository extends GetxController {
       final url = await ref.getDownloadURL();
       return url;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw KFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw const TFormatException();
+      throw const KFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw KPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -111,11 +111,11 @@ class UserRepository extends GetxController {
     try {
       await _db.collection("Users").doc(userId).delete();
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw KFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw const TFormatException();
+      throw const KFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw KPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }

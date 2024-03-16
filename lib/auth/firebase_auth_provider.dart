@@ -163,13 +163,13 @@ class FirebaseAuthProvider implements AuthProvider {
       // await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
       await _auth.currentUser?.delete();
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw KFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw KFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw const TFormatException();
+      throw const KFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw KPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -187,13 +187,13 @@ class FirebaseAuthProvider implements AuthProvider {
       // ReAuthenticate
       await _auth.currentUser!.reauthenticateWithCredential(credential);
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw KFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw KFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw const TFormatException();
+      throw const KFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw KPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
@@ -220,13 +220,13 @@ class FirebaseAuthProvider implements AuthProvider {
       // Once signed in, return the UserCredential
       return await FirebaseAuth.instance.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
-      throw TFirebaseAuthException(e.code).message;
+      throw KFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
+      throw KFirebaseException(e.code).message;
     } on FormatException catch (_) {
-      throw const TFormatException();
+      throw const KFormatException();
     } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
+      throw KPlatformException(e.code).message;
     } catch (e) {
       if (kDebugMode) print('Something went wrong: $e');
       return null;
@@ -259,9 +259,9 @@ class FirebaseAuthProvider implements AuthProvider {
   //   } on FirebaseException catch (e) {
   //     throw TFirebaseException(e.code).message;
   //   } on FormatException catch (_) {
-  //     throw const TFormatException();
+  //     throw const KFormatException();
   //   } on PlatformException catch (e) {
-  //     throw TPlatformException(e.code).message;
+  //     throw KPlatformException(e.code).message;
   //   } catch (e) {
   //     throw 'Something went wrong. Please try again';
   //   }

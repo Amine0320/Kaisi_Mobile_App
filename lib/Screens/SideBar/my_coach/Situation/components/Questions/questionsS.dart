@@ -73,9 +73,8 @@ List<Question> questions() {
       },
     ),
     //question 4
-    PolarQuestion(
-        question:
-            "Si je Nonmme l'émotion que je traverse dans cette situation, ça serait ?",
+    NestedQuestion(
+        question: "Dans cette situation, quel est mon besoin ? ",
         answers: [
           "Colère",
           "Dégout",
@@ -83,7 +82,20 @@ List<Question> questions() {
           "Peur",
           "Honte",
           "Joie",
-        ]),
+          "Autre",
+        ],
+        children: {
+          'Autre': [
+            Question(
+              question: "Vous pouvez decrire l'emotion",
+              //isMandatory: true,
+              validate: (field) {
+                if (field.isEmpty) return "Le champ ne peut pas être vide";
+                return null;
+              },
+            ),
+          ],
+        }),
     //Question 5
     NestedQuestion(
         question: "Dans cette situation, quel est mon besoin ? ",

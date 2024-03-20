@@ -27,7 +27,7 @@ class UserModel {
     required this.profilePicture,
     this.cart,
     this.addresses,
-  });
+  }); 
 
   /// Helper function to get the full name.
   String get fullName => '$firstName $lastName';

@@ -14,3 +14,5 @@ const mauxMainScreenRoute = '/MauxScreenMain/';
 const planActionMainScreenRoute = '/PlanActionScreenMain';
 const reAuthScreenRoute = '/reauthscreen/';
 const resetPasswordScreenRoute = '/resetPassword';
+const coachScreenRoute = '/coachScreen/';
+const contactScreenRoute = '/contactScreen';

@@ -31,8 +31,13 @@ class _HomeDrawerState extends State<HomeDrawer> {
     drawerList = <DrawerList>[
       DrawerList(
         index: DrawerIndex.home,
-        labelName: 'Accueil',
+        labelName: 'Home',
         icon: const Icon(Icons.home),
+      ),
+      DrawerList(
+        index: DrawerIndex.menu,
+        labelName: 'Menu',
+        icon: const Icon(Icons.menu),
       ),
       DrawerList(
         index: DrawerIndex.coach,
@@ -293,6 +298,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
 enum DrawerIndex {
   settings,
   home,
+  menu,
   feedBack,
   contact,
   share,

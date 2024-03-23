@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kaisi_app/Models/cart_model.dart';
 import 'package:kaisi_app/utilities/formatters/formatter.dart';
-import 'address_model.dart';
 
 /// Model class representing user data.
 class UserModel {
@@ -13,8 +11,6 @@ class UserModel {
   final String email;
   String phoneNumber;
   String profilePicture;
-  final CartModel? cart;
-  final List<AddressModel>? addresses;
 
   /// Constructor for UserModel.
   UserModel({
@@ -25,9 +21,7 @@ class UserModel {
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
-    this.cart,
-    this.addresses,
-  }); 
+  });
 
   /// Helper function to get the full name.
   String get fullName => '$firstName $lastName';

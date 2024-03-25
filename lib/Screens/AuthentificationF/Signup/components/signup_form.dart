@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
+import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
@@ -119,8 +120,6 @@ class _RegisterViewState extends State<SignUpForm> {
           const SizedBox(height: defaultPadding / 2),
           ElevatedButton(
             onPressed: () async {
-              // final firstName = _firstNameController.text;
-              // final lastName = _lastNameController.text;
               final email = _emailController.text;
               final password = _passwordController.text;
               final confirmPassword = _confirmPasswordController.text;
@@ -135,6 +134,17 @@ class _RegisterViewState extends State<SignUpForm> {
                 await AuthService.firebase().createUser(
                   email: email,
                   password: password,
+                );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileScreen(
+                      phoneNumber: _phoneNumberController.text,
+                      email: _emailController.text,
+                      firstname: _firstNameController.text,
+                      lastname: _lastNameController.text,
+                    ),
+                  ),
                 );
                 // Sending email verificatiom
                 await AuthService.firebase().sendEmailVerification();

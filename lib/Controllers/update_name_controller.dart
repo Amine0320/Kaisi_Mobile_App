@@ -69,7 +69,12 @@ class UpdateNameController extends GetxController {
           title: 'Félicitations !', message: 'Votre nom a été mis à jour.');
 
       // Move to previous screen.
-      Get.off(() => const ProfileScreen());
+      Get.off(() => const ProfileScreen(
+            phoneNumber: '',
+            email: '',
+            firstname: '',
+            lastname: '',
+          ));
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Zut alors !', message: e.toString());

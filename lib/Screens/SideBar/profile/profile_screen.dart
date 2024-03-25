@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:kaisi_app/Screens/AuthentificationF/Signup/components/signup_form.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_menu.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/shimmers/shimmer.dart';
@@ -10,7 +9,18 @@ import 'package:kaisi_app/utilities/constants/sizes.dart';
 import '../../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({
+    Key? key,
+    required this.phoneNumber,
+    required this.email,
+    required this.firstname,
+    required this.lastname,
+  }) : super(key: key);
+
+  final String phoneNumber;
+  final String email;
+  final String firstname;
+  final String lastname;
 
   @override
   Widget build(BuildContext context) {
@@ -66,13 +76,13 @@ class ProfileScreen extends StatelessWidget {
                   onPressed: () =>
                       Navigator.pushNamed(context, changeNameRoute),
                   title: 'Nom',
-                  value: controller.user.value.fullName),
+                  value: lastname),
               TProfileMenu(
                   onPressed: () => {
                         Navigator.pushNamed(context, changeNameRoute),
                       },
                   title: 'Prénom',
-                  value: controller.user.value.username),
+                  value: firstname),
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
@@ -80,13 +90,11 @@ class ProfileScreen extends StatelessWidget {
                   title: 'Informations de profil', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
-                  onPressed: () {},
-                  title: 'Adresse E-mail',
-                  value: controller.user.value.email),
+                  onPressed: () {}, title: 'Adresse E-mail', value: email),
               TProfileMenu(
                   onPressed: () {},
                   title: 'Numéro de téléphone',
-                  value: controller.user.value.phoneNumber),
+                  value: phoneNumber),
               TProfileMenu(onPressed: () {}, title: 'Genre', value: 'Homme'),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),

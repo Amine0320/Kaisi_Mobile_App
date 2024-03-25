@@ -72,7 +72,12 @@ class MyApp extends StatelessWidget {
         situationScreenRoute: (context) => const QuestionsSituationScreen(),
         mauxScreenRoute: (context) => const QuestionsMauxScreen(),
         planActionScreenRoute: (context) => const QuestionsPAScreen(),
-        profileScreenRoute: (context) => const ProfileScreen(),
+        profileScreenRoute: (context) => const ProfileScreen(
+              phoneNumber: '',
+              email: '',
+              firstname: '',
+              lastname: '',
+            ),
         settingsScreenRoute: (context) => const SettingScreen(),
         situationMainScreenRoute: (context) => SituationMainScreen(),
         mauxMainScreenRoute: (context) => MauxMainScreen(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/controllers/signup_controller.dart';
 // import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
@@ -22,6 +23,7 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<SignUpForm> {
+  final SignupController signupController = Get.put(SignupController());
   late final TextEditingController _firstNameController;
   late final TextEditingController _lastNameController;
   late final TextEditingController _emailController;
@@ -57,7 +59,8 @@ class _RegisterViewState extends State<SignUpForm> {
       child: Column(
         children: [
           TextFormField(
-            controller: _firstNameController,
+            // controller: _firstNameController,
+            onChanged: (value) => signupController.firstName.value = value,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
@@ -67,7 +70,8 @@ class _RegisterViewState extends State<SignUpForm> {
             ),
           ),
           TextFormField(
-            controller: _lastNameController,
+            // controller: _lastNameController,
+            onChanged: (value) => signupController.lastName.value = value,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
@@ -77,7 +81,9 @@ class _RegisterViewState extends State<SignUpForm> {
             ),
           ),
           TextFormField(
-            controller: _phoneNumberController, // Assign the controller
+            // controller: _phoneNumberController,
+            onChanged: (value) => signupController.phoneNumber.value =
+                value, // Assign the controller
             keyboardType: TextInputType.phone, // Set keyboard type to phone
             textInputAction: TextInputAction.done,
             cursorColor: kPrimaryColor,
@@ -87,7 +93,8 @@ class _RegisterViewState extends State<SignUpForm> {
             ),
           ),
           TextFormField(
-            controller: _emailController,
+            // controller: _emailController,
+            onChanged: (value) => signupController.email.value = value,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
@@ -120,6 +127,9 @@ class _RegisterViewState extends State<SignUpForm> {
           const SizedBox(height: defaultPadding / 2),
           ElevatedButton(
             onPressed: () async {
+              // final firstname = _firstNameController.text;
+              // final lastname = _lastNameController.text;
+              // final phonenumber = _phoneNumberController.text;
               final email = _emailController.text;
               final password = _passwordController.text;
               final confirmPassword = _confirmPasswordController.text;
@@ -135,17 +145,6 @@ class _RegisterViewState extends State<SignUpForm> {
                   email: email,
                   password: password,
                 );
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => ProfileScreen(
-                //       phoneNumber: _phoneNumberController.text,
-                //       email: _emailController.text,
-                //       firstname: _firstNameController.text,
-                //       lastname: _lastNameController.text,
-                //     ),
-                //   ),
-                // );
                 // Sending email verificatiom
                 await AuthService.firebase().sendEmailVerification();
                 // Navigating to verify email view

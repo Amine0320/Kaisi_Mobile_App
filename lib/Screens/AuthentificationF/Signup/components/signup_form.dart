@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
-import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
+// import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
@@ -135,17 +135,17 @@ class _RegisterViewState extends State<SignUpForm> {
                   email: email,
                   password: password,
                 );
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProfileScreen(
-                      phoneNumber: _phoneNumberController.text,
-                      email: _emailController.text,
-                      firstname: _firstNameController.text,
-                      lastname: _lastNameController.text,
-                    ),
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => ProfileScreen(
+                //       phoneNumber: _phoneNumberController.text,
+                //       email: _emailController.text,
+                //       firstname: _firstNameController.text,
+                //       lastname: _lastNameController.text,
+                //     ),
+                //   ),
+                // );
                 // Sending email verificatiom
                 await AuthService.firebase().sendEmailVerification();
                 // Navigating to verify email view

@@ -11,7 +11,7 @@ class ForgetImage extends StatelessWidget {
     return Column(
       children: [
         const Text(
-          "Reset Password",
+          "Réinitialiser le mot de passe",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: defaultPadding * 2),

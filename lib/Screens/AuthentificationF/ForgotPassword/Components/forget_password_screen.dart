@@ -38,7 +38,7 @@ class _ForgetFormState extends State<ForgetForm> {
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor, // Assuming kPrimaryColor is defined
             decoration: const InputDecoration(
-              hintText: "Your email",
+              hintText: "Votre adresse e-mail",
               prefixIcon: Padding(
                 padding: EdgeInsets.all(
                     defaultPadding), // Assuming defaultPadding is defined
@@ -55,12 +55,12 @@ class _ForgetFormState extends State<ForgetForm> {
                 Navigator.of(context).pushNamedAndRemoveUntil(
                     loginScreenRoute, (route) => false);
               } on FirebaseAuthException {
-                showErrorDialog(
-                    context, "Email provided doesn't exist Try again");
+                showErrorDialog(context,
+                    "L'adresse e-mail fournie n'existe pas. Veuillez réessayer.");
               }
             },
             child: Text(
-              "Reset Password".toUpperCase(),
+              "Réinitialiser le mot de passe".toUpperCase(),
             ),
           ),
         ],

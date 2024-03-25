@@ -19,6 +19,5 @@ abstract class AuthProvider {
   Future<void> deleteAccount();
   Future<void> reAuthenticateWithEmailAndPassword(
       String email, String password);
-  Future<void> signInWithFacebook();
   Future<void> signInWithGoogle();
 }

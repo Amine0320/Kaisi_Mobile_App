@@ -33,7 +33,8 @@ class UpdateNameController extends GetxController {
   Future<void> updateUserName() async {
     try {
       // Start Loading
-      TFullScreenLoader.openLoadingDialog('We are updating your information...',
+      TFullScreenLoader.openLoadingDialog(
+          'Nous mettons à jour vos informations...',
           "assets/animation/141594-animation-of-docer.json");
 
       // Check Internet Connectivity
@@ -51,8 +52,8 @@ class UpdateNameController extends GetxController {
 
       // Update user's first & last name in the Firebase Firestore
       Map<String, dynamic> name = {
-        'FirstName': firstName.text.trim(),
-        'LastName': lastName.text.trim()
+        'prenom': firstName.text.trim(),
+        'Nom': lastName.text.trim()
       };
       await userRepository.updateSingleField(name);
 
@@ -65,13 +66,13 @@ class UpdateNameController extends GetxController {
 
       // Show Success Message
       TLoaders.successSnackBar(
-          title: 'Congratulations', message: 'Your Name has been updated.');
+          title: 'Félicitations !', message: 'Votre nom a été mis à jour.');
 
       // Move to previous screen.
       Get.off(() => const ProfileScreen());
     } catch (e) {
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      TLoaders.errorSnackBar(title: 'Zut alors !', message: e.toString());
     }
   }
 }

@@ -75,7 +75,7 @@ class WelcomeView extends StatelessWidget {
               SlideTransition(
                 position: _welcomeFirstHalfAnimation,
                 child: const Text(
-                  "Welcome To Kaisi",
+                  "Bienvenue chez Kaisi",
                   style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                 ),
               ),

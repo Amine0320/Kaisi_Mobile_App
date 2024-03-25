@@ -64,7 +64,7 @@ void main() {
     });
     // The forget password test
     test('Should be able to reset password', () async {
-      final email = "afif12tn@gmail.com";
+      const email = "afif12tn@gmail.com";
       provider._email = email; // Provide a valid email address
       try {
         await provider.resetPassword(email);
@@ -153,12 +153,6 @@ class MockAuthProvider implements AuthProvider {
   Future<void> reAuthenticateWithEmailAndPassword(
       String email, String password) {
     // TODO: implement reAuthenticateWithEmailAndPassword
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> signInWithFacebook() {
-    // TODO: implement signInWithFacebook
     throw UnimplementedError();
   }
 

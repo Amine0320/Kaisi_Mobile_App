@@ -19,7 +19,7 @@ class _VerifyFormState extends State<VerifyForm> {
       child: Column(
         children: [
           const Text(
-              "We've already sent you an email of verification. Please open it to verify your account"),
+              "Nous vous avons déjà envoyé un e-mail de vérification. Veuillez l'ouvrir pour vérifier votre compte."),
           TextFormField(
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
@@ -39,7 +39,7 @@ class _VerifyFormState extends State<VerifyForm> {
               await sendEmailVerification;
             },
             child: Text(
-              "Send Verification Email".toUpperCase(),
+              "Envoyer l'e-mail de vérification".toUpperCase(),
             ),
           ),
           const SizedBox(height: defaultPadding),
@@ -50,7 +50,7 @@ class _VerifyFormState extends State<VerifyForm> {
                   .pushNamedAndRemoveUntil(signUpScreenRoute, (route) => false);
             },
             child: Text(
-              "Restart".toUpperCase(),
+              "Redémarrer".toUpperCase(),
             ),
           ),
         ],

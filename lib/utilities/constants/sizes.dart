@@ -33,6 +33,7 @@ class TSizes {
   static const double defaultSpace = 24.0;
   static const double spaceBtwItems = 16.0;
   static const double spaceBtwSections = 32.0;
+  static const double lspaceBtwSections = 48.0;
 
   // Border radius
   static const double borderRadiusSm = 4.0;

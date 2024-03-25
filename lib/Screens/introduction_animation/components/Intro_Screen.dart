@@ -35,7 +35,7 @@ class _SplachViewState extends State<SplachView> {
             const Padding(
               padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
               child: Text(
-                "Kaisi Application",
+                "Application Kaisi",
                 style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
               ),
             ),
@@ -69,7 +69,7 @@ class _SplachViewState extends State<SplachView> {
                     color: const Color(0xff132137),
                   ),
                   child: const Text(
-                    "Let's begin",
+                    "Commencez",
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.white,

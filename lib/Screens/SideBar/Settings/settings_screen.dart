@@ -82,7 +82,7 @@ class SettingScreen extends StatelessWidget {
                             "Gérer l'utilisation des données et les comptes connectés"),
 
                     /// -- Logout Button
-                    const SizedBox(height: TSizes.spaceBtwSections),
+                    const SizedBox(height: TSizes.lspaceBtwSections),
                     SizedBox(
                         width: double.infinity,
                         child: OutlinedButton(

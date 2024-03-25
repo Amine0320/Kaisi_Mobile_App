@@ -1,5 +1,5 @@
-// ignore_for_file: unused_local_variable
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
@@ -11,6 +11,7 @@ const double defaultPadding = 16.0;
 const Color kPrimaryColor = Colors.blue;
 
 class SignUpForm extends StatefulWidget {
+  static SignUpForm get instance => Get.find();
   const SignUpForm({
     Key? key,
   }) : super(key: key);
@@ -25,6 +26,7 @@ class _RegisterViewState extends State<SignUpForm> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
   late final TextEditingController _confirmPasswordController;
+  late final TextEditingController _phoneNumberController;
 
   @override
   void initState() {
@@ -34,6 +36,7 @@ class _RegisterViewState extends State<SignUpForm> {
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
     _confirmPasswordController = TextEditingController();
+    _phoneNumberController = TextEditingController();
   }
 
   @override
@@ -43,6 +46,7 @@ class _RegisterViewState extends State<SignUpForm> {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
+    _phoneNumberController.dispose();
     super.dispose();
   }
 
@@ -57,7 +61,7 @@ class _RegisterViewState extends State<SignUpForm> {
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             decoration: const InputDecoration(
-              hintText: "First Name",
+              hintText: "Prénom",
               prefixIcon: Icon(Icons.person),
             ),
           ),
@@ -67,8 +71,18 @@ class _RegisterViewState extends State<SignUpForm> {
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             decoration: const InputDecoration(
-              hintText: "Last Name",
+              hintText: "Nom",
               prefixIcon: Icon(Icons.person),
+            ),
+          ),
+          TextFormField(
+            controller: _phoneNumberController, // Assign the controller
+            keyboardType: TextInputType.phone, // Set keyboard type to phone
+            textInputAction: TextInputAction.done,
+            cursorColor: kPrimaryColor,
+            decoration: const InputDecoration(
+              hintText: "Numéro de téléphone", // Hint text for phone number
+              prefixIcon: Icon(Icons.phone), // Phone icon
             ),
           ),
           TextFormField(
@@ -78,7 +92,7 @@ class _RegisterViewState extends State<SignUpForm> {
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
             decoration: const InputDecoration(
-              hintText: "Your email",
+              hintText: "Adresse e-mail",
               prefixIcon: Icon(Icons.email),
             ),
           ),
@@ -88,7 +102,7 @@ class _RegisterViewState extends State<SignUpForm> {
             obscureText: true,
             cursorColor: kPrimaryColor,
             decoration: const InputDecoration(
-              hintText: "Your password",
+              hintText: "Mot de passe",
               prefixIcon: Icon(Icons.lock),
             ),
           ),
@@ -98,21 +112,22 @@ class _RegisterViewState extends State<SignUpForm> {
             obscureText: true,
             cursorColor: kPrimaryColor,
             decoration: const InputDecoration(
-              hintText: "Confirm Password",
+              hintText: "Confirmer le mot de passe",
               prefixIcon: Icon(Icons.lock),
             ),
           ),
           const SizedBox(height: defaultPadding / 2),
           ElevatedButton(
             onPressed: () async {
-              final firstName = _firstNameController.text;
-              final lastName = _lastNameController.text;
+              // final firstName = _firstNameController.text;
+              // final lastName = _lastNameController.text;
               final email = _emailController.text;
               final password = _passwordController.text;
               final confirmPassword = _confirmPasswordController.text;
               // Verifying if passwords match or no !
               if (password != confirmPassword) {
-                await showErrorDialog(context, 'Passwords do not match');
+                await showErrorDialog(
+                    context, 'Les mots de passe ne correspondent pas');
                 return;
               }
               // Creating user
@@ -127,16 +142,16 @@ class _RegisterViewState extends State<SignUpForm> {
                 Navigator.of(context).pushNamed(verifyEmailScreen);
                 // Hnadling exceptions
               } on WeakPasswordAuthException {
-                await showErrorDialog(context, 'Weak password');
+                await showErrorDialog(context, 'Mot de passe faible');
               } on EmailAlreadyInUseAuthException {
-                await showErrorDialog(context, 'Email already in use');
+                await showErrorDialog(context, 'Adresse e-mail déjà utilisée');
               } on InvalidEmailAuthException {
-                await showErrorDialog(context, 'Invalid email address');
+                await showErrorDialog(context, 'Adresse e-mail invalide');
               } on GenericAuthException {
-                await showErrorDialog(context, "Failed to register");
+                await showErrorDialog(context, "Échec de l'inscription");
               }
             },
-            child: Text("Sign Up".toUpperCase()),
+            child: Text("S'inscrire".toUpperCase()),
           ),
           const SizedBox(height: defaultPadding),
           AlreadyHaveAnAccountCheck(
@@ -151,7 +166,7 @@ class _RegisterViewState extends State<SignUpForm> {
                 ),
               );
             },
-          ),
+          )
         ],
       ),
     );

@@ -56,7 +56,5 @@ class AuthService implements AuthProvider {
           String email, String password) =>
       provider.reAuthenticateWithEmailAndPassword(email, password);
   @override
-  Future<void> signInWithFacebook() => provider.signInWithFacebook();
-  @override
   Future<void> signInWithGoogle() => provider.signInWithGoogle();
 }

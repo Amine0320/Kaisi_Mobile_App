@@ -11,7 +11,7 @@ class VerifyScreenImage extends StatelessWidget {
     return Column(
       children: [
         const Text(
-          "Verify Your Email",
+          "Veuillez vérifier votre e-mail",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: defaultPadding * 2),

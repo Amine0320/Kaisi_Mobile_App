@@ -1,4 +1,3 @@
-import 'package:kaisi_app/Screens/HomeScreen/Components/homelist.dart';
 import 'Components/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +10,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  List<HomeList> homeList = HomeList.homeList;
   AnimationController? animationController;
   bool multiple = true;
 
@@ -109,14 +107,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
 class HomeListView extends StatelessWidget {
   const HomeListView(
-      {Key? key,
-      this.listData,
-      this.callBack,
-      this.animationController,
-      this.animation})
+      {Key? key, this.callBack, this.animationController, this.animation})
       : super(key: key);
 
-  final HomeList? listData;
   final VoidCallback? callBack;
   final AnimationController? animationController;
   final Animation<double>? animation;
@@ -138,12 +131,12 @@ class HomeListView extends StatelessWidget {
                 child: Stack(
                   alignment: AlignmentDirectional.center,
                   children: <Widget>[
-                    Positioned.fill(
-                      child: Image.asset(
-                        listData!.imagePath,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                    // Positioned.fill(
+                    //   child: Image.asset(
+                    //     listData!.imagePath,
+                    //     fit: BoxFit.cover,
+                    //   ),
+                    // ),
                     Material(
                       color: const Color.fromARGB(0, 188, 76, 76),
                       child: InkWell(

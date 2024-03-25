@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+// import 'package:kaisi_app/Screens/AuthentificationF/Signup/components/signup_form.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_menu.dart';
-import 'package:kaisi_app/Screens/appbar/appbar.dart';
-// import 'package:kaisi_app/Screens/appbar/appbar_p.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/shimmers/shimmer.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/texts/section_heading.dart';
@@ -17,11 +15,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = UserController.instance;
+    // final controller_A = SignUpForm.instance;
     return Scaffold(
-      appBar: TAppBar(
-        showBackArrow: true,
-        title:
-            Text('Profile', style: Theme.of(context).textTheme.headlineSmall),
+      appBar: AppBar(
+        title: Text('Profil', style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -54,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                       onPressed: controller.imageUploading.value
                           ? () {}
                           : () => controller.uploadUserProfilePicture(),
-                      child: const Text('Change Profile Picture'),
+                      child: const Text('Changer la photo de profil'),
                     ),
                   ],
                 ),
@@ -63,47 +60,40 @@ class ProfileScreen extends StatelessWidget {
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(
-                  title: 'Profile Information', showActionButton: false),
+                  title: 'Informations de profil', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
                   onPressed: () =>
                       Navigator.pushNamed(context, changeNameRoute),
-                  title: 'Name',
+                  title: 'Nom',
                   value: controller.user.value.fullName),
               TProfileMenu(
-                  onPressed: () {},
-                  title: 'Username',
+                  onPressed: () => {
+                        Navigator.pushNamed(context, changeNameRoute),
+                      },
+                  title: 'Prénom',
                   value: controller.user.value.username),
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(
-                  title: 'Personal Information', showActionButton: false),
+                  title: 'Informations de profil', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'User ID',
-                  value: '45689',
-                  icon: Iconsax.copy),
-              TProfileMenu(
-                  onPressed: () {},
-                  title: 'E-mail',
+                  title: 'Adresse E-mail',
                   value: controller.user.value.email),
               TProfileMenu(
                   onPressed: () {},
-                  title: 'Phone Number',
+                  title: 'Numéro de téléphone',
                   value: controller.user.value.phoneNumber),
-              TProfileMenu(onPressed: () {}, title: 'Gender', value: 'Male'),
-              TProfileMenu(
-                  onPressed: () {},
-                  title: 'Date of Birth',
-                  value: '1 Jan, 1900'),
+              TProfileMenu(onPressed: () {}, title: 'Genre', value: 'Homme'),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               Center(
                 child: TextButton(
                     onPressed: () => controller.deleteAccountWarningPopup(),
-                    child: const Text('Close Account',
+                    child: const Text('Fermer le compte',
                         style: TextStyle(color: Colors.red))),
               )
             ],

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/forget_pw.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Signup/signup_screen.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
+// import 'package:kaisi_app/Screens/popups/full_screen_loader.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
+import 'package:kaisi_app/auth/firebase_auth_exceptions.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
 import 'package:kaisi_app/utilities/constants/colors.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
@@ -78,7 +80,7 @@ class _LoginViewState extends State<LoginForm> {
                   return const ForgetScreen();
                 }));
               },
-              child: const Text('Forget password'),
+              child: const Text('Réinitialiser le mot de passe'),
             ),
           ),
           ElevatedButton(
@@ -87,6 +89,7 @@ class _LoginViewState extends State<LoginForm> {
               final password = _passwordController.text;
 
               try {
+                // TFullScreenLoader.openLoadingDialog('Logging you in...', "");
                 await AuthService.firebase().logIn(
                   email: email,
                   password: password,
@@ -105,16 +108,16 @@ class _LoginViewState extends State<LoginForm> {
                   );
                 }
                 Navigator.of(context).pushNamed(navigationRoute);
-              } on UserNotFoundAuthException {
-                await showErrorDialog(context, 'User not found');
+              } on KFirebaseAuthException {
+                await showErrorDialog(context, 'Utilisateur non trouvé');
               } on WrongPasswordAuthException {
-                await showErrorDialog(context, 'Wrong Password');
+                await showErrorDialog(context, 'Mauvais mot de passe');
               } on GenericAuthException {
-                await showErrorDialog(context, 'Authentication Error');
+                await showErrorDialog(context, "Erreur d'authentification");
               }
             },
             child: Text(
-              "Login".toUpperCase(),
+              "Se connecter".toUpperCase(),
             ),
           ),
           const SizedBox(height: defaultPadding),

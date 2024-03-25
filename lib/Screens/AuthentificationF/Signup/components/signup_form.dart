@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/controllers/signup_controller.dart';
-// import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
@@ -60,7 +59,7 @@ class _RegisterViewState extends State<SignUpForm> {
         children: [
           TextFormField(
             // controller: _firstNameController,
-            onChanged: (value) => signupController.firstName.value = value,
+            // onChanged: (value) => signupController.firstName.value = value,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
@@ -71,7 +70,7 @@ class _RegisterViewState extends State<SignUpForm> {
           ),
           TextFormField(
             // controller: _lastNameController,
-            onChanged: (value) => signupController.lastName.value = value,
+            // onChanged: (value) => signupController.lastName.value = value,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
@@ -82,8 +81,8 @@ class _RegisterViewState extends State<SignUpForm> {
           ),
           TextFormField(
             // controller: _phoneNumberController,
-            onChanged: (value) => signupController.phoneNumber.value =
-                value, // Assign the controller
+            // onChanged: (value) => signupController.phoneNumber.value =
+            //     value, // Assign the controller
             keyboardType: TextInputType.phone, // Set keyboard type to phone
             textInputAction: TextInputAction.done,
             cursorColor: kPrimaryColor,
@@ -94,7 +93,7 @@ class _RegisterViewState extends State<SignUpForm> {
           ),
           TextFormField(
             // controller: _emailController,
-            onChanged: (value) => signupController.email.value = value,
+            // onChanged: (value) => signupController.email.value = value,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,

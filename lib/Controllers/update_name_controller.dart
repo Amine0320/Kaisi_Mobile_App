@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/controllers/signup_controller.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/Screens/helpers/network_manager.dart';
 import 'package:kaisi_app/Screens/popups/full_screen_loader.dart';
@@ -14,6 +15,7 @@ class UpdateNameController extends GetxController {
   final firstName = TextEditingController();
   final lastName = TextEditingController();
   final userController = UserController.instance;
+  final userform = SignupController.instance;
   final userRepository = Get.put(UserRepository());
   GlobalKey<FormState> updateUserNameFormKey = GlobalKey<FormState>();
 
@@ -26,8 +28,9 @@ class UpdateNameController extends GetxController {
 
   /// Fetch user record
   Future<void> initializeNames() async {
-    firstName.text = userController.user.value.firstName;
-    lastName.text = userController.user.value.lastName;
+    // firstName.text = userform.firstName;
+    // lastName.text = userform.lastName;
+    // lastName.text = userController.user.value.lastName;
   }
 
   Future<void> updateUserName() async {
@@ -58,8 +61,8 @@ class UpdateNameController extends GetxController {
       await userRepository.updateSingleField(name);
 
       // Update the Rx User value
-      userController.user.value.firstName = firstName.text.trim();
-      userController.user.value.lastName = lastName.text.trim();
+      // userform.firstName = firstName.text.trim();
+      // userform.lastName = lastName.text.trim();
 
       // Remove Loader
       TFullScreenLoader.stopLoading();

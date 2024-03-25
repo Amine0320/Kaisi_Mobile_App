@@ -5,7 +5,7 @@ import 'package:kaisi_app/Screens/SideBar/profile/profile_menu.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/shimmers/shimmer.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/texts/section_heading.dart';
-import 'package:kaisi_app/utilities/constants/routes.dart';
+// import 'package:kaisi_app/utilities/constants/routes.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
 import '../../../controllers/user_controller.dart';
 
@@ -60,31 +60,31 @@ class ProfileScreen extends StatelessWidget {
               const TSectionHeading(
                   title: 'Informations de profil', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
-              TProfileMenu(
-                  onPressed: () =>
-                      Navigator.pushNamed(context, changeNameRoute),
-                  title: 'Nom',
-                  value: signupController.lastName.value),
-              TProfileMenu(
-                  onPressed: () => {
-                        Navigator.pushNamed(context, changeNameRoute),
-                      },
-                  title: 'Prénom',
-                  value: signupController.firstName.value),
+              // TProfileMenu(
+              //     onPressed: () =>
+              //         Navigator.pushNamed(context, changeNameRoute),
+              //     title: 'Nom',
+              //     value: signupController.lastName.value),
+              // TProfileMenu(
+              //     onPressed: () => {
+              //           Navigator.pushNamed(context, changeNameRoute),
+              //         },
+              //     title: 'Prénom',
+              //     value: signupController.firstName.value),
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(
                   title: 'Informations de profil', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
-              TProfileMenu(
-                  onPressed: () {},
-                  title: 'Adresse E-mail',
-                  value: signupController.email.value),
-              TProfileMenu(
-                  onPressed: () {},
-                  title: 'Numéro de téléphone',
-                  value: signupController.phoneNumber.value),
+              // TProfileMenu(
+              //     onPressed: () {},
+              //     title: 'Adresse E-mail',
+              //     value: signupController.email.value),
+              // TProfileMenu(
+              //     onPressed: () {},
+              //     title: 'Numéro de téléphone',
+              //     value: signupController.phoneNumber.value),
               TProfileMenu(onPressed: () {}, title: 'Genre', value: 'Homme'),
               const Divider(),
               const SizedBox(height: TSizes.spaceBtwItems),

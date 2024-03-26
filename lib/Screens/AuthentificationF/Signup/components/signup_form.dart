@@ -58,7 +58,7 @@ class _RegisterViewState extends State<SignUpForm> {
       child: Column(
         children: [
           TextFormField(
-            // controller: _firstNameController,
+            controller: _firstNameController,
             // onChanged: (value) => signupController.firstName.value = value,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
@@ -69,7 +69,7 @@ class _RegisterViewState extends State<SignUpForm> {
             ),
           ),
           TextFormField(
-            // controller: _lastNameController,
+            controller: _lastNameController,
             // onChanged: (value) => signupController.lastName.value = value,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
@@ -80,7 +80,7 @@ class _RegisterViewState extends State<SignUpForm> {
             ),
           ),
           TextFormField(
-            // controller: _phoneNumberController,
+            controller: _phoneNumberController,
             // onChanged: (value) => signupController.phoneNumber.value =
             //     value, // Assign the controller
             keyboardType: TextInputType.phone, // Set keyboard type to phone
@@ -92,7 +92,7 @@ class _RegisterViewState extends State<SignUpForm> {
             ),
           ),
           TextFormField(
-            // controller: _emailController,
+            controller: _emailController,
             // onChanged: (value) => signupController.email.value = value,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,

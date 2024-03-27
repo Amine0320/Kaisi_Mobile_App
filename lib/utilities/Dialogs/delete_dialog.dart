@@ -4,11 +4,11 @@ import 'package:kaisi_app/utilities/Dialogs/generic_dialogs.dart';
 Future<bool> showDeleteDialog(BuildContext context) {
   return showGenericDialog(
     context: context,
-    title: 'Delete',
-    content: 'Are you sure you want to delete the item ',
+    title: 'Supprimer',
+    content: "Êtes-vous sûr de vouloir supprimer l'élément ?",
     optionsBuilder: () => {
-      'Cancel': false,
-      'Yes': true,
+      'Annuler': false,
+      'Oui': true,
     },
   ).then(
     (value) => value ?? false,

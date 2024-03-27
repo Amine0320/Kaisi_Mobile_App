@@ -4,11 +4,11 @@ import 'package:kaisi_app/utilities/Dialogs/generic_dialogs.dart';
 Future<bool> showLogOutDialog(BuildContext context) {
   return showGenericDialog(
     context: context,
-    title: 'log Out',
-    content: 'Are you sure you want to log out ? ',
+    title: 'lSe deconnecter',
+    content: 'Êtes-vous sûr de vouloir vous déconnecter ? ',
     optionsBuilder: () => {
-      'Cancel': false,
-      'Log out': true,
+      'Annuler': false,
+      'Se deconnecter': true,
     },
   ).then(
     (value) => value ?? false,

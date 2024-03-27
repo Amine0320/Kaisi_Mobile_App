@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
 import 'package:kaisi_app/utilities/constants/colors.dart';
@@ -54,9 +54,14 @@ class _ForgetFormState extends State<ForgetForm> {
                 await Future.delayed(const Duration(seconds: 4));
                 Navigator.of(context).pushNamedAndRemoveUntil(
                     loginScreenRoute, (route) => false);
-              } on FirebaseAuthException {
+              } on InvalidEmailAuthException {
                 showErrorDialog(context,
                     "L'adresse e-mail fournie n'existe pas. Veuillez réessayer.");
+              } on UserNotFoundAuthException {
+                showErrorDialog(context,
+                    "l'utilisateur n'existe pas , veuillez réessayer.");
+              } on GenericAuthException {
+                showErrorDialog(context, "Erreur, veuillez réessayer.");
               }
             },
             child: Text(

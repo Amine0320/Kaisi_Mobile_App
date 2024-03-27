@@ -5,7 +5,6 @@ import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_a
 // import 'package:kaisi_app/Screens/popups/full_screen_loader.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
-import 'package:kaisi_app/auth/firebase_auth_exceptions.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
 import 'package:kaisi_app/utilities/constants/colors.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
@@ -108,7 +107,7 @@ class _LoginViewState extends State<LoginForm> {
                   );
                 }
                 Navigator.of(context).pushNamed(navigationRoute);
-              } on KFirebaseAuthException {
+              } on UserNotFoundAuthException {
                 await showErrorDialog(context, 'Utilisateur non trouvé');
               } on WrongPasswordAuthException {
                 await showErrorDialog(context, 'Mauvais mot de passe');

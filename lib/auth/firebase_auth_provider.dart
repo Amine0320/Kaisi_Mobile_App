@@ -67,15 +67,17 @@ class FirebaseAuthProvider implements AuthProvider {
         throw UserNotFoundAuthException();
       }
     } on FirebaseAuthException catch (e) {
-      throw KFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw KFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const KFormatException();
-    } on PlatformException catch (e) {
-      throw KPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
+      if (e.code == 'weak-password') {
+        throw WeakPasswordAuthException();
+      } else if (e.code == 'email-already-in-use') {
+        throw EmailAlreadyInUseAuthException();
+      } else if (e.code == 'invalid-email') {
+        throw InvalidEmailAuthException();
+      } else {
+        throw GenericAuthException();
+      }
+    } catch (_) {
+      throw GenericAuthException();
     }
   }
 
@@ -106,15 +108,15 @@ class FirebaseAuthProvider implements AuthProvider {
         throw UserNotFoundAuthException();
       }
     } on FirebaseAuthException catch (e) {
-      throw KFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw KFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const KFormatException();
-    } on PlatformException catch (e) {
-      throw KPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
+      if (e.code == 'user-not-found') {
+        throw UserNotFoundAuthException();
+      } else if (e.code == 'wrong-password') {
+        throw WrongPasswordAuthException();
+      } else {
+        throw GenericAuthException();
+      }
+    } catch (_) {
+      throw GenericAuthException();
     }
   }
 
@@ -143,15 +145,15 @@ class FirebaseAuthProvider implements AuthProvider {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
-      throw KFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw KFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const KFormatException();
-    } on PlatformException catch (e) {
-      throw KPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
+      if (e.code == 'invalid-email') {
+        throw InvalidEmailAuthException();
+      } else if (e.code == 'user-not-found') {
+        throw UserNotFoundAuthException();
+      } else {
+        throw GenericAuthException();
+      }
+    } catch (_) {
+      throw GenericAuthException();
     }
   }
 
@@ -215,7 +217,6 @@ class FirebaseAuthProvider implements AuthProvider {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-
       // Once signed in, return the UserCredential
       return await FirebaseAuth.instance.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
@@ -231,4 +232,51 @@ class FirebaseAuthProvider implements AuthProvider {
       return null;
     }
   }
+
+  ///[FacebookAuthentication] - FACEBOOK
+  // @override
+  // Future<UserCredential> signInWithFacebook() async {
+  //   try {
+  //     // Trigger the sign-in flow
+  //     final LoginResult loginResult =
+  //         await FacebookAuth.instance.login(permissions: ['email']);
+
+  //     // Create a credential from the access token
+  //     final AccessToken accessToken = loginResult.accessToken!;
+  //     final OAuthCredential facebookAuthCredential =
+  //         FacebookAuthProvider.credential(accessToken.token);
+
+  //     // Once signed in, return the UserCredential
+  //     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  //   } on FirebaseAuthException catch (e) {
+  //     throw TFirebaseAuthException(e.code).message;
+  //   } on FirebaseException catch (e) {
+  //     throw TFirebaseException(e.code).message;
+  //   } on FormatException catch (_) {
+  //     throw const KFormatException();
+  //   } on PlatformException catch (e) {
+  //     throw KPlatformException(e.code).message;
+  //   } catch (e) {
+  //     throw 'Something went wrong. Please try again';
+  //   }
+  // }
+  /// Function to Show Relevant Screen
+  // screenRedirect(User? user) async {
+  //   if (user != null) {
+  //     // User Logged-In: If email verified let the user go to Home Screen else to the Email Verification Screen
+  //     if (user.emailVerified) {
+  //       // Initialize User Specific Storage
+  //       await TLocalStorage.init(user.uid);
+  //       Get.offAll(() => const NavigationHomeScreen());
+  //     } else {
+  //       Get.offAll(() => const VerifyEmailScreen());
+  //     }
+  //   } else {
+  //     // Local Storage: User is new or Logged out! If new then write isFirstTime Local storage variable = true.
+  //     deviceStorage.writeIfNull('isFirstTime', true);
+  //     deviceStorage.read('isFirstTime') != true
+  //         ? Get.offAll(() => const LoginScreen())
+  //         : Get.offAll(() => const OnBoardingScreen());
+  //   }
+  // }
 }

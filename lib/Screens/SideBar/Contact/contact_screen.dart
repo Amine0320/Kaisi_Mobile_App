@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/HomeScreen/Components/app_theme.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 
 class ContactScreen extends StatefulWidget {
   @override
@@ -79,7 +80,8 @@ class _ContactScreenState extends State<ContactScreen> {
                               padding: const EdgeInsets.all(4.0),
                               child: TextButton(
                                 onPressed: () {
-                                  // Add your onPressed functionality here
+                                  Navigator.pushNamed(
+                                      context, contactFormScreenRoute);
                                 },
                                 style: TextButton.styleFrom(
                                   textStyle: TextStyle(

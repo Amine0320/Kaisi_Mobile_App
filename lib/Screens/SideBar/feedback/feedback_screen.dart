@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/Screens/HomeScreen/Components/app_theme.dart';
+import 'package:kaisi_app/utilities/Dialogs/feedBack_dialog.dart';
 
 class FeedbackScreen extends StatefulWidget {
   @override
@@ -7,9 +9,40 @@ class FeedbackScreen extends StatefulWidget {
 }
 
 class _FeedbackScreenState extends State<FeedbackScreen> {
+  final TextEditingController _feedbackController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  String _feedbackErrorText = '';
+  String _nameErrorText = '';
   @override
   void initState() {
     super.initState();
+  }
+
+  Future<void> _submitFeedback() async {
+    String feedback = _feedbackController.text.trim();
+    String name = _nameController.text.trim();
+
+    if (feedback.isNotEmpty && name.isNotEmpty) {
+      try {
+        // Sending feedback to the backend
+        await FirebaseFirestore.instance.collection('feedback').add(
+            {'feedback': feedback, 'name': name, 'timestamp': DateTime.now()});
+        // Feedback submitted successfully
+        _feedbackController.clear();
+        _nameController.clear();
+
+        feedBackDialog(context, 'Merci pour votre retour, $name !');
+      } catch (e) {
+        print('Error submitting feedback: $e');
+        // Handle error here
+      }
+    } else {
+      setState(() {
+        _feedbackErrorText =
+            feedback.isEmpty ? 'Le feedback ne peut pas être vide"' : '';
+        _nameErrorText = name.isEmpty ? 'Le nom ne peut pas être vide' : '';
+      });
+    }
   }
 
   @override
@@ -85,7 +118,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                                 padding: const EdgeInsets.all(4.0),
                                 child: TextButton(
                                   // Do the logic for the button to send the feedback to the contact@kaisi.fr
-                                  onPressed: () {},
+                                  onPressed: _submitFeedback,
                                   style: TextButton.styleFrom(
                                     textStyle: TextStyle(
                                       fontWeight: FontWeight.w500,
@@ -130,23 +163,45 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           borderRadius: BorderRadius.circular(25),
           child: Container(
             padding: const EdgeInsets.all(4.0),
-            constraints: const BoxConstraints(minHeight: 80, maxHeight: 160),
+            constraints: const BoxConstraints(minHeight: 120, maxHeight: 200),
             color: AppTheme.white,
             child: SingleChildScrollView(
               padding:
                   const EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 0),
-              child: TextField(
-                maxLines: null,
-                onChanged: (String txt) {},
-                style: const TextStyle(
-                  fontFamily: AppTheme.fontName,
-                  fontSize: 16,
-                  color: AppTheme.dark_grey,
-                ),
-                cursorColor: Colors.blue,
-                decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Veuillez saisir votre commentaire...'),
+              child: Column(
+                children: [
+                  TextField(
+                    controller: _nameController,
+                    maxLines: null,
+                    onChanged: (String txt) {},
+                    style: const TextStyle(
+                      fontFamily: AppTheme.fontName,
+                      fontSize: 16,
+                      color: AppTheme.dark_grey,
+                    ),
+                    cursorColor: Colors.blue,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Votre Nom',
+                    ),
+                  ),
+                  const SizedBox(
+                      height: 10), // Add some space between the text fields
+                  TextField(
+                    controller: _feedbackController,
+                    onChanged: (String txt) {},
+                    style: const TextStyle(
+                      fontFamily: AppTheme.fontName,
+                      fontSize: 16,
+                      color: AppTheme.dark_grey,
+                    ),
+                    cursorColor: Colors.blue,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Veuillez saisir votre commentaire...',
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

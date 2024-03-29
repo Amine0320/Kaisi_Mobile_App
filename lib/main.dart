@@ -6,6 +6,7 @@ import 'package:kaisi_app/Screens/AuthentificationF/Login/login_screen.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Login/re_authenticate_user_login_form.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Signup/signup_screen.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/VerifyEmail/components/verify_email_screen.dart';
+import 'package:kaisi_app/Screens/SideBar/Contact/contact_form.dart';
 import 'package:kaisi_app/Screens/SideBar/Contact/contact_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/Settings/settings_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/my_coach/Main/my_coach.dart';
@@ -81,6 +82,7 @@ class MyApp extends StatelessWidget {
         resetPasswordScreenRoute: (context) => const ForgetScreen(),
         coachScreenRoute: (context) => const CoachScreen(),
         contactScreenRoute: (context) => ContactScreen(),
+        contactFormScreenRoute: (context) => const ContactForm(),
       },
     );
   }

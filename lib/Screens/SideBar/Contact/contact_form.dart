@@ -1,7 +1,8 @@
+import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kaisi_app/utilities/Dialogs/message_dialog.dart';
-// import 'package:kaisi_app/Screens/appbar/appbar.dart';
+import 'package:http/http.dart' as http;
 
 class ContactForm extends StatefulWidget {
   const ContactForm({Key? key}) : super(key: key);
@@ -32,6 +33,17 @@ class _ContactFormState extends State<ContactForm> {
           'email': email,
           'timestamp': DateTime.now()
         });
+        // Trigger Cloud Function to send email
+        await http.post(
+          Uri.parse(
+              'https://us-central1-kaisi-dd491.cloudfunctions.net/sendContactEmail'),
+          body: jsonEncode({
+            'name': name,
+            'email': email,
+            'message': message,
+          }),
+          headers: {'Content-Type': 'application/json'},
+        );
         // Feedback submitted successfully
         _messageController.clear();
         _nameController.clear();

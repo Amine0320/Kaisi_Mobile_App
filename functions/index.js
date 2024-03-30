@@ -1,38 +1,19 @@
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-const nodemailer = require('nodemailer');
+/**
+ * Import function triggers from their respective submodules:
+ *
+ * const {onCall} = require("firebase-functions/v2/https");
+ * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
+ *
+ * See a full list of supported triggers at https://firebase.google.com/docs/functions
+ */
 
-admin.initializeApp();
+// const {onRequest} = require("firebase-functions/v2/https");
+// const logger = require("firebase-functions/logger");
 
-exports.sendContactEmail = functions.firestore
-  .document('contact/{documentId}')
-  .onCreate((snapshot, context) => {
-    const data = snapshot.data();
+// Create and deploy your first functions
+// https://firebase.google.com/docs/functions/get-started
 
-    // Email parameters
-    const mailOptions = {
-      from: 'YOUR_EMAIL_ADDRESS',
-      to: 'elbah.ma02@gmail.com',
-      //contact@kaisi.fr
-      subject: 'New Contact Form Submission',
-      text: `Name: ${data.name}\nEmail: ${data.email}\nMessage: ${data.message}`,
-    };
-
-    // Nodemailer transporter
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: 'YOUR_EMAIL_ADDRESS',
-        pass: 'YOUR_EMAIL_PASSWORD',
-      },
-    });
-
-    // Send email
-    return transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error sending email:', error);
-      } else {
-        console.log('Email sent:', info.response);
-      }
-    });
-  });
+// exports.helloWorld = onRequest((request, response) => {
+//   logger.info("Hello logs!", {structuredData: true});
+//   response.send("Hello from Firebase!");
+// });

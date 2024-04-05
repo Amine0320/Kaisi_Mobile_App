@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kaisi_app/auth/bloc/auth_bloc.dart';
+import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import '../../HomeScreen/Components/responsive.dart';
 import '../components/background.dart';
 import 'components/login_form.dart';
@@ -9,13 +12,13 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Background(
+    return Background(
       child: SingleChildScrollView(
         child: Responsive(
-          mobile: MobileLoginScreen(),
+          mobile: const MobileLoginScreen(),
           desktop: Row(
             children: [
-              Expanded(
+              const Expanded(
                 child: LoginScreenTopImage(),
               ),
               Expanded(
@@ -24,7 +27,10 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 450,
-                      child: LoginForm(),
+                      child: BlocProvider<AuthBloc>(
+                        create: (context) => AuthBloc(FirebaseAuthProvider()),
+                        child: const LoginForm(),
+                      ),
                     ),
                   ],
                 ),
@@ -38,24 +44,25 @@ class LoginScreen extends StatelessWidget {
 }
 
 class MobileLoginScreen extends StatelessWidget {
-  const MobileLoginScreen({
-    Key? key,
-  }) : super(key: key);
+  const MobileLoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        LoginScreenTopImage(),
+        const LoginScreenTopImage(),
         Row(
           children: [
-            Spacer(),
+            const Spacer(),
             Expanded(
               flex: 8,
-              child: LoginForm(),
+              child: BlocProvider<AuthBloc>(
+                create: (context) => AuthBloc(FirebaseAuthProvider()),
+                child: const LoginForm(),
+              ),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ],

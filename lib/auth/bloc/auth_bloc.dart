@@ -7,10 +7,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(AuthProvider provider) : super(const AuthStateOnIntialized()) {
     //send email verification
     // attention not to handle in Kaisi App
-    // on<AuthEvenSendEmailVerification>((event, emit) async {
-    //   await provider.sendEmailVerification();
-    //   emit(state);
-    // });
+    on<AuthEvenSendEmailVerification>((event, emit) async {
+      await provider.sendEmailVerification();
+      emit(state);
+    });
     on<AuthEventRegister>((event, emit) async {
       final email = event.email;
       final password = event.password;

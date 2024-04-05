@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Login/login_screen.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/controllers/signup_controller.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
@@ -10,7 +11,7 @@ import 'package:kaisi_app/auth/bloc/auth_event.dart';
 import 'package:kaisi_app/auth/bloc/auth_state.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
 // import 'package:kaisi_app/utilities/constants/routes.dart';
-import '../../Login/login_screen.dart';
+// import '../../Login/login_screen.dart';
 
 const double defaultPadding = 16.0;
 const Color kPrimaryColor = Colors.blue;

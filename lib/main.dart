@@ -136,7 +136,9 @@ class HomePage extends StatelessWidget {
         return const IntroductionAnimationScreen();
       } else {
         // handling the case everything has crashed
-        return TLoaders.errorSnackBar(title: "Application en train d'ouvrir");
+        return Scaffold(
+          body: TLoaders.errorSnackBar(title: "Merci de patientiez"),
+        );
       }
     });
     // } else if (snapshot.hasError) {

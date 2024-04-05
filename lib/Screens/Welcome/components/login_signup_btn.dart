@@ -24,7 +24,7 @@
 //             );
 //           },
 //           child: Text(
-//             "Login".toUpperCase(),
+//             "Se connecter".toUpperCase(),
 //           ),
 //         ),
 //         const SizedBox(height: 16),
@@ -44,7 +44,7 @@
 //             elevation: 0,
 //           ),
 //           child: Text(
-//             "Sign Up".toUpperCase(),
+//             "S'inscrire".toUpperCase(),
 //             style: const TextStyle(color: Colors.black),
 //           ),
 //         ),

@@ -11,7 +11,7 @@
 //     return Column(
 //       children: [
 //         const Text(
-//           "WELCOME TO KAISI",
+//           "Bienvinue au Kaisi",
 //           style: TextStyle(fontWeight: FontWeight.bold),
 //         ),
 //         const SizedBox(height: defaultPadding * 2),

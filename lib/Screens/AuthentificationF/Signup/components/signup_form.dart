@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/controllers/signup_controller.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
-import 'package:kaisi_app/auth/auth_service.dart';
+// import 'package:kaisi_app/auth/auth_service.dart';
+import 'package:kaisi_app/auth/bloc/auth_bloc.dart';
+import 'package:kaisi_app/auth/bloc/auth_event.dart';
+import 'package:kaisi_app/auth/bloc/auth_state.dart';
 import 'package:kaisi_app/utilities/Dialogs/error_dialog.dart';
-import 'package:kaisi_app/utilities/constants/routes.dart';
+// import 'package:kaisi_app/utilities/constants/routes.dart';
 import '../../Login/login_screen.dart';
 
 const double defaultPadding = 16.0;
@@ -54,129 +58,148 @@ class _RegisterViewState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        children: [
-          TextFormField(
-            controller: _firstNameController,
-            // onChanged: (value) => signupController.firstName.value = value,
-            keyboardType: TextInputType.text,
-            textInputAction: TextInputAction.next,
-            cursorColor: kPrimaryColor,
-            decoration: const InputDecoration(
-              hintText: "Prénom",
-              prefixIcon: Icon(Icons.person),
-            ),
-          ),
-          TextFormField(
-            controller: _lastNameController,
-            // onChanged: (value) => signupController.lastName.value = value,
-            keyboardType: TextInputType.text,
-            textInputAction: TextInputAction.next,
-            cursorColor: kPrimaryColor,
-            decoration: const InputDecoration(
-              hintText: "Nom",
-              prefixIcon: Icon(Icons.person),
-            ),
-          ),
-          TextFormField(
-            controller: _phoneNumberController,
-            // onChanged: (value) => signupController.phoneNumber.value =
-            //     value, // Assign the controller
-            keyboardType: TextInputType.phone, // Set keyboard type to phone
-            textInputAction: TextInputAction.done,
-            cursorColor: kPrimaryColor,
-            decoration: const InputDecoration(
-              hintText: "Numéro de téléphone", // Hint text for phone number
-              prefixIcon: Icon(Icons.phone), // Phone icon
-            ),
-          ),
-          TextFormField(
-            controller: _emailController,
-            // onChanged: (value) => signupController.email.value = value,
-            keyboardType: TextInputType.emailAddress,
-            textInputAction: TextInputAction.next,
-            cursorColor: kPrimaryColor,
-            onSaved: (email) {},
-            decoration: const InputDecoration(
-              hintText: "Adresse e-mail",
-              prefixIcon: Icon(Icons.email),
-            ),
-          ),
-          TextFormField(
-            controller: _passwordController,
-            textInputAction: TextInputAction.next,
-            obscureText: true,
-            cursorColor: kPrimaryColor,
-            decoration: const InputDecoration(
-              hintText: "Mot de passe",
-              prefixIcon: Icon(Icons.lock),
-            ),
-          ),
-          TextFormField(
-            controller: _confirmPasswordController,
-            textInputAction: TextInputAction.done,
-            obscureText: true,
-            cursorColor: kPrimaryColor,
-            decoration: const InputDecoration(
-              hintText: "Confirmer le mot de passe",
-              prefixIcon: Icon(Icons.lock),
-            ),
-          ),
-          const SizedBox(height: defaultPadding / 2),
-          ElevatedButton(
-            onPressed: () async {
-              // final firstname = _firstNameController.text;
-              // final lastname = _lastNameController.text;
-              // final phonenumber = _phoneNumberController.text;
-              final email = _emailController.text;
-              final password = _passwordController.text;
-              final confirmPassword = _confirmPasswordController.text;
-              // Verifying if passwords match or no !
-              if (password != confirmPassword) {
-                await showErrorDialog(
-                    context, 'Les mots de passe ne correspondent pas');
-                return;
-              }
-              // Creating user
-              try {
-                await AuthService.firebase().createUser(
-                  email: email,
-                  password: password,
-                );
-                // Sending email verificatiom
-                await AuthService.firebase().sendEmailVerification();
-                // Navigating to verify email view
-                Navigator.of(context).pushNamed(verifyEmailScreen);
-                // Hnadling exceptions
-              } on WeakPasswordAuthException {
-                await showErrorDialog(context, 'Mot de passe faible');
-              } on EmailAlreadyInUseAuthException {
-                await showErrorDialog(context, 'Adresse e-mail déjà utilisée');
-              } on InvalidEmailAuthException {
-                await showErrorDialog(context, 'Adresse e-mail invalide');
-              } on GenericAuthException {
-                await showErrorDialog(context, "Échec de l'inscription");
-              }
-            },
-            child: Text("S'inscrire".toUpperCase()),
-          ),
-          const SizedBox(height: defaultPadding),
-          AlreadyHaveAnAccountCheck(
-            login: false,
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const LoginScreen();
-                  },
+    return BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) async {
+          if (state is AuthStateRegistering) {
+            if (state.execption is WeakPasswordAuthException) {
+              await showErrorDialog(context, 'Weak password');
+            } else if (state.execption is EmailAlreadyInUseAuthException) {
+              await showErrorDialog(context, 'Email already in use');
+            } else if (state.execption is GenericAuthException) {
+              await showErrorDialog(context, 'Failed to register');
+            } else if (state.execption is InvalidEmailAuthException) {
+              await showErrorDialog(context, 'Invaild email');
+            }
+          }
+        },
+        child: Form(
+          child: Column(
+            children: [
+              TextFormField(
+                controller: _firstNameController,
+                // onChanged: (value) => signupController.firstName.value = value,
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.next,
+                cursorColor: kPrimaryColor,
+                decoration: const InputDecoration(
+                  hintText: "Prénom",
+                  prefixIcon: Icon(Icons.person),
                 ),
-              );
-            },
-          )
-        ],
-      ),
-    );
+              ),
+              TextFormField(
+                controller: _lastNameController,
+                // onChanged: (value) => signupController.lastName.value = value,
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.next,
+                cursorColor: kPrimaryColor,
+                decoration: const InputDecoration(
+                  hintText: "Nom",
+                  prefixIcon: Icon(Icons.person),
+                ),
+              ),
+              TextFormField(
+                controller: _phoneNumberController,
+                // onChanged: (value) => signupController.phoneNumber.value =
+                //     value, // Assign the controller
+                keyboardType: TextInputType.phone, // Set keyboard type to phone
+                textInputAction: TextInputAction.done,
+                cursorColor: kPrimaryColor,
+                decoration: const InputDecoration(
+                  hintText: "Numéro de téléphone", // Hint text for phone number
+                  prefixIcon: Icon(Icons.phone), // Phone icon
+                ),
+              ),
+              TextFormField(
+                controller: _emailController,
+                // onChanged: (value) => signupController.email.value = value,
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
+                cursorColor: kPrimaryColor,
+                onSaved: (email) {},
+                decoration: const InputDecoration(
+                  hintText: "Adresse e-mail",
+                  prefixIcon: Icon(Icons.email),
+                ),
+              ),
+              TextFormField(
+                controller: _passwordController,
+                textInputAction: TextInputAction.next,
+                obscureText: true,
+                cursorColor: kPrimaryColor,
+                decoration: const InputDecoration(
+                  hintText: "Mot de passe",
+                  prefixIcon: Icon(Icons.lock),
+                ),
+              ),
+              TextFormField(
+                controller: _confirmPasswordController,
+                textInputAction: TextInputAction.done,
+                obscureText: true,
+                cursorColor: kPrimaryColor,
+                decoration: const InputDecoration(
+                  hintText: "Confirmer le mot de passe",
+                  prefixIcon: Icon(Icons.lock),
+                ),
+              ),
+              const SizedBox(height: defaultPadding / 2),
+              ElevatedButton(
+                onPressed: () async {
+                  // final firstname = _firstNameController.text;
+                  // final lastname = _lastNameController.text;
+                  // final phonenumber = _phoneNumberController.text;
+                  final email = _emailController.text;
+                  final password = _passwordController.text;
+                  final confirmPassword = _confirmPasswordController.text;
+                  // Verifying if passwords match or no !
+                  if (password != confirmPassword) {
+                    await showErrorDialog(
+                        context, 'Les mots de passe ne correspondent pas');
+                    return;
+                  }
+                  context.read<AuthBloc>().add(AuthEventRegister(
+                        email,
+                        password,
+                      ));
+                  // Creating user
+                  // try {
+                  //   await AuthService.firebase().createUser(
+                  //     email: email,
+                  //     password: password,
+                  //   );
+                  //   // Sending email verificatiom
+                  //   await AuthService.firebase().sendEmailVerification();
+                  //   // Navigating to verify email view
+                  //   Navigator.of(context).pushNamed(verifyEmailScreen);
+                  //   // Hnadling exceptions
+                  // } on WeakPasswordAuthException {
+                  //   await showErrorDialog(context, 'Mot de passe faible');
+                  // } on EmailAlreadyInUseAuthException {
+                  //   await showErrorDialog(
+                  //       context, 'Adresse e-mail déjà utilisée');
+                  // } on InvalidEmailAuthException {
+                  //   await showErrorDialog(context, 'Adresse e-mail invalide');
+                  // } on GenericAuthException {
+                  //   await showErrorDialog(context, "Échec de l'inscription");
+                  // }
+                },
+                child: Text("S'inscrire".toUpperCase()),
+              ),
+              const SizedBox(height: defaultPadding),
+              AlreadyHaveAnAccountCheck(
+                login: false,
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const LoginScreen();
+                      },
+                    ),
+                  );
+                },
+              )
+            ],
+          ),
+        ));
   }
 }

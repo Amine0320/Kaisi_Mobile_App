@@ -31,6 +31,7 @@ class TLoaders {
     );
   }
 
+// Success Dialog
   static successSnackBar({required title, message = '', duration = 3}) {
     Get.snackbar(
       title,
@@ -46,6 +47,7 @@ class TLoaders {
     );
   }
 
+// Warning Dialog
   static warningSnackBar({required title, message = ''}) {
     Get.snackbar(
       title,
@@ -61,6 +63,7 @@ class TLoaders {
     );
   }
 
+// Error Dialog
   static errorSnackBar({required title, message = ''}) {
     Get.snackbar(
       title,

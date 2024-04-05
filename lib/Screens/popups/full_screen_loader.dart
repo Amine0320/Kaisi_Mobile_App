@@ -4,6 +4,7 @@ import 'package:kaisi_app/Screens/loaders/animation_loader.dart';
 import 'package:kaisi_app/utilities/constants/colors.dart';
 import '../helpers/helper_functions.dart';
 
+/// Check Loader please
 /// A utility class for managing a full-screen loading dialog.
 class TFullScreenLoader {
   /// Open a full-screen loading dialog with a given text and animation.

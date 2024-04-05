@@ -19,6 +19,7 @@ import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/Question
 import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/situation_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/change_name.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
+import 'package:kaisi_app/Screens/popups/loaders.dart';
 // import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/auth/bloc/auth_bloc.dart';
 import 'package:kaisi_app/auth/bloc/auth_event.dart';
@@ -135,9 +136,7 @@ class HomePage extends StatelessWidget {
         return const IntroductionAnimationScreen();
       } else {
         // handling the case everything has crashed
-        return const Scaffold(
-          body: CircularProgressIndicator(),
-        );
+        return TLoaders.errorSnackBar(title: "Application en train d'ouvrir");
       }
     });
     // } else if (snapshot.hasError) {

@@ -4,6 +4,7 @@ import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/forget_pw.dar
 import 'package:kaisi_app/Screens/AuthentificationF/Signup/signup_screen.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/components/already_have_an_account_acheck.dart';
 import 'package:kaisi_app/Screens/popups/full_screen_loader.dart';
+import 'package:kaisi_app/Screens/popups/loaders.dart';
 // import 'package:kaisi_app/Screens/popups/full_screen_loader.dart';
 import 'package:kaisi_app/auth/auth_exceptions.dart';
 // import 'package:kaisi_app/auth/auth_service.dart';
@@ -47,16 +48,22 @@ class _LoginViewState extends State<LoginForm> {
           if (state is AuthStateLoggedOut) {
             // final closeDialog = _closeDialogHandler;
             // closing dialog
-            if (!state.isLoading) {
-              TFullScreenLoader.stopLoading();
-            }
-            // open dialog
-            if (state.isLoading) {
-              TFullScreenLoader.openLoadingDialog(
-                'Logging you in...',
-                'assets/animation/141594-animation-of-docer.json',
-              );
-            }
+            // try {
+            //   if (!state.isLoading) {
+            //     TFullScreenLoader.stopLoading();
+            //     return;
+            //   }
+            //   // open dialog
+            //   if (state.isLoading) {
+            //     TFullScreenLoader.openLoadingDialog(
+            //       'Logging you in...',
+            //       'assets/animation/141594-animation-of-docer.json',
+            //     );
+            //   }
+            // } catch (e) {
+            //   TFullScreenLoader.stopLoading();
+            //   TLoaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+            // }
             if (state.exception is UserNotFoundAuthException ||
                 state.exception is WrongPasswordAuthException) {
               await showErrorDialog(context, 'User-not-found');
@@ -120,7 +127,6 @@ class _LoginViewState extends State<LoginForm> {
                   final password = _passwordController.text;
 
                   // try {
-                  //   // TFullScreenLoader.openLoadingDialog('Logging you in...', "");
                   //   await AuthService.firebase().logIn(
                   //     email: email,
                   //     password: password,

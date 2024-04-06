@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:kaisi_app/auth/auth_service.dart';
-import 'package:kaisi_app/auth/bloc/auth_bloc.dart';
-import 'package:kaisi_app/auth/bloc/auth_event.dart';
+import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/utilities/constants/colors.dart';
-// import 'package:kaisi_app/utilities/constants/routes.dart';
+import 'package:kaisi_app/utilities/constants/routes.dart';
 
 class VerifyForm extends StatefulWidget {
   const VerifyForm({
@@ -37,12 +34,9 @@ class _VerifyFormState extends State<VerifyForm> {
           const SizedBox(height: defaultPadding),
           ElevatedButton(
             onPressed: () async {
-              // var sendEmailVerification =
-              //     AuthService.firebase().sendEmailVerification();
-              // await sendEmailVerification;
-              context
-                  .read<AuthBloc>()
-                  .add(const AuthEvenSendEmailVerification());
+              var sendEmailVerification =
+                  AuthService.firebase().sendEmailVerification();
+              await sendEmailVerification;
             },
             child: Text(
               "Envoyer l'e-mail de vérification".toUpperCase(),
@@ -51,10 +45,9 @@ class _VerifyFormState extends State<VerifyForm> {
           const SizedBox(height: defaultPadding),
           ElevatedButton(
             onPressed: () async {
-              // await AuthService.firebase().logOut();
-              // Navigator.of(context)
-              //     .pushNamedAndRemoveUntil(signUpScreenRoute, (route) => false);
-              context.read<AuthBloc>().add(const AuthEventLogOut());
+              await AuthService.firebase().logOut();
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(signUpScreenRoute, (route) => false);
             },
             child: Text(
               "Redémarrer".toUpperCase(),

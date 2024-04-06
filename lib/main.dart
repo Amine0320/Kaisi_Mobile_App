@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/forget_pw.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Login/login_screen.dart';
@@ -19,12 +18,7 @@ import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/Question
 import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/situation_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/change_name.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
-import 'package:kaisi_app/Screens/popups/loaders.dart';
-// import 'package:kaisi_app/auth/auth_service.dart';
-import 'package:kaisi_app/auth/bloc/auth_bloc.dart';
-import 'package:kaisi_app/auth/bloc/auth_event.dart';
-import 'package:kaisi_app/auth/bloc/auth_state.dart';
-import 'package:kaisi_app/auth/firebase_auth_provider.dart';
+import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/controllers/user_controller.dart';
 import 'package:kaisi_app/firebase_options.dart';
 import 'package:kaisi_app/Screens/introduction_animation/introduction_animation_screen.dart';
@@ -68,11 +62,7 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      // Handling Bloc Here
-      home: BlocProvider<AuthBloc>(
-        create: (context) => AuthBloc(FirebaseAuthProvider()),
-        child: const HomePage(),
-      ),
+      home: const HomePage(),
       //Routes
       routes: {
         loginScreenRoute: (context) => const LoginScreen(),
@@ -117,44 +107,30 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<AuthBloc>().add(const AuthEventIntialize());
-    return BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-      // Intializing the firebase
-      // future: AuthService.firebase().intialize(),
-      // if (snapshot.connectionState == ConnectionState.waiting) {
-      //   // Loading indicator while initializing
-      //   return const Center(
-      //     child: CircularProgressIndicator(),
-      //   );
-      if (state is AuthStateLoggedIn) {
-        return const NavigationHomeScreen();
-      } else if (state is AuthStateLoggedOut) {
-        return const LoginScreen();
-      } else if (state is AuthStateNeedsVerification) {
-        return const VerifyEmailScreen();
-      } else if (state is AuthStateRegistering) {
-        return const IntroductionAnimationScreen();
-      } else {
-        // handling the case everything has crashed
-        return Scaffold(
-          body: TLoaders.errorSnackBar(title: "Merci de patientiez"),
-        );
-      }
-    });
-    // } else if (snapshot.hasError) {
-    //   // Error handling for initialization
-    //   return const Center(
-    //     child: Text('Error'),
-    //   );
-    // } else {
-    //   final user = AuthService.firebase().currentUser;
-    //   if (user != null) {
-    //     // If user is authenticated, navigate to home screen
-    //     return const NavigationHomeScreen();
-    //   } else {
-    //     // If user is not authenticated, show introduction screen
-    //     return const IntroductionAnimationScreen();
-    //   }
-    // }
+    return FutureBuilder(
+      future: AuthService.firebase().intialize(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // Loading indicator while initializing
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (snapshot.hasError) {
+          // Error handling for initialization
+          return const Center(
+            child: Text('Error'),
+          );
+        } else {
+          final user = AuthService.firebase().currentUser;
+          if (user != null) {
+            // If user is authenticated, navigate to home screen
+            return const NavigationHomeScreen();
+          } else {
+            // If user is not authenticated, show introduction screen
+            return const IntroductionAnimationScreen();
+          }
+        }
+      },
+    );
   }
 }

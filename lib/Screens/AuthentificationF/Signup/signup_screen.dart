@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kaisi_app/Screens/AuthentificationF/Signup/components/sign_up_top_image.dart';
-import 'package:kaisi_app/auth/bloc/auth_bloc.dart';
-import 'package:kaisi_app/Screens/AuthentificationF/Signup/components/signup_form.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Signup/components/socal_sign_up.dart';
-import 'package:kaisi_app/Screens/AuthentificationF/components/background.dart';
 import 'package:kaisi_app/Screens/HomeScreen/Components/responsive.dart';
-import 'package:kaisi_app/auth/firebase_auth_provider.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/components/background.dart';
+import 'components/sign_up_top_image.dart';
+import 'components/signup_form.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return const Background(
       child: SingleChildScrollView(
         child: Responsive(
-          mobile: const MobileSignupScreen(),
+          mobile: MobileSignupScreen(),
           desktop: Row(
             children: [
-              const Expanded(
+              Expanded(
                 child: SignUpScreenTopImage(),
               ),
               Expanded(
@@ -28,13 +25,10 @@ class SignUpScreen extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 450,
-                      child: BlocProvider<AuthBloc>(
-                        create: (context) => AuthBloc(FirebaseAuthProvider()),
-                        child: const SignUpForm(),
-                      ),
+                      child: SignUpForm(),
                     ),
-                    const SizedBox(height: defaultPadding / 2),
-                    const SocalSignUp()
+                    SizedBox(height: defaultPadding / 2),
+                    SocalSignUp()
                   ],
                 ),
               )
@@ -47,28 +41,27 @@ class SignUpScreen extends StatelessWidget {
 }
 
 class MobileSignupScreen extends StatelessWidget {
-  const MobileSignupScreen({Key? key}) : super(key: key);
+  const MobileSignupScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const SignUpScreenTopImage(),
+        SignUpScreenTopImage(),
         Row(
           children: [
-            const Spacer(),
+            Spacer(),
             Expanded(
               flex: 8,
-              child: BlocProvider<AuthBloc>(
-                create: (context) => AuthBloc(FirebaseAuthProvider()),
-                child: const SignUpForm(),
-              ),
+              child: SignUpForm(),
             ),
-            const Spacer(),
+            Spacer(),
           ],
         ),
-        const SocalSignUp()
+        SocalSignUp()
       ],
     );
   }

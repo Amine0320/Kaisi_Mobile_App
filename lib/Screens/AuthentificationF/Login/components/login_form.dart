@@ -70,18 +70,6 @@ class _LoginViewState extends State<LoginForm> {
               ),
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(
-                top: 0.0), // Adjust the top margin as needed
-            child: TextButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const ForgetScreen();
-                }));
-              },
-              child: const Text('Réinitialiser le mot de passe'),
-            ),
-          ),
           ElevatedButton(
             onPressed: () async {
               final email = _emailController.text;
@@ -116,6 +104,18 @@ class _LoginViewState extends State<LoginForm> {
             },
             child: Text(
               "Se connecter".toUpperCase(),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(
+                top: 0.0), // Adjust the top margin as needed
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const ForgetScreen();
+                }));
+              },
+              child: const Text('Réinitialiser le mot de passe'),
             ),
           ),
           const SizedBox(height: defaultPadding),

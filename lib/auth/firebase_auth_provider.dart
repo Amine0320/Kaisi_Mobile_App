@@ -27,24 +27,36 @@ import 'package:kaisi_app/auth/platform_exceptions.dart';
 import 'package:kaisi_app/firebase_options.dart';
 // import 'package:kaisi_app/utilities/local_storage/storage_utility.dart';
 
+/// A class providing Firebase authentication functionality.
 class FirebaseAuthProvider implements AuthProvider {
+  /// Firebase authentication instance.
   final _auth = FirebaseAuth.instance;
+
+  /// Gets the singleton instance of [FirebaseAuthProvider].
   static FirebaseAuthProvider get instance => Get.find();
 
-  /// Variables
+  /// Reactive variable for the current Firebase user.
   late final Rx<User?> _firebaseUser;
+
+  /// Local storage instance.
   final deviceStorage = GetStorage();
 
-  /// Getters
+  /// Getter for the current Firebase user.
   User? get firebaseUser => _firebaseUser.value;
 
+  /// Getter for the user ID.
   String get getUserID => _firebaseUser.value?.uid ?? "";
 
+  /// Getter for the user email.
   String get getUserEmail => _firebaseUser.value?.email ?? "";
 
+  /// Getter for the user display name.
   String get getDisplayName => _firebaseUser.value?.displayName ?? "";
 
+  /// Getter for the user phone number.
   String get getPhoneNo => _firebaseUser.value?.phoneNumber ?? "";
+
+  /// Initializes Firebase.
   @override
   Future<void> intialize() async {
     await Firebase.initializeApp(
@@ -52,9 +64,12 @@ class FirebaseAuthProvider implements AuthProvider {
     );
   }
 
+  /// Creates a new user with the provided email and password.
   @override
-  Future<AuthUser> createUser(
-      {required String email, required String password, required}) async {
+  Future<AuthUser> createUser({
+    required String email,
+    required String password,
+  }) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
@@ -81,6 +96,7 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 
+  /// Gets the current authenticated user.
   @override
   AuthUser? get currentUser {
     final user = FirebaseAuth.instance.currentUser;
@@ -91,6 +107,7 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 
+  /// Logs in the user with the provided email and password.
   @override
   Future<AuthUser> logIn({
     required String email,
@@ -120,6 +137,7 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 
+  /// Logs out the current user.
   @override
   Future<void> logOut() async {
     final user = FirebaseAuth.instance.currentUser;
@@ -130,6 +148,7 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 
+  /// Sends email verification to the current user.
   @override
   Future<void> sendEmailVerification() async {
     final user = FirebaseAuth.instance.currentUser;
@@ -140,6 +159,7 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 
+  /// Resets the password for the provided email.
   @override
   Future<void> resetPassword(String email) async {
     try {
@@ -157,11 +177,10 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 
-  /// DELETE USER - Remove user Auth and Firestore Account.
+  /// Deletes the current user account.
   @override
   Future<void> deleteAccount() async {
     try {
-      // await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
       await _auth.currentUser?.delete();
     } on FirebaseAuthException catch (e) {
       throw KFirebaseAuthException(e.code).message;
@@ -176,16 +195,13 @@ class FirebaseAuthProvider implements AuthProvider {
     }
   }
 
-  /// [ReAuthenticate] - ReAuthenticate User
+  /// Reauthenticates the current user with the provided email and password.
   @override
   Future<void> reAuthenticateWithEmailAndPassword(
       String email, String password) async {
     try {
-      // Create a credential
       AuthCredential credential =
           EmailAuthProvider.credential(email: email, password: password);
-
-      // ReAuthenticate
       await _auth.currentUser!.reauthenticateWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       throw KFirebaseAuthException(e.code).message;
@@ -199,25 +215,18 @@ class FirebaseAuthProvider implements AuthProvider {
       throw 'Something went wrong. Please try again';
     }
   }
-  /* ---------------------------- Federated identity & social sign-in ---------------------------------*/
 
-  /// [GoogleAuthentication] - GOOGLE
+  /// Signs in the user with Google authentication.
   @override
   Future<UserCredential?> signInWithGoogle() async {
     try {
-      // Trigger the authentication flow
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-      // Obtain the auth details from the request
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
-
-      // Create a new credential
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      // Once signed in, return the UserCredential
       return await FirebaseAuth.instance.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       throw KFirebaseAuthException(e.code).message;
@@ -232,51 +241,4 @@ class FirebaseAuthProvider implements AuthProvider {
       return null;
     }
   }
-
-  ///[FacebookAuthentication] - FACEBOOK
-  // @override
-  // Future<UserCredential> signInWithFacebook() async {
-  //   try {
-  //     // Trigger the sign-in flow
-  //     final LoginResult loginResult =
-  //         await FacebookAuth.instance.login(permissions: ['email']);
-
-  //     // Create a credential from the access token
-  //     final AccessToken accessToken = loginResult.accessToken!;
-  //     final OAuthCredential facebookAuthCredential =
-  //         FacebookAuthProvider.credential(accessToken.token);
-
-  //     // Once signed in, return the UserCredential
-  //     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-  //   } on FirebaseAuthException catch (e) {
-  //     throw TFirebaseAuthException(e.code).message;
-  //   } on FirebaseException catch (e) {
-  //     throw TFirebaseException(e.code).message;
-  //   } on FormatException catch (_) {
-  //     throw const KFormatException();
-  //   } on PlatformException catch (e) {
-  //     throw KPlatformException(e.code).message;
-  //   } catch (e) {
-  //     throw 'Something went wrong. Please try again';
-  //   }
-  // }
-  /// Function to Show Relevant Screen
-  // screenRedirect(User? user) async {
-  //   if (user != null) {
-  //     // User Logged-In: If email verified let the user go to Home Screen else to the Email Verification Screen
-  //     if (user.emailVerified) {
-  //       // Initialize User Specific Storage
-  //       await TLocalStorage.init(user.uid);
-  //       Get.offAll(() => const NavigationHomeScreen());
-  //     } else {
-  //       Get.offAll(() => const VerifyEmailScreen());
-  //     }
-  //   } else {
-  //     // Local Storage: User is new or Logged out! If new then write isFirstTime Local storage variable = true.
-  //     deviceStorage.writeIfNull('isFirstTime', true);
-  //     deviceStorage.read('isFirstTime') != true
-  //         ? Get.offAll(() => const LoginScreen())
-  //         : Get.offAll(() => const OnBoardingScreen());
-  //   }
-  // }
 }

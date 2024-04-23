@@ -3,14 +3,12 @@ import 'package:kaisi_app/auth/auth_provider.dart';
 import 'package:kaisi_app/auth/bloc/auth_event.dart';
 import 'package:kaisi_app/auth/bloc/auth_state.dart';
 
+// This class represents the business logic component for handling authentication-related events
+// and managing the state of authentication in the application.
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  // Constructor for initializing the AuthBloc with an AuthProvider instance.
   AuthBloc(AuthProvider provider) : super(const AuthStateOnIntialized()) {
-    //send email verification
-    // attention not to handle in Kaisi App
-    // on<AuthEvenSendEmailVerification>((event, emit) async {
-    //   await provider.sendEmailVerification();
-    //   emit(state);
-    // });
+    // Event handler for user registration.
     on<AuthEventRegister>((event, emit) async {
       final email = event.email;
       final password = event.password;
@@ -25,7 +23,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthStateRegistering(e));
       }
     });
-    //initialize
+
+    // Event handler for initializing the authentication state.
     on<AuthEventIntialize>((event, emit) async {
       await provider.intialize();
       final user = provider.currentUser;
@@ -40,14 +39,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthStateLoggedIn(user));
       }
     });
-    // log in
+
+    // Event handler for user login.
     on<AuthEventLogIn>((event, emit) async {
-      // emit(const AuthStateLoading());
       emit(const AuthStateLoggedOut(
         exception: null,
         isLoading: true,
       ));
-      // await Future.delayed(const Duration(seconds: 3));
       final email = event.email;
       final password = event.password;
       try {
@@ -73,7 +71,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthStateLoggedOut(exception: e, isLoading: false));
       }
     });
-    // log out
+
+    // Event handler for user logout.
     on<AuthEventLogOut>((event, emit) async {
       try {
         await provider.logOut();

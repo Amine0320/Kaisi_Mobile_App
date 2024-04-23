@@ -5,13 +5,18 @@ import 'package:flutter/material.dart';
 class AuthUser {
   final bool isEmailVerified;
 
+  // Constructor
   const AuthUser({required this.isEmailVerified});
+
+  // Factory constructor to create AuthUser from Firebase User.
   factory AuthUser.fromFirebase(User user) =>
       AuthUser(isEmailVerified: user.emailVerified);
-  // Update email verification status after password reset
+
+  // Method to update email verification status after password reset.
   AuthUser updateEmailVerification(bool isEmailVerified) {
     return AuthUser(isEmailVerified: isEmailVerified);
   }
 
+  // Method to reload user data.
   reload() {}
 }

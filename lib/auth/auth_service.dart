@@ -6,14 +6,20 @@ import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/firebase_options.dart';
 
 class AuthService implements AuthProvider {
+  // Get the instance of the AuthService.
   static AuthService get instance => Get.find();
+
   final AuthProvider provider;
 
+  // Constructor
   const AuthService(this.provider);
+
+  // Factory constructor for creating AuthService with FirebaseAuthProvider.
   factory AuthService.firebase() => AuthService(FirebaseAuthProvider());
 
   @override
   Future<void> intialize() async {
+    // Initialize Firebase app with default options.
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
@@ -28,6 +34,7 @@ class AuthService implements AuthProvider {
         email: email,
         password: password,
       );
+
   @override
   AuthUser? get currentUser => provider.currentUser;
 
@@ -49,12 +56,15 @@ class AuthService implements AuthProvider {
 
   @override
   Future<void> resetPassword(String email) => provider.resetPassword(email);
+
   @override
   Future<void> deleteAccount() => provider.deleteAccount();
+
   @override
   Future<void> reAuthenticateWithEmailAndPassword(
           String email, String password) =>
       provider.reAuthenticateWithEmailAndPassword(email, password);
+
   @override
   Future<void> signInWithGoogle() => provider.signInWithGoogle();
 }

@@ -28,7 +28,7 @@ class _AboutScreenState extends State<AboutScreen> {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Description lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
+              'Kaisi est une société de coaching et un cabinet de formations humanistes et de management destinés aux entreprises, aux cadres et aux salariés',
               style: TextStyle(fontSize: 16),
               textAlign: TextAlign.center,
             ),

@@ -1,10 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
+import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
+import 'package:kaisi_app/Widgets/custom_shapes/shimmers/shimmer.dart';
+import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
 import '../HomeScreen/Components/app_theme.dart';
 import 'package:flutter/material.dart';
+import '../../../controllers/user_controller.dart';
 
 class HomeDrawer extends StatefulWidget {
-  const HomeDrawer(
+  HomeDrawer(
       {Key? key,
       this.screenIndex,
       this.iconAnimationController,
@@ -14,6 +18,7 @@ class HomeDrawer extends StatefulWidget {
   final AnimationController? iconAnimationController;
   final DrawerIndex? screenIndex;
   final Function(DrawerIndex)? callBackIndex;
+  final controller = Get.put(FirebaseAuthProvider());
 
   @override
   _HomeDrawerState createState() => _HomeDrawerState();
@@ -75,8 +80,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    var brightness = MediaQuery.of(context).platformBrightness;
-    bool isLightMode = brightness == Brightness.light;
+    final controller = UserController.instance;
+    // var brightness = MediaQuery.of(context).platformBrightness;
+    // bool isLightMode = brightness == Brightness.light;
     return Scaffold(
       backgroundColor: AppTheme.notWhite.withOpacity(0.5),
       body: Column(
@@ -106,40 +112,42 @@ class _HomeDrawerState extends State<HomeDrawer> {
                                       curve: Curves.fastOutSlowIn))
                                   .value /
                               360),
-                          child: Container(
-                            height: 120,
-                            width: 120,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              boxShadow: <BoxShadow>[
-                                BoxShadow(
-                                    color: AppTheme.grey.withOpacity(0.6),
-                                    offset: const Offset(2.0, 4.0),
-                                    blurRadius: 8),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Column(
+                              children: [
+                                Obx(
+                                  () {
+                                    final networkImage =
+                                        controller.user.value.profilePicture;
+                                    final image = networkImage.isNotEmpty
+                                        ? networkImage
+                                        : "assets/images/user.png";
+                                    return controller.imageUploading.value
+                                        ? const TShimmerEffect(
+                                            width: 80, height: 80, radius: 80)
+                                        : TCircularImage(
+                                            image: image,
+                                            width: 80,
+                                            height: 80,
+                                            isNetworkImage:
+                                                networkImage.isNotEmpty);
+                                  },
+                                ),
+                                TextButton(
+                                  onPressed: controller.imageUploading.value
+                                      ? () {}
+                                      : () =>
+                                          controller.uploadUserProfilePicture(),
+                                  // need to make it dynamic ( name )
+                                  child: const Text('Amine Elbah'),
+                                ),
                               ],
-                            ),
-                            child: ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(60.0)),
-                              // Static a changer
-                              child: Image.asset('assets/images/ImenImage.png'),
                             ),
                           ),
                         ),
                       );
                     },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, left: 4),
-                    // Static a changer
-                    child: Text(
-                      'Imen Jmal',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: isLightMode ? AppTheme.grey : AppTheme.white,
-                        fontSize: 18,
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -168,27 +176,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
           ),
           Column(
             children: <Widget>[
-              ListTile(
-                title: const Text(
-                  'Se Deconnecter',
-                  style: TextStyle(
-                    fontFamily: AppTheme.fontName,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: AppTheme.darkText,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-                trailing: const Icon(
-                  Icons.power_settings_new,
-                  color: Colors.red,
-                ),
-                // Logic to sign you out when you press the button !
-                onTap: () async {
-                  await FirebaseAuth.instance.signOut();
-                  Navigator.pushNamed(context, loginScreenRoute);
-                },
-              ),
+              OutlinedButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, loginScreenRoute),
+                  child: const Text('Se deconnecter')),
               SizedBox(
                 height: MediaQuery.of(context).padding.bottom,
               )

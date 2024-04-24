@@ -6,7 +6,6 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/utilities/Dialogs/message_dialog.dart';
 import 'package:http/http.dart' as http;
-import 'package:kaisi_app/utilities/constants/colors.dart';
 
 class ContactForm extends StatefulWidget {
   const ContactForm({Key? key}) : super(key: key);

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kaisi_app/Screens/HomeScreen/Components/app_theme.dart';
+import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/utilities/Dialogs/feedBack_dialog.dart';
 
 class FeedbackScreen extends StatefulWidget {
@@ -24,9 +26,15 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
 
     if (feedback.isNotEmpty && name.isNotEmpty) {
       try {
+        final controller = Get.put(FirebaseAuthProvider());
+        String uid = controller.getUserID;
         // Sending feedback to the backend
-        await FirebaseFirestore.instance.collection('feedback').add(
-            {'feedback': feedback, 'name': name, 'timestamp': DateTime.now()});
+        await FirebaseFirestore.instance.collection('feedback').add({
+          'feedback': feedback,
+          'name': name,
+          'timestamp': DateTime.now(),
+          'uid': uid,
+        });
         // Feedback submitted successfully
         _feedbackController.clear();
         _nameController.clear();

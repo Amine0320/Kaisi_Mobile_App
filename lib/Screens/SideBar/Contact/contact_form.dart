@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/utilities/Dialogs/message_dialog.dart';
 import 'package:http/http.dart' as http;
 
@@ -26,13 +29,19 @@ class _ContactFormState extends State<ContactForm> {
 
     if (message.isNotEmpty && name.isNotEmpty) {
       try {
+        // Get current user's UID
+        final controller = Get.put(FirebaseAuthProvider());
+        String uid = controller.getUserID;
+
         // Sending feedback to the backend
         await FirebaseFirestore.instance.collection('contact').add({
           'message': message,
           'name': name,
           'email': email,
-          'timestamp': DateTime.now()
+          'timestamp': DateTime.now(),
+          'uid': uid,
         });
+
         // Trigger Cloud Function to send email
         await http.post(
           Uri.parse(
@@ -41,9 +50,11 @@ class _ContactFormState extends State<ContactForm> {
             'name': name,
             'email': email,
             'message': message,
+            'uid': uid, // Pass UID to the Cloud Function
           }),
           headers: {'Content-Type': 'application/json'},
         );
+
         // Feedback submitted successfully
         _messageController.clear();
         _nameController.clear();

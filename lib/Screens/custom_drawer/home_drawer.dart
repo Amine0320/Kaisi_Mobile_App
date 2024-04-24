@@ -3,6 +3,7 @@ import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/shimmers/shimmer.dart';
 import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
+import 'package:kaisi_app/utilities/constants/sizes.dart';
 import '../HomeScreen/Components/app_theme.dart';
 import 'package:flutter/material.dart';
 import '../../../controllers/user_controller.dart';
@@ -182,7 +183,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   child: const Text('Se deconnecter')),
               SizedBox(
                 height: MediaQuery.of(context).padding.bottom,
-              )
+              ),
+              const SizedBox(height: TSizes.spaceBtwSections),
             ],
           ),
         ],

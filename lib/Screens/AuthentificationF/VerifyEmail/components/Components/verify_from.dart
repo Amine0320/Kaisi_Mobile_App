@@ -47,7 +47,7 @@ class _VerifyFormState extends State<VerifyForm> {
             onPressed: () async {
               await AuthService.firebase().logOut();
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil(signUpScreenRoute, (route) => false);
+                  .pushNamedAndRemoveUntil(loginScreenRoute, (route) => false);
             },
             child: Text(
               "Redémarrer".toUpperCase(),

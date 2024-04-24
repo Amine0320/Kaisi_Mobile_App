@@ -18,6 +18,7 @@ import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/components/Question
 import 'package:kaisi_app/Screens/SideBar/my_coach/Situation/situation_screen.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/change_name.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
+import 'package:kaisi_app/Screens/Welcome/welcome_screen.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/controllers/user_controller.dart';
 import 'package:kaisi_app/firebase_options.dart';
@@ -124,10 +125,12 @@ class HomePage extends StatelessWidget {
           final user = AuthService.firebase().currentUser;
           if (user != null) {
             // If user is authenticated, navigate to home screen
-            return const NavigationHomeScreen();
+            // return const NavigationHomeScreen();
+            return const WelcomeScreen();
           } else {
             // If user is not authenticated, show introduction screen
-            return const IntroductionAnimationScreen();
+            // return const IntroductionAnimationScreen();
+            return const WelcomeScreen();
           }
         }
       },

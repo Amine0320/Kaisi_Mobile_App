@@ -1,54 +1,54 @@
-// import 'package:flutter/material.dart';
-// import '../../../contants/routes.dart';
-// import '../../Login/login_screen.dart';
-// import '../../Signup/signup_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Login/login_screen.dart';
+import 'package:kaisi_app/Screens/AuthentificationF/Signup/signup_screen.dart';
+import 'package:kaisi_app/utilities/constants/colors.dart';
 
-// class LoginAndSignupBtn extends StatelessWidget {
-//   const LoginAndSignupBtn({
-//     Key? key,
-//   }) : super(key: key);
+class LoginAndSignupBtn extends StatelessWidget {
+  const LoginAndSignupBtn({
+    Key? key,
+  }) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         ElevatedButton(
-//           onPressed: () {
-//             Navigator.push(
-//               context,
-//               MaterialPageRoute(
-//                 builder: (context) {
-//                   return const LoginScreen();
-//                 },
-//               ),
-//             );
-//           },
-//           child: Text(
-//             "Se connecter".toUpperCase(),
-//           ),
-//         ),
-//         const SizedBox(height: 16),
-//         ElevatedButton(
-//           onPressed: () {
-//             Navigator.push(
-//               context,
-//               MaterialPageRoute(
-//                 builder: (context) {
-//                   return const SignUpScreen();
-//                 },
-//               ),
-//             );
-//           },
-//           style: ElevatedButton.styleFrom(
-//             backgroundColor: kPrimaryLightColor,
-//             elevation: 0,
-//           ),
-//           child: Text(
-//             "S'inscrire".toUpperCase(),
-//             style: const TextStyle(color: Colors.black),
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const LoginScreen();
+                },
+              ),
+            );
+          },
+          child: Text(
+            "Se connecter".toUpperCase(),
+          ),
+        ),
+        const SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const SignUpScreen();
+                },
+              ),
+            );
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kPrimaryLightColor,
+            elevation: 0,
+          ),
+          child: Text(
+            "S'inscrire".toUpperCase(),
+            style: const TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
+    );
+  }
+}

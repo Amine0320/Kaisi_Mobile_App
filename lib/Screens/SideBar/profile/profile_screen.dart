@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kaisi_app/Screens/SideBar/profile/delete_user.dart';
 // import 'package:kaisi_app/Screens/AuthentificationF/Signup/components/signup_form.dart';
 import 'package:kaisi_app/Screens/SideBar/profile/profile_menu.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/images/t_circular_image.dart';
@@ -93,7 +94,9 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
               Center(
                 child: TextButton(
-                    onPressed: () => controller.deleteAccountWarningPopup(),
+                    onPressed: () {
+                      showDeleteAccountDialog(context);
+                    },
                     child: const Text('Fermer le compte',
                         style: TextStyle(color: Colors.red))),
               )

@@ -12,6 +12,8 @@ class AuthUser {
   factory AuthUser.fromFirebase(User user) =>
       AuthUser(isEmailVerified: user.emailVerified);
 
+  get providerData => null;
+
   // Method to update email verification status after password reset.
   AuthUser updateEmailVerification(bool isEmailVerified) {
     return AuthUser(isEmailVerified: isEmailVerified);
@@ -19,4 +21,6 @@ class AuthUser {
 
   // Method to reload user data.
   reload() {}
+
+  delete() {}
 }

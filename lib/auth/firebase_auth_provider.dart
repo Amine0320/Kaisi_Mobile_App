@@ -38,6 +38,20 @@ class FirebaseAuthProvider implements AuthProvider {
   /// Reactive variable for the current Firebase user.
   late final Rx<User?> _firebaseUser;
 
+// Constructor
+  FirebaseAuthProvider() {
+    _initializeFirebaseUser();
+  }
+
+  // Method to initialize _firebaseUser
+  void _initializeFirebaseUser() {
+    _firebaseUser = Rx<User?>(_auth.currentUser);
+    // Listen for changes in authentication state
+    _auth.authStateChanges().listen((User? user) {
+      _firebaseUser.value = user;
+    });
+  }
+
   /// Local storage instance.
   final deviceStorage = GetStorage();
 

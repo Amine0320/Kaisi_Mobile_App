@@ -30,6 +30,7 @@ class SettingScreen extends StatelessWidget {
                     /// AppBar
                     AppBar(
                         backgroundColor: TColors.primary,
+                        automaticallyImplyLeading: false,
                         flexibleSpace: Container(
                           decoration: const BoxDecoration(
                             color: Colors

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kaisi_app/utilities/constants/colors.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
 
 class CoachScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class _CoachScreenState extends State<CoachScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: TColors.primary,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +35,7 @@ class _CoachScreenState extends State<CoachScreen> {
             ),
             const SizedBox(height: 20), // Add spacing between sections
             _buildSection(
-              title: 'Maux',
+              title: 'Partie Maux',
               image: 'assets/CoachImages/MImage.png',
               onPressed: () {
                 Navigator.of(context).pushNamed(mauxMainScreenRoute);

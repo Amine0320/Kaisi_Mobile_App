@@ -3,6 +3,7 @@ import 'package:kaisi_app/Widgets/custom_shapes/containers/primary_header_contai
 import 'package:kaisi_app/Widgets/custom_shapes/list_tiles/settings_menu_tile.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/list_tiles/user_profile_tile.dart';
 import 'package:kaisi_app/Widgets/custom_shapes/texts/section_heading.dart';
+import 'package:kaisi_app/utilities/constants/colors.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
 import 'package:kaisi_app/utilities/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -28,20 +29,15 @@ class SettingScreen extends StatelessWidget {
                   children: [
                     /// AppBar
                     AppBar(
-                      flexibleSpace: Container(
-                        decoration: const BoxDecoration(
-                          color:
-                              Colors.blue, // Set your desired background color
+                        backgroundColor: TColors.primary,
+                        flexibleSpace: Container(
+                          decoration: const BoxDecoration(
+                            color: Colors
+                                .blue, // Set your desired background color
+                          ),
                         ),
-                      ),
-                      title: const Text(
-                        'Compte',
-                        style: TextStyle(
-                          color: Color.fromARGB(
-                              255, 70, 63, 63), // Set your desired text color
-                        ),
-                      ),
-                    ),
+                        title: Text('Compte',
+                            style: Theme.of(context).textTheme.headlineSmall)),
 
                     /// User Profile Card
                     TUserProfileTile(onPressed: () {

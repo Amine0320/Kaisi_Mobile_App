@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:kaisi_app/utilities/constants/colors.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
 
 class MauxMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: TColors.primary, // Set background color for AppBar
+      ),
+      backgroundColor: TColors.primary, // Set background color for Scaffold
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

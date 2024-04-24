@@ -10,6 +10,7 @@ class _AboutScreenState extends State<AboutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF90CAF9),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(

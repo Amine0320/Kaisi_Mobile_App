@@ -14,14 +14,14 @@ class ProfileScreen extends StatelessWidget {
   const ProfileScreen({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final controller = UserController.instance;
-    // final controller_A = SignUpForm.instance;
     return Scaffold(
+      backgroundColor: const Color(0xFF90CAF9),
       appBar: AppBar(
         title: Text('Profil', style: Theme.of(context).textTheme.headlineSmall),
+        backgroundColor: const Color(0xFF90CAF9),
       ),
       body: SingleChildScrollView(
         child: Padding(

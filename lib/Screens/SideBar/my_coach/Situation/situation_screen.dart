@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:kaisi_app/utilities/constants/colors.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
 
 class SituationMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: TColors.primary,
+      backgroundColor: const Color(0xFF90CAF9),
       appBar: AppBar(
-        backgroundColor: TColors.primary,
+        backgroundColor: const Color(0xFF90CAF9),
       ),
       body: Center(
         child: Padding(

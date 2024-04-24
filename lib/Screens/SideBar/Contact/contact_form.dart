@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:kaisi_app/auth/firebase_auth_provider.dart';
 import 'package:kaisi_app/utilities/Dialogs/message_dialog.dart';
 import 'package:http/http.dart' as http;
+import 'package:kaisi_app/utilities/constants/colors.dart';
 
 class ContactForm extends StatefulWidget {
   const ContactForm({Key? key}) : super(key: key);
@@ -78,7 +79,10 @@ class _ContactFormState extends State<ContactForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: const Color(0xFF90CAF9),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF90CAF9),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kaisi_app/utilities/constants/colors.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';
 
 class PlanActionMainScreen extends StatelessWidget {
@@ -7,9 +6,9 @@ class PlanActionMainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: TColors.primary,
+        backgroundColor: const Color(0xFF90CAF9),
       ),
-      backgroundColor: TColors.primary,
+      backgroundColor: const Color(0xFF90CAF9),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

@@ -18,18 +18,16 @@ class _MenuPageState extends State<MenuPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                RoundedMenuItem(
+                _buildRoundedMenuItem(
                   text: 'Coach',
-                  onPressed: () {
-                    Navigator.pushNamed(context, coachScreenRoute);
-                  },
+                  onPressed: () =>
+                      Navigator.pushNamed(context, coachScreenRoute),
                 ),
                 const SizedBox(width: 20),
-                RoundedMenuItem(
+                _buildRoundedMenuItem(
                   text: 'Contact',
-                  onPressed: () {
-                    Navigator.pushNamed(context, contactScreenRoute);
-                  },
+                  onPressed: () =>
+                      Navigator.pushNamed(context, contactScreenRoute),
                 ),
               ],
             ),
@@ -38,16 +36,15 @@ class _MenuPageState extends State<MenuPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                  child: RoundedMenuItem(
+                  child: _buildRoundedMenuItem(
                     text: 'Compte',
-                    onPressed: () {
-                      Navigator.pushNamed(context, profileScreenRoute);
-                    },
+                    onPressed: () =>
+                        Navigator.pushNamed(context, profileScreenRoute),
                   ),
                 ),
                 const SizedBox(width: 20),
                 Expanded(
-                  child: RoundedMenuItem(
+                  child: _buildRoundedMenuItem(
                     text: 'Ateliers',
                     onPressed: () {
                       // Ateliers page here
@@ -57,7 +54,7 @@ class _MenuPageState extends State<MenuPage> {
               ],
             ),
             const SizedBox(height: 50),
-            RoundedMenuItem(
+            _buildRoundedMenuItem(
               text: 'Historique',
               onPressed: () {
                 // Historique page here
@@ -68,33 +65,26 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
-}
 
-class RoundedMenuItem extends StatelessWidget {
-  final String text;
-  final Function onPressed;
-
-  const RoundedMenuItem({
-    Key? key,
-    required this.text,
-    required this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 120,
-      height: 120,
-      child: ElevatedButton(
-        onPressed: () => onPressed(),
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(60),
+  Widget _buildRoundedMenuItem(
+      {required String text, required Function onPressed}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(60),
+      ),
+      child: Material(
+        color: Colors.transparent, // Remove button color
+        child: InkWell(
+          onTap: () => onPressed(),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              text,
+              style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
           ),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 16),
         ),
       ),
     );

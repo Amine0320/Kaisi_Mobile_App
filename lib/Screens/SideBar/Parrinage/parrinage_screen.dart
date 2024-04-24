@@ -21,7 +21,7 @@ class _ParrinageState extends State<Parrinage> {
       child: SafeArea(
         top: false,
         child: Scaffold(
-          backgroundColor: isLightMode ? AppTheme.white : AppTheme.nearlyBlack,
+          backgroundColor: const Color(0xFF90CAF9),
           body: Column(
             children: <Widget>[
               Container(

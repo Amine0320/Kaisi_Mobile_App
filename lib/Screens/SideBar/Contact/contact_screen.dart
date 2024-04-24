@@ -22,8 +22,7 @@ class _ContactScreenState extends State<ContactScreen> {
       child: SafeArea(
         top: false,
         child: Scaffold(
-          backgroundColor:
-              isLightMode ? AppTheme.nearlyWhite : AppTheme.nearlyBlack,
+          backgroundColor: const Color(0xFF90CAF9),
           body: Column(
             children: <Widget>[
               Container(

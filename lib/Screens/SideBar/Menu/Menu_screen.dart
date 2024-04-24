@@ -10,6 +10,7 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF90CAF9),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

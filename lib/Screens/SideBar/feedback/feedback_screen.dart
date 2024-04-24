@@ -62,8 +62,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
       child: SafeArea(
         top: false,
         child: Scaffold(
-          backgroundColor:
-              isLightMode ? AppTheme.nearlyWhite : AppTheme.nearlyBlack,
+          backgroundColor: const Color(0xFF90CAF9),
           body: SingleChildScrollView(
             child: SizedBox(
               height: MediaQuery.of(context).size.height,

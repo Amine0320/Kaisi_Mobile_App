@@ -21,7 +21,7 @@ import 'package:kaisi_app/Screens/SideBar/profile/profile_screen.dart';
 import 'package:kaisi_app/Screens/Welcome/welcome_screen.dart';
 import 'package:kaisi_app/auth/auth_service.dart';
 import 'package:kaisi_app/controllers/user_controller.dart';
-import 'package:kaisi_app/firebase_options.dart';
+import 'package:kaisi_app/firebase_options.dart'; 
 // import 'package:kaisi_app/Screens/introduction_animation/introduction_animation_screen.dart';
 import 'package:kaisi_app/Screens/HomeScreen/navigation_home_screen.dart';
 import 'package:kaisi_app/utilities/constants/routes.dart';

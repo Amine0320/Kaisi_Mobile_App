@@ -11,12 +11,12 @@ class NetworkManager extends GetxController {
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   final Rx<ConnectivityResult> _connectionStatus = ConnectivityResult.none.obs; 
-  /// Initialize the network manager and set up a stream to continually check the connection status.
-  // @override
+  // Initialize the network manager and set up a stream to continually check the connection status.
+  // @override 
   // void onInit() { 
   //   super.onInit();
   //   _connectivitySubscription =
-  //       _connectivity.onConnectivityChanged.listen(_updateConnectionStatus); 
+  //       _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);  
   // }  
 
   /// Update the connection status based on changes in connectivity and show a relevant popup for no internet connection.

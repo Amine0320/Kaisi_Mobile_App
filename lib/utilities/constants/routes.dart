@@ -1,4 +1,4 @@
-// New Routes
+//Routes
 const String loginScreenRoute = '/loginS/';
 const signUpScreenRoute = '/signup/';
 const verifyEmailScreen = '/verifyE/';

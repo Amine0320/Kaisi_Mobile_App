@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart'; 
 import 'package:kaisi_app/Screens/AuthentificationF/ForgotPassword/forget_pw.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Login/login_screen.dart';
 import 'package:kaisi_app/Screens/AuthentificationF/Login/re_authenticate_user_login_form.dart';
@@ -103,7 +103,7 @@ class HexColor extends Color {
 }
 
 // CLASS HOME PAGE HERE ! (Logically right)
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget { 
   const HomePage({super.key});
 
   @override
